@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://snql310iuylc"]
+
+[ext_resource type="Texture2D" uid="uid://2snduvs4xku6" path="res://icons/start-button.png" id="1_jhj7g"]
+[ext_resource type="Script" path="res://start_button.gd" id="2_0titd"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 183.0
+offset_right = -424.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_jhj7g")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_0titd")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

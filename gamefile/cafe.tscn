@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsd2i2hy1l4ff"]
+
+[ext_resource type="Texture2D" uid="uid://duko4lawp17g8" path="res://icon.svg" id="1_1shns"]
+[ext_resource type="Texture2D" uid="uid://blura11f8mrfe" path="res://icons/animation-1.png" id="1_3aioc"]
+[ext_resource type="Texture2D" uid="uid://dh0wi1dp0c678" path="res://icons/animation-2.png" id="2_8ejl6"]
+[ext_resource type="Script" path="res://player.gd" id="2_biw3y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnwyf"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_3aioc")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_8ejl6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cafe" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(641, 283)
+sprite_frames = SubResource("SpriteFrames_tnwyf")
+autoplay = "default"
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(490, 289)
+texture = ExtResource("1_1shns")
+script = ExtResource("2_biw3y")
