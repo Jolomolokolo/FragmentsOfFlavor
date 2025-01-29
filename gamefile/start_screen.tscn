@@ -28,4 +28,6 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_0titd")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

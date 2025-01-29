@@ -1,0 +1,21 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Alle Dateien (*)",
+    "fileStates": {
+    },
+    "map.fixedSize": false,
+    "map.orientation": "1",
+    "map.tileHeight": 50,
+    "map.tileWidth": 50,
+    "openFiles": [
+    ],
+    "project": "FragmentOfFlavor.tiled-project",
+    "recentFiles": [
+    ]
+}
