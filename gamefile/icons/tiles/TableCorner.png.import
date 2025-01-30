@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://claj73ci2ehux"
-path="res://.godot/imported/animation-1.3.png-a77e6579ff606b50d7faf7f3e1e0ef28.ctex"
+uid="uid://qgmfcmxoba8e"
+path="res://.godot/imported/TableCorner.png-9327769c4c1ffad5e30e706b94585516.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/animation-1.3.png"
-dest_files=["res://.godot/imported/animation-1.3.png-a77e6579ff606b50d7faf7f3e1e0ef28.ctex"]
+source_file="res://icons/tiles/TableCorner.png"
+dest_files=["res://.godot/imported/TableCorner.png-9327769c4c1ffad5e30e706b94585516.ctex"]
 
 [params]
 

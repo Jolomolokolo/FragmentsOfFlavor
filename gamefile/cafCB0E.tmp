@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=24 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="7_t55wd"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://opsjvae6j4jr" path="res://icons/TestBlock.png" id="8_o6yor"]
 [ext_resource type="Texture2D" uid="uid://d077n0ywn7a0a" path="res://icons/Solaria Demo Tiles.png" id="9_3ri8c"]
 [ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="9_pks4d"]
-[ext_resource type="Script" path="res://customer_spawner.gd" id="9_rh62e"]
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 
@@ -506,15 +505,15 @@ tile_map_data = PackedByteArray("AAAAAP7/AAAaAAUAAAABAP7/AAAaAAUAAAACAP7/AAAaAAU
 tile_set = SubResource("TileSet_0pvpd")
 use_kinematic_bodies = true
 
-[node name="Table" type="Area2D" parent="."]
+[node name="Table1" type="Area2D" parent="."]
 position = Vector2(1135, 625)
 scale = Vector2(1, 1.00221)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table1"]
 shape = SubResource("RectangleShape2D_pr6lv")
 one_way_collision_margin = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Table"]
+[node name="Sprite2D" type="Sprite2D" parent="Table1"]
 position = Vector2(1, 0)
 texture = ExtResource("13_30r4f")
 
@@ -550,10 +549,3 @@ one_way_collision_margin = 0.0
 [node name="Sprite2D" type="Sprite2D" parent="Table4"]
 position = Vector2(1, 0)
 texture = ExtResource("13_30r4f")
-
-[node name="CustomerSpawner" type="Node2D" parent="."]
-script = ExtResource("9_rh62e")
-
-[node name="Timer" type="Timer" parent="CustomerSpawner"]
-
-[connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]

@@ -506,15 +506,15 @@ tile_map_data = PackedByteArray("AAAAAP7/AAAaAAUAAAABAP7/AAAaAAUAAAACAP7/AAAaAAU
 tile_set = SubResource("TileSet_0pvpd")
 use_kinematic_bodies = true
 
-[node name="Table" type="Area2D" parent="."]
+[node name="Table1" type="Area2D" parent="."]
 position = Vector2(1135, 625)
 scale = Vector2(1, 1.00221)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table1"]
 shape = SubResource("RectangleShape2D_pr6lv")
 one_way_collision_margin = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Table"]
+[node name="Sprite2D" type="Sprite2D" parent="Table1"]
 position = Vector2(1, 0)
 texture = ExtResource("13_30r4f")
 
@@ -553,7 +553,3 @@ texture = ExtResource("13_30r4f")
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("9_rh62e")
-
-[node name="Timer" type="Timer" parent="CustomerSpawner"]
-
-[connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
