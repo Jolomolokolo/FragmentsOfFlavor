@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=27 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="7_t55wd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d077n0ywn7a0a" path="res://icons/Solaria Demo Tiles.png" id="9_3ri8c"]
 [ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="9_pks4d"]
 [ext_resource type="Script" path="res://customer_spawner.gd" id="9_rh62e"]
+[ext_resource type="Script" path="res://tutorial_finisher.gd" id="10_2g4s6"]
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 
@@ -467,6 +468,9 @@ sources/6 = SubResource("TileSetAtlasSource_44yui")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr6lv"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6kyj"]
+size = Vector2(164, 156)
+
 [node name="Cafe" type="Node2D"]
 position = Vector2(0, -1)
 
@@ -555,5 +559,16 @@ texture = ExtResource("13_30r4f")
 script = ExtResource("9_rh62e")
 
 [node name="Timer" type="Timer" parent="CustomerSpawner"]
+one_shot = true
 
+[node name="TutorialFinisher" type="Area2D" parent="."]
+script = ExtResource("10_2g4s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialFinisher"]
+position = Vector2(126, 121)
+shape = SubResource("RectangleShape2D_a6kyj")
+
+[connection signal="tutorial_finished" from="CustomerSpawner" to="CustomerSpawner" method="_on_tutorial_finished"]
+[connection signal="tutorial_finished" from="CustomerSpawner" to="TutorialFinisher" method="_on_customer_spawner_tutorial_finished"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="TutorialFinisher" to="CustomerSpawner" method="_on_area_2d_body_entered"]

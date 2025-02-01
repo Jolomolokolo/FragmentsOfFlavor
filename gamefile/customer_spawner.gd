@@ -1,16 +1,22 @@
 extends Node2D
+signal tutorial_finished
 
+var rng = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var time = 10
-	$Timer.start(time)
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func _on_area_2d_body_entered(body: Node2D):
+	tutorial_finished.emit()
+
+func _on_tutorial_finished() -> void:
+	var random_time = round(rng.randf_range(10, 25))
+	$Timer.start(random_time)
+	
+	print("Tutorial finished: ", random_time)
 
 func _on_timer_timeout() -> void:
-	$Table.duplicate()
+	print("Timeout")
