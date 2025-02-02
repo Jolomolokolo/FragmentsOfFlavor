@@ -1,27 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://snql310iuylc"]
+[gd_scene load_steps=8 format=3 uid="uid://snql310iuylc"]
 
 [ext_resource type="Texture2D" uid="uid://bgdaqcks8o108" path="res://icons/StartButton.png" id="1_0l386"]
 [ext_resource type="Script" path="res://start_button.gd" id="2_0titd"]
+[ext_resource type="Script" path="res://label.gd" id="3_1rer5"]
+[ext_resource type="Texture2D" uid="uid://b6dxeyblxt1sq" path="res://CreditsBGButton.png" id="4_8b1sr"]
+[ext_resource type="Script" path="res://texture_button.gd" id="4_s0cc3"]
+[ext_resource type="Texture2D" uid="uid://cgkdcv7vcwhr2" path="res://CreditsButton.png" id="5_fymtv"]
+[ext_resource type="Script" path="res://credits_button.gd" id="6_bugbt"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 441.0
-offset_top = 183.0
-offset_right = -424.0
-offset_bottom = -179.0
+anchors_preset = -1
+anchor_left = 0.402
+anchor_top = 0.326
+anchor_right = 0.598
+anchor_bottom = 0.674
+offset_left = 121.44
+offset_top = 121.28
+offset_right = -121.44
+offset_bottom = -121.28
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("1_0l386")
@@ -30,6 +36,78 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_0titd")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="CreditsText" type="Label" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+text = "  Copyright (c) 2014-present Godot Engine contributors.
+  Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the \"Software\"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  -- Godot Engine <https://godotengine.org>"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1rer5")
+
+[node name="CreditsBGButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource("4_8b1sr")
+texture_pressed = ExtResource("4_8b1sr")
+texture_hover = ExtResource("4_8b1sr")
+texture_disabled = ExtResource("4_8b1sr")
+texture_focused = ExtResource("4_8b1sr")
+script = ExtResource("4_s0cc3")
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -106.0
+offset_right = 124.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Credits"
+texture_normal = ExtResource("5_fymtv")
+texture_pressed = ExtResource("5_fymtv")
+texture_hover = ExtResource("5_fymtv")
+texture_disabled = ExtResource("5_fymtv")
+texture_focused = ExtResource("5_fymtv")
+script = ExtResource("6_bugbt")
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="pressed" from="CreditsBGButton" to="CreditsText" method="_on_credits_bg_text_pressed"]
+[connection signal="pressed" from="CreditsBGButton" to="CreditsBGButton" method="_on_pressed"]
+[connection signal="pressed" from="CreditsBGButton" to="CreditsButton" method="_on_credits_bg_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="CreditsText" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="CreditsBGButton" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]

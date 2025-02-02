@@ -542,23 +542,39 @@ shape = SubResource("RectangleShape2D_a6kyj")
 script = ExtResource("12_8syn7")
 
 [node name="Table" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(1168, 625)
+position = Vector2(1136, 624)
+direction_n = false
+direction_s = false
 metadata/places = 2.0
+metadata/_edit_lock_ = true
 
 [node name="Table2" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(1167, 528)
+position = Vector2(1136, 528)
+direction_n = false
+direction_s = false
+metadata/_edit_lock_ = true
 
 [node name="Table3" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(1167, 431)
+position = Vector2(1136, 432)
+direction_n = false
+direction_s = false
+metadata/_edit_lock_ = true
 
 [node name="Table4" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(1168, 336)
+position = Vector2(1136, 336)
+direction_n = false
+direction_s = false
+metadata/_edit_lock_ = true
 
 [node name="Table5" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(906, 655)
+position = Vector2(816, 688)
+direction_s = false
+metadata/_edit_lock_ = true
 
 [node name="Table6" parent="Tables" groups=["tables"] instance=ExtResource("12_mqvs8")]
-position = Vector2(814, 652)
+position = Vector2(688, 688)
+direction_s = false
+metadata/_edit_lock_ = true
 
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
 [connection signal="customer_spawn" from="CustomerSpawner" to="Tables" method="_on_customer_spawner_customer_spawn"]
