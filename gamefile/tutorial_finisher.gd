@@ -1,15 +1,7 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_customer_spawner_tutorial_finished() -> void:
-	$CollisionShape2D.disabled = true
-	print("Not visible?!")
+	call_deferred("set_monitoring", false)
+	$CollisionShape2D.disabled = true # Nur für Debug
+	#print("Not visible?!")
+	
