@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cluudrcs651u7"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_kf0gx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_340kl"]
+font_size = 400
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kf0gx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+text = "DEAD"
+label_settings = SubResource("LabelSettings_340kl")
+horizontal_alignment = 1
+vertical_alignment = 1

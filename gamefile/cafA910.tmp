@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=63 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="7_t55wd"]
@@ -11,35 +11,34 @@
 [ext_resource type="Texture2D" uid="uid://dfwfp0jpypsrk" path="res://icons/Carpet.png" id="10_4xkkd"]
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="PackedScene" uid="uid://dxvkl4v18lccm" path="res://customer_scene.tscn" id="10_hosct"]
-[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://icons/CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Script" path="res://tables.gd" id="12_8syn7"]
 [ext_resource type="PackedScene" uid="uid://drutrew1pwyoj" path="res://table.tscn" id="12_mqvs8"]
-[ext_resource type="Script" path="res://customer_spawner.gd" id="12_njhnw"]
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 [ext_resource type="PackedScene" uid="uid://dqypb0asekn8g" path="res://chair_customer.tscn" id="16_ayqlu"]
 [ext_resource type="Texture2D" uid="uid://cnfb3fqdp2nr3" path="res://icons/ChairCustomer.png" id="16_dvcy0"]
-[ext_resource type="Script" path="res://food/scripts_food/avocado_toast.gd" id="18_bg2fk"]
+[ext_resource type="Script" path="res://avocado_toast.gd" id="18_bg2fk"]
 [ext_resource type="Texture2D" uid="uid://uug1il46s7ix" path="res://icons/ausgabe.png" id="18_klmyy"]
-[ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://food/food_output/avocado_toast_output.png" id="19_43abj"]
-[ext_resource type="Script" path="res://food/scripts_food/crumb_cake.gd" id="19_sk36k"]
-[ext_resource type="Texture2D" uid="uid://dfj8aao60osrp" path="res://food/food_output/crumb_cake_output.png" id="20_57r0r"]
-[ext_resource type="Texture2D" uid="uid://dnl13kondee6k" path="res://food/food_output/cookie_output.png" id="21_la2yc"]
-[ext_resource type="Texture2D" uid="uid://cr6o6c5fxwhjl" path="res://food/food_output/coffe_output.png" id="22_3pt82"]
-[ext_resource type="Script" path="res://food/scripts_food/cookie.gd" id="22_fuyli"]
-[ext_resource type="Texture2D" uid="uid://crf2yy0yx7b0x" path="res://food/food_output/soup_output.png" id="23_vckqo"]
-[ext_resource type="Script" path="res://food/scripts_food/coffe.gd" id="24_klitk"]
-[ext_resource type="Texture2D" uid="uid://dcu4v4se3x777" path="res://food/food_output/hot_chocolate_output.png" id="24_u5odm"]
-[ext_resource type="Texture2D" uid="uid://dj84330tn7ku7" path="res://food/food_output/cola_output.png" id="25_8i34e"]
-[ext_resource type="Texture2D" uid="uid://deaivwfy2ddlp" path="res://food/food_output/energy_output.png" id="26_tugtk"]
-[ext_resource type="Script" path="res://food/scripts_food/soup.gd" id="26_u4abb"]
-[ext_resource type="Texture2D" uid="uid://k3n4vkxd6ydo" path="res://food/food_output/water_output.png" id="27_nsejy"]
-[ext_resource type="Script" path="res://food/scripts_food/hot_chocolat.gd" id="28_uidoa"]
-[ext_resource type="Script" path="res://food/scripts_food/cola.gd" id="30_g036e"]
-[ext_resource type="Script" path="res://food/scripts_food/energy.gd" id="32_eybo1"]
-[ext_resource type="Script" path="res://food/scripts_food/water.gd" id="34_0bgid"]
-[ext_resource type="Script" path="res://food/scripts_food/cheescake.gd" id="36_1dkad"]
+[ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://images/output/avocado_toast_output.png" id="19_43abj"]
+[ext_resource type="Script" path="res://crumb_cake.gd" id="19_sk36k"]
+[ext_resource type="Texture2D" uid="uid://dfj8aao60osrp" path="res://images/output/crumb_cake_output.png" id="20_57r0r"]
+[ext_resource type="Texture2D" uid="uid://dnl13kondee6k" path="res://images/output/cookie_output.png" id="21_la2yc"]
+[ext_resource type="Texture2D" uid="uid://cr6o6c5fxwhjl" path="res://images/output/coffe_output.png" id="22_3pt82"]
+[ext_resource type="Script" path="res://cookie.gd" id="22_fuyli"]
+[ext_resource type="Texture2D" uid="uid://crf2yy0yx7b0x" path="res://images/output/soup_output.png" id="23_vckqo"]
+[ext_resource type="Script" path="res://coffe.gd" id="24_klitk"]
+[ext_resource type="Texture2D" uid="uid://dcu4v4se3x777" path="res://images/output/hot_chocolate_output.png" id="24_u5odm"]
+[ext_resource type="Texture2D" uid="uid://dj84330tn7ku7" path="res://images/output/cola_output.png" id="25_8i34e"]
+[ext_resource type="Texture2D" uid="uid://deaivwfy2ddlp" path="res://images/output/energy_output.png" id="26_tugtk"]
+[ext_resource type="Script" path="res://soup.gd" id="26_u4abb"]
+[ext_resource type="Texture2D" uid="uid://k3n4vkxd6ydo" path="res://images/output/water_output.png" id="27_nsejy"]
+[ext_resource type="Script" path="res://hot_chocolat.gd" id="28_uidoa"]
+[ext_resource type="Script" path="res://cola.gd" id="30_g036e"]
+[ext_resource type="Script" path="res://energy.gd" id="32_eybo1"]
+[ext_resource type="Script" path="res://water.gd" id="34_0bgid"]
+[ext_resource type="Script" path="res://cheescake.gd" id="36_1dkad"]
 [ext_resource type="Script" path="res://trash_can.gd" id="36_3w3ht"]
-[ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://food/food_output/cheescake_output.png" id="37_hlhgl"]
-[ext_resource type="Script" path="res://canvas_layer.gd" id="40_fdrpx"]
+[ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://images/output/cheescake_output.png" id="37_hlhgl"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
 
@@ -547,11 +546,6 @@ size = Vector2(164, 156)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhok"]
 size = Vector2(32, 64)
 
-[sub_resource type="LabelSettings" id="LabelSettings_svb40"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Cafe" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
@@ -571,9 +565,6 @@ shape = SubResource("CircleShape2D_gyg6m")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("7_o3hko")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(70, 31)
-
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(40, 45)
 
@@ -592,11 +583,10 @@ tile_set = SubResource("TileSet_0pvpd")
 use_kinematic_bodies = true
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
-script = ExtResource("12_njhnw")
+script = ExtResource("12_8syn7")
 customer_scene = ExtResource("10_hosct")
 
 [node name="Timer" type="Timer" parent="CustomerSpawner"]
-wait_time = 3.0
 one_shot = true
 
 [node name="Table" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
@@ -604,6 +594,7 @@ z_as_relative = false
 position = Vector2(1136, 624)
 direction_n = false
 direction_s = false
+metadata/places = 2.0
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table" instance=ExtResource("16_ayqlu")]
@@ -983,7 +974,7 @@ polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.70
 
 [node name="Table10" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
 z_as_relative = false
-position = Vector2(80, 560)
+position = Vector2(80, 592)
 direction_n = false
 direction_s = false
 metadata/_edit_lock_ = true
@@ -1018,7 +1009,7 @@ polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.70
 
 [node name="Table11" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
 z_as_relative = false
-position = Vector2(80, 464)
+position = Vector2(80, 496)
 direction_n = false
 direction_s = false
 metadata/_edit_lock_ = true
@@ -1053,7 +1044,7 @@ polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.70
 
 [node name="Table12" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
 z_as_relative = false
-position = Vector2(80, 368)
+position = Vector2(80, 400)
 direction_n = false
 direction_s = false
 metadata/_edit_lock_ = true
@@ -1088,7 +1079,7 @@ polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.70
 
 [node name="Table13" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
 z_as_relative = false
-position = Vector2(80, 272)
+position = Vector2(80, 304)
 direction_n = false
 direction_s = false
 metadata/_edit_lock_ = true
@@ -1369,7 +1360,7 @@ polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.70
 script = ExtResource("10_2g4s6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialFinisher"]
-position = Vector2(400, 224)
+position = Vector2(126, 121)
 shape = SubResource("RectangleShape2D_a6kyj")
 
 [node name="AvocadoToast" type="Area2D" parent="."]
@@ -1522,64 +1513,6 @@ position = Vector2(1.52588e-05, -3.8147e-06)
 rotation = -3.14159
 texture = ExtResource("18_klmyy")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("40_fdrpx")
-
-[node name="CashLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1104.0
-offset_top = 670.0
-offset_right = 1251.0
-offset_bottom = 715.0
-text = "Cash: 100"
-label_settings = SubResource("LabelSettings_svb40")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CashLabel"]
-z_index = -1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.067
-offset_left = -8.0
-offset_top = 2.0
-offset_right = 8.0
-offset_bottom = -1.01494
-color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.867
-anchor_right = 0.856
-anchor_bottom = 0.996
-offset_left = 96.64
-offset_top = 45.7599
-offset_right = -10.6801
-offset_bottom = -2.12006
-grow_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 32.0
-offset_right = -1120.0
-offset_bottom = -520.0
-color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.019
-anchor_top = 0.044
-anchor_right = 0.125
-anchor_bottom = 0.278
-offset_left = -0.320002
-offset_top = 0.319998
-offset_bottom = -0.160019
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
-layout_mode = 2
-
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="TutorialFinisher" to="CustomerSpawner" method="_on_tutorial_finisher_body_entered"]
@@ -1606,4 +1539,3 @@ layout_mode = 2
 [connection signal="body_exited" from="Cheescake" to="Cheescake" method="_on_body_exited"]
 [connection signal="body_entered" from="TrashCan" to="TrashCan" method="_on_body_entered"]
 [connection signal="body_exited" from="TrashCan" to="TrashCan" method="_on_body_exited"]
-[connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]

@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="PackedScene" uid="uid://dxvkl4v18lccm" path="res://customer_scene.tscn" id="10_hosct"]
 [ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://icons/CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Script" path="res://tables.gd" id="12_8syn7"]
 [ext_resource type="PackedScene" uid="uid://drutrew1pwyoj" path="res://table.tscn" id="12_mqvs8"]
-[ext_resource type="Script" path="res://customer_spawner.gd" id="12_njhnw"]
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 [ext_resource type="PackedScene" uid="uid://dqypb0asekn8g" path="res://chair_customer.tscn" id="16_ayqlu"]
 [ext_resource type="Texture2D" uid="uid://cnfb3fqdp2nr3" path="res://icons/ChairCustomer.png" id="16_dvcy0"]
@@ -571,9 +571,6 @@ shape = SubResource("CircleShape2D_gyg6m")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("7_o3hko")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(70, 31)
-
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(40, 45)
 
@@ -592,11 +589,12 @@ tile_set = SubResource("TileSet_0pvpd")
 use_kinematic_bodies = true
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
-script = ExtResource("12_njhnw")
+script = ExtResource("12_8syn7")
 customer_scene = ExtResource("10_hosct")
+timer_range_start = 20
+timer_range_end = 35
 
 [node name="Timer" type="Timer" parent="CustomerSpawner"]
-wait_time = 3.0
 one_shot = true
 
 [node name="Table" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
@@ -604,6 +602,7 @@ z_as_relative = false
 position = Vector2(1136, 624)
 direction_n = false
 direction_s = false
+metadata/places = 2.0
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table" instance=ExtResource("16_ayqlu")]
@@ -1581,6 +1580,7 @@ offset_bottom = -0.160019
 layout_mode = 2
 
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
+[connection signal="restart" from="CustomerSpawner" to="CustomerSpawner" method="_on_restart"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="TutorialFinisher" to="CustomerSpawner" method="_on_tutorial_finisher_body_entered"]
 [connection signal="body_entered" from="TutorialFinisher" to="TutorialFinisher" method="_on_body_entered"]
@@ -1606,4 +1606,3 @@ layout_mode = 2
 [connection signal="body_exited" from="Cheescake" to="Cheescake" method="_on_body_exited"]
 [connection signal="body_entered" from="TrashCan" to="TrashCan" method="_on_body_entered"]
 [connection signal="body_exited" from="TrashCan" to="TrashCan" method="_on_body_exited"]
-[connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]

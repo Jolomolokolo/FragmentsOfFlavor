@@ -11,34 +11,34 @@
 [ext_resource type="Texture2D" uid="uid://dfwfp0jpypsrk" path="res://icons/Carpet.png" id="10_4xkkd"]
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="PackedScene" uid="uid://dxvkl4v18lccm" path="res://customer_scene.tscn" id="10_hosct"]
-[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://icons/CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Script" path="res://tables.gd" id="12_8syn7"]
 [ext_resource type="PackedScene" uid="uid://drutrew1pwyoj" path="res://table.tscn" id="12_mqvs8"]
-[ext_resource type="Script" path="res://customer_spawner.gd" id="12_njhnw"]
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 [ext_resource type="PackedScene" uid="uid://dqypb0asekn8g" path="res://chair_customer.tscn" id="16_ayqlu"]
 [ext_resource type="Texture2D" uid="uid://cnfb3fqdp2nr3" path="res://icons/ChairCustomer.png" id="16_dvcy0"]
-[ext_resource type="Script" path="res://food/scripts_food/avocado_toast.gd" id="18_bg2fk"]
+[ext_resource type="Script" path="res://avocado_toast.gd" id="18_bg2fk"]
 [ext_resource type="Texture2D" uid="uid://uug1il46s7ix" path="res://icons/ausgabe.png" id="18_klmyy"]
-[ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://food/food_output/avocado_toast_output.png" id="19_43abj"]
-[ext_resource type="Script" path="res://food/scripts_food/crumb_cake.gd" id="19_sk36k"]
-[ext_resource type="Texture2D" uid="uid://dfj8aao60osrp" path="res://food/food_output/crumb_cake_output.png" id="20_57r0r"]
-[ext_resource type="Texture2D" uid="uid://dnl13kondee6k" path="res://food/food_output/cookie_output.png" id="21_la2yc"]
-[ext_resource type="Texture2D" uid="uid://cr6o6c5fxwhjl" path="res://food/food_output/coffe_output.png" id="22_3pt82"]
-[ext_resource type="Script" path="res://food/scripts_food/cookie.gd" id="22_fuyli"]
-[ext_resource type="Texture2D" uid="uid://crf2yy0yx7b0x" path="res://food/food_output/soup_output.png" id="23_vckqo"]
-[ext_resource type="Script" path="res://food/scripts_food/coffe.gd" id="24_klitk"]
-[ext_resource type="Texture2D" uid="uid://dcu4v4se3x777" path="res://food/food_output/hot_chocolate_output.png" id="24_u5odm"]
-[ext_resource type="Texture2D" uid="uid://dj84330tn7ku7" path="res://food/food_output/cola_output.png" id="25_8i34e"]
-[ext_resource type="Texture2D" uid="uid://deaivwfy2ddlp" path="res://food/food_output/energy_output.png" id="26_tugtk"]
-[ext_resource type="Script" path="res://food/scripts_food/soup.gd" id="26_u4abb"]
-[ext_resource type="Texture2D" uid="uid://k3n4vkxd6ydo" path="res://food/food_output/water_output.png" id="27_nsejy"]
-[ext_resource type="Script" path="res://food/scripts_food/hot_chocolat.gd" id="28_uidoa"]
-[ext_resource type="Script" path="res://food/scripts_food/cola.gd" id="30_g036e"]
-[ext_resource type="Script" path="res://food/scripts_food/energy.gd" id="32_eybo1"]
-[ext_resource type="Script" path="res://food/scripts_food/water.gd" id="34_0bgid"]
-[ext_resource type="Script" path="res://food/scripts_food/cheescake.gd" id="36_1dkad"]
+[ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://images/output/avocado_toast_output.png" id="19_43abj"]
+[ext_resource type="Script" path="res://crumb_cake.gd" id="19_sk36k"]
+[ext_resource type="Texture2D" uid="uid://dfj8aao60osrp" path="res://images/output/crumb_cake_output.png" id="20_57r0r"]
+[ext_resource type="Texture2D" uid="uid://dnl13kondee6k" path="res://images/output/cookie_output.png" id="21_la2yc"]
+[ext_resource type="Texture2D" uid="uid://cr6o6c5fxwhjl" path="res://images/output/coffe_output.png" id="22_3pt82"]
+[ext_resource type="Script" path="res://cookie.gd" id="22_fuyli"]
+[ext_resource type="Texture2D" uid="uid://crf2yy0yx7b0x" path="res://images/output/soup_output.png" id="23_vckqo"]
+[ext_resource type="Script" path="res://coffe.gd" id="24_klitk"]
+[ext_resource type="Texture2D" uid="uid://dcu4v4se3x777" path="res://images/output/hot_chocolate_output.png" id="24_u5odm"]
+[ext_resource type="Texture2D" uid="uid://dj84330tn7ku7" path="res://images/output/cola_output.png" id="25_8i34e"]
+[ext_resource type="Texture2D" uid="uid://deaivwfy2ddlp" path="res://images/output/energy_output.png" id="26_tugtk"]
+[ext_resource type="Script" path="res://soup.gd" id="26_u4abb"]
+[ext_resource type="Texture2D" uid="uid://k3n4vkxd6ydo" path="res://images/output/water_output.png" id="27_nsejy"]
+[ext_resource type="Script" path="res://hot_chocolat.gd" id="28_uidoa"]
+[ext_resource type="Script" path="res://cola.gd" id="30_g036e"]
+[ext_resource type="Script" path="res://energy.gd" id="32_eybo1"]
+[ext_resource type="Script" path="res://water.gd" id="34_0bgid"]
+[ext_resource type="Script" path="res://cheescake.gd" id="36_1dkad"]
 [ext_resource type="Script" path="res://trash_can.gd" id="36_3w3ht"]
-[ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://food/food_output/cheescake_output.png" id="37_hlhgl"]
+[ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://images/output/cheescake_output.png" id="37_hlhgl"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="40_fdrpx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
@@ -571,9 +571,6 @@ shape = SubResource("CircleShape2D_gyg6m")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("7_o3hko")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(70, 31)
-
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(40, 45)
 
@@ -592,11 +589,12 @@ tile_set = SubResource("TileSet_0pvpd")
 use_kinematic_bodies = true
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
-script = ExtResource("12_njhnw")
+script = ExtResource("12_8syn7")
 customer_scene = ExtResource("10_hosct")
+timer_range_start = 20
+timer_range_end = 35
 
 [node name="Timer" type="Timer" parent="CustomerSpawner"]
-wait_time = 3.0
 one_shot = true
 
 [node name="Table" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("12_mqvs8")]
@@ -604,6 +602,7 @@ z_as_relative = false
 position = Vector2(1136, 624)
 direction_n = false
 direction_s = false
+metadata/places = 2.0
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table" instance=ExtResource("16_ayqlu")]
@@ -1558,7 +1557,7 @@ offset_bottom = -2.12006
 grow_horizontal = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
@@ -1581,6 +1580,7 @@ offset_bottom = -0.160019
 layout_mode = 2
 
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
+[connection signal="restart" from="CustomerSpawner" to="CustomerSpawner" method="_on_restart"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="TutorialFinisher" to="CustomerSpawner" method="_on_tutorial_finisher_body_entered"]
 [connection signal="body_entered" from="TutorialFinisher" to="TutorialFinisher" method="_on_body_entered"]
@@ -1606,4 +1606,3 @@ layout_mode = 2
 [connection signal="body_exited" from="Cheescake" to="Cheescake" method="_on_body_exited"]
 [connection signal="body_entered" from="TrashCan" to="TrashCan" method="_on_body_entered"]
 [connection signal="body_exited" from="TrashCan" to="TrashCan" method="_on_body_exited"]
-[connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
