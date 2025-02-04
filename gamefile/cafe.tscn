@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=66 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="7_t55wd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://73erq8qqvmkd" path="res://icons/TableCustomer.png" id="13_30r4f"]
 [ext_resource type="PackedScene" uid="uid://dqypb0asekn8g" path="res://chair_customer.tscn" id="16_ayqlu"]
 [ext_resource type="Texture2D" uid="uid://cnfb3fqdp2nr3" path="res://icons/ChairCustomer.png" id="16_dvcy0"]
+[ext_resource type="PackedScene" uid="uid://dwwsj4ujxqqkv" path="res://table_invisible.tscn" id="17_d73ib"]
 [ext_resource type="Script" path="res://food/scripts_food/avocado_toast.gd" id="18_bg2fk"]
 [ext_resource type="Texture2D" uid="uid://uug1il46s7ix" path="res://icons/ausgabe.png" id="18_klmyy"]
 [ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://food/food_output/avocado_toast_output.png" id="19_43abj"]
@@ -607,7 +608,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -622,7 +622,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -643,7 +642,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table2" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -657,7 +655,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table2" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -678,7 +675,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table3" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -692,7 +688,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table3" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -713,7 +708,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table4" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -727,7 +721,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table4" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -747,7 +740,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table5" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -761,7 +753,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table5" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -775,7 +766,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table5" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -795,7 +785,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table6" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -809,7 +798,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table6" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -823,7 +811,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table6" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -843,7 +830,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table7" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -857,7 +843,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table7" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -871,7 +856,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table7" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -891,7 +875,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table8" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -905,7 +888,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table8" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -919,7 +901,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table8" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -940,7 +921,6 @@ direction_o = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table9" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -954,7 +934,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table9" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -968,7 +947,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table9" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, 32)
 rotation = -4.71238
 
@@ -989,7 +967,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table10" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1003,7 +980,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table10" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1024,7 +1000,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table11" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1038,7 +1013,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table11" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1059,7 +1033,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table12" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1073,7 +1046,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table12" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1094,7 +1066,6 @@ direction_s = false
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table13" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1108,7 +1079,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table13" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1127,7 +1097,6 @@ position = Vector2(336, 528)
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table14" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1141,7 +1110,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table14" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1155,7 +1123,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table14" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -1169,7 +1136,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer4" parent="CustomerSpawner/Table14" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, 32)
 rotation = -4.71238
 
@@ -1188,7 +1154,6 @@ position = Vector2(496, 528)
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table15" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1202,7 +1167,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table15" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1216,7 +1180,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table15" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -1230,7 +1193,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer4" parent="CustomerSpawner/Table15" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, 32)
 rotation = -4.71238
 
@@ -1249,7 +1211,6 @@ position = Vector2(656, 528)
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table16" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1263,7 +1224,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table16" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1277,7 +1237,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table16" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -1291,7 +1250,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer4" parent="CustomerSpawner/Table16" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, 32)
 rotation = -4.71238
 
@@ -1310,7 +1268,6 @@ position = Vector2(816, 528)
 metadata/_edit_lock_ = true
 
 [node name="ChairCustomer" parent="CustomerSpawner/Table17" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(-32, 0)
 rotation = -3.14159
 
@@ -1324,7 +1281,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer2" parent="CustomerSpawner/Table17" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(32, 0)
 rotation = -6.28318
 
@@ -1338,7 +1294,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer3" parent="CustomerSpawner/Table17" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, -32)
 rotation = -1.57079
 
@@ -1352,7 +1307,6 @@ build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
 
 [node name="ChairCustomer4" parent="CustomerSpawner/Table17" instance=ExtResource("16_ayqlu")]
-visible = false
 position = Vector2(0, 32)
 rotation = -4.71238
 
@@ -1364,6 +1318,66 @@ position = Vector2(27.9737, 0)
 scale = Vector2(2.25781, 1)
 build_mode = 1
 polygon = PackedVector2Array(-16.3759, -11, -16.3759, -10, -17.7046, -10, -17.7046, -9, -18.1475, -9, -18.1475, 9, -17.7046, 9, -17.7046, 10, -16.3759, 10, -16.3759, 11, -7.96069, 11, -7.96069, 10, -7.51779, 10, -7.51779, 9, -7.07488, 9, -7.07488, 8, -6.63197, 8, -6.63197, 6, -6.18907, 6, -6.18907, -6, -6.63197, -6, -6.63197, -8, -7.07488, -8, -7.07488, -9, -7.51779, -9, -7.51779, -10, -7.96069, -10, -7.96069, -11)
+
+[node name="Table18" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("17_d73ib")]
+position = Vector2(1168, 208)
+direction_n = false
+direction_o = false
+direction_w = false
+metadata/_edit_lock_ = true
+
+[node name="ChairCustomer" parent="CustomerSpawner/Table18" instance=ExtResource("16_ayqlu")]
+z_index = 1
+position = Vector2(0, 32)
+rotation = -4.71238
+
+[node name="Table19" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("17_d73ib")]
+position = Vector2(1072, 208)
+direction_n = false
+direction_o = false
+direction_w = false
+metadata/_edit_lock_ = true
+
+[node name="ChairCustomer" parent="CustomerSpawner/Table19" instance=ExtResource("16_ayqlu")]
+z_index = 1
+position = Vector2(0, 32)
+rotation = -4.71238
+
+[node name="Table20" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("17_d73ib")]
+position = Vector2(976, 208)
+direction_n = false
+direction_o = false
+direction_w = false
+metadata/_edit_lock_ = true
+
+[node name="ChairCustomer" parent="CustomerSpawner/Table20" instance=ExtResource("16_ayqlu")]
+z_index = 1
+position = Vector2(0, 32)
+rotation = -4.71238
+
+[node name="Table21" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("17_d73ib")]
+position = Vector2(880, 208)
+direction_n = false
+direction_o = false
+direction_w = false
+metadata/_edit_lock_ = true
+
+[node name="ChairCustomer" parent="CustomerSpawner/Table21" instance=ExtResource("16_ayqlu")]
+z_index = 1
+position = Vector2(0, 32)
+rotation = -4.71238
+
+[node name="Table22" parent="CustomerSpawner" groups=["tables"] instance=ExtResource("17_d73ib")]
+position = Vector2(784, 208)
+direction_n = false
+direction_o = false
+direction_w = false
+metadata/_edit_lock_ = true
+
+[node name="ChairCustomer" parent="CustomerSpawner/Table22" instance=ExtResource("16_ayqlu")]
+z_index = 1
+position = Vector2(0, 32)
+rotation = -4.71238
 
 [node name="TutorialFinisher" type="Area2D" parent="."]
 script = ExtResource("10_2g4s6")

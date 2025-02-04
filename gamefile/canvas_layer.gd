@@ -5,6 +5,7 @@ signal dead
 @onready var cash_label = $CashLabel
 @onready var texture_rect = $TextureRect
 @onready var order_container = $ScrollContainer/VBoxContainer
+@onready var order_bg = $ColorRect
 
 var emoji_bad = preload("res://icons/emojis/emoji_bad.png")
 var emoji_middle = preload("res://icons/emojis/emoji_middle.png")

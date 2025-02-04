@@ -29,6 +29,7 @@ func _ready() -> void:
 
 func _on_tutorial_finisher_body_entered(_body: CharacterBody2D) -> void:
 	$Timer.start(3)
+	print("Tutorial Finish")
 	
 func _on_timer_timeout() -> void:
 	print("Timeout -> Start")
@@ -39,7 +40,6 @@ func _on_customer_spawn():
 		if not table["node"].occupied:
 			var seats = get_seat_positions(table)
 			table["node"].occupied = true
-			#table["occupied"] = true
 			group_size = table["capacity"]
 			#print("Table: ", table)
 			#print("Seats: ", seats)

@@ -51,6 +51,8 @@ func _process(_delta: float):
 				Global.orders.remove_at(index)
 			$Timer2.start()
 			print("Order sucessfull")
+		else:
+			Global.health -= 2
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
