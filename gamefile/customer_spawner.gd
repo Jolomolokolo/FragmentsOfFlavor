@@ -36,6 +36,7 @@ func _on_timer_timeout() -> void:
 	customer_spawn.emit()
 
 func _on_customer_spawn():
+	tables.shuffle()
 	for table in tables:
 		if not table["node"].occupied:
 			var seats = get_seat_positions(table)
