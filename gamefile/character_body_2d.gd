@@ -19,3 +19,8 @@ func _physics_process(delta):
 	velocity = direction * speed
 	
 	move_and_collide(velocity * delta)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = true
+		get_tree().change_scene_to_file("res://exit_screen.tscn")
+		
