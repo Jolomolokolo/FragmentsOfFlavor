@@ -595,6 +595,8 @@ use_kinematic_bodies = true
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("12_njhnw")
 customer_scene = ExtResource("10_hosct")
+timer_range_start = 25
+timer_range_end = 40
 
 [node name="Timer" type="Timer" parent="CustomerSpawner"]
 wait_time = 3.0
