@@ -37,7 +37,8 @@ var inv_icons = {
 	"energy": preload("res://food/food_output/energy_output.png"),
 	"hot_chocolat": preload("res://food/food_output/hot_chocolate_output.png"),
 	"soup": preload("res://food/food_output/soup_output.png"),
-	"water": preload("res://food/food_output/water_output.png")
+	"water": preload("res://food/food_output/water_output.png"),
+	"": preload("res://icons/hook.png")
 }
 
 func _ready():

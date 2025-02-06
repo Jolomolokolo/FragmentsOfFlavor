@@ -1640,9 +1640,9 @@ anchors_preset = -1
 anchor_right = 32.0
 anchor_bottom = 18.4
 offset_left = 590.0
-offset_top = 656.0
+offset_top = 650.0
 offset_right = -626.0
-offset_bottom = -16.0001
+offset_bottom = -22.0001
 texture_normal = ExtResource("19_43abj")
 stretch_mode = 0
 
@@ -1652,9 +1652,9 @@ anchors_preset = -1
 anchor_right = 32.0
 anchor_bottom = 18.4
 offset_left = 666.0
-offset_top = 656.0
+offset_top = 650.0
 offset_right = -550.0
-offset_bottom = -16.0001
+offset_bottom = -22.0001
 texture_normal = ExtResource("24_u5odm")
 stretch_mode = 0
 
