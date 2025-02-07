@@ -1575,6 +1575,7 @@ offset_right = 1251.0
 offset_bottom = 715.0
 text = "Cash: 100"
 label_settings = SubResource("LabelSettings_svb40")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/CashLabel"]
 z_index = -1
@@ -1587,6 +1588,7 @@ offset_top = 2.0
 offset_right = 8.0
 offset_bottom = -1.01494
 color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -1599,6 +1601,7 @@ offset_top = 45.7599
 offset_right = -10.6801
 offset_bottom = -2.12006
 grow_horizontal = 0
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -1611,6 +1614,7 @@ offset_bottom = -520.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+metadata/_edit_lock_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -1621,9 +1625,11 @@ anchor_bottom = 0.278
 offset_left = -0.320002
 offset_top = 0.319998
 offset_bottom = -0.160019
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="ExitScreen" parent="CanvasLayer" instance=ExtResource("3_18ohp")]
 visible = false
@@ -1633,6 +1639,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="Inv1" type="TextureButton" parent="CanvasLayer/Inventory"]
 layout_mode = 1
@@ -1645,6 +1652,7 @@ offset_right = -626.0
 offset_bottom = -22.0001
 texture_normal = ExtResource("19_43abj")
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="Inv2" type="TextureButton" parent="CanvasLayer/Inventory"]
 layout_mode = 1
@@ -1657,6 +1665,7 @@ offset_right = -550.0
 offset_bottom = -22.0001
 texture_normal = ExtResource("24_u5odm")
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
