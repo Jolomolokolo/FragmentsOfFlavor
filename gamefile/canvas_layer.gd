@@ -45,14 +45,22 @@ func _ready():
 	update_cash_display()
 	update_heath_display()
 	update_orders()
+	update_inventory()
 
 func _process(_delta):
 	update_cash_display()
 	update_heath_display()
 	update_orders()
-	update_inv_1()
-	update_inv_2()
 	
+	if Input.is_action_just_pressed("ui_swap"):
+		Global.switch_handheld()
+	elif Input.is_action_just_pressed("1"):
+		Global.select_handheld(1)
+	elif Input.is_action_just_pressed("2"):
+		Global.select_handheld(2)
+	
+	update_inventory()
+
 func update_cash_display():
 	cash_label.text = "Cash: " + str(Global.cash)
 
@@ -95,8 +103,9 @@ func update_orders():
 	
 	$ScrollContainer.scroll_vertical = $ScrollContainer.get_v_scroll_bar().max_value
 
-func update_inv_1():
+func update_inventory():
 	inv_1.texture_normal = inv_icons.get(Global.handheld, null)
-	
-func update_inv_2():
 	inv_2.texture_normal = inv_icons.get(Global.handheld_2, null)
+	
+	inv_1.modulate = Color(1, 1, 1, 1) if Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
+	inv_2.modulate = Color(1, 1, 1, 1) if not Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)

@@ -11,11 +11,11 @@ func _on_body_exited(body):
 		player_in_area = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_action") == true and player_in_area == true:
-		if Global.handheld_bool == false and Global.cash > 0:
-			Global.handheld_bool = true
-			Global.handheld = "soup"
+	if Input.is_action_just_pressed("ui_action") and player_in_area:
+		if not Global.is_slot_full() and Global.cash > 0:
 			Global.cash -= 5
+			Global.set_item("soup")
+			print("Item aufgenommen in Slot: ", "1" if Global.handheld_selected_main else "2")
 			print("Cash: ", Global.cash)
 		else:
-			print("NEEE")
+			print("Nicht genug Geld oder Slot voll!")

@@ -36,23 +36,37 @@ func _ready():
 	image_display.visible = false
 	image_display_bg.visible = false
 
+
 func _process(_delta: float):
-	if player_in_area == true and Input.is_action_just_pressed("ui_action") == true:
+	if player_in_area and Input.is_action_just_pressed("ui_action"):
 		if Global.handheld == order:
-			Global.handheld = ""
-			Global.handheld_bool = false
-			Global.cash += rng
-			Global.health += 1
-			print(Global.cash)
-			order_sucessfull = true
-			image_display.texture = hook
-			var index = Global.orders.find(order)
-			if index != -1:
-				Global.orders.remove_at(index)
-			$Timer2.start()
-			print("Order sucessfull")
+			complete_order(1)
+		elif Global.handheld_2 == order:
+			complete_order(2)
 		else:
 			Global.health -= 2
+
+func complete_order(slot: int):
+	order_sucessfull = true
+	image_display.texture = hook
+	
+	if slot == 1:
+		Global.handheld = ""
+		Global.handheld_bool_1 = false
+	else:
+		Global.handheld_2 = ""
+		Global.handheld_bool_2 = false
+
+	Global.cash += rng
+	Global.health += 1
+	Global.orders_served += 1
+	print("Order worked! New Cash: ", Global.cash)
+
+	var index = Global.orders.find(order)
+	if index != -1:
+		Global.orders.remove_at(index)
+	
+	$Timer2.start()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
@@ -85,6 +99,7 @@ func hide_bubble():
 func _on_timer_timeout() -> void:
 	if order_sucessfull == false:
 		Global.health -= 10
+		Global.orders_failed += 1
 		var index = Global.orders.find(order)
 		if index != -1:
 			Global.orders.remove_at(index)

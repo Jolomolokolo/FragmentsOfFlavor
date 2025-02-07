@@ -21,4 +21,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		count -= 1
 		if count == 0:
 			occupied = false
+			Global.tables_visited += 1
 			print("Table ist leer")
