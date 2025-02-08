@@ -15,18 +15,18 @@ var cash = 100
 var orders_served = 0
 var orders_failed = 0
 var tables_visited = 0
-
+var food_waste = 0
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
-	print("Slot switched: ", "Main" if handheld_selected_main else "Beside")
+	#print("Slot switched: ", "Main" if handheld_selected_main else "Beside")
 	
 func select_handheld(slot):
 	if slot == 1:
 		handheld_selected_main = true
 	elif slot == 2:
 		handheld_selected_main = false
-	print("Selected Slot: ", "Main" if handheld_selected_main else "Beside")
+	#print("Selected Slot: ", "Main" if handheld_selected_main else "Beside")
 
 func is_slot_full():
 	return handheld_bool_1 if handheld_selected_main else handheld_bool_2

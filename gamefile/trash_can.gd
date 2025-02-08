@@ -18,3 +18,4 @@ func _process(_delta):
 		else:
 			Global.handheld_2 = ""
 			Global.handheld_bool_2 = false
+		Global.food_waste += 1

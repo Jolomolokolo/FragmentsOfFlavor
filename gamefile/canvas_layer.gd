@@ -10,6 +10,8 @@ signal dead
 @onready var inv_1 = $Inventory/Inv1
 @onready var inv_2 = $Inventory/Inv2
 
+@onready var time = $Timer
+
 var emoji_bad = preload("res://icons/emojis/emoji_bad.png")
 var emoji_middle = preload("res://icons/emojis/emoji_middle.png")
 var emoji_good = preload("res://icons/emojis/emoji_good.png")
@@ -109,3 +111,7 @@ func update_inventory():
 	
 	inv_1.modulate = Color(1, 1, 1, 1) if Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
 	inv_2.modulate = Color(1, 1, 1, 1) if not Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://score.tscn")
+	print("Time up!")

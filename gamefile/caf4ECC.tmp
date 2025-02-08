@@ -1668,7 +1668,7 @@ stretch_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
-wait_time = 50.0
+wait_time = 900.0
 one_shot = true
 autostart = true
 
