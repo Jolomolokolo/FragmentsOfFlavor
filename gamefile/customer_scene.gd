@@ -39,11 +39,11 @@ func _ready():
 
 func _process(_delta: float):
 	if player_in_area and Input.is_action_just_pressed("ui_action"):
-		if Global.handheld == order:
+		if Global.handheld == order and Global.handheld_selected_main == true:
 			complete_order(1)
-		elif Global.handheld_2 == order:
+		elif Global.handheld_2 == order and Global.handheld_selected_main == false:
 			complete_order(2)
-		else:
+		elif order_sucessfull == false:
 			Global.health -= 2
 
 func complete_order(slot: int):
@@ -53,14 +53,16 @@ func complete_order(slot: int):
 	if slot == 1:
 		Global.handheld = ""
 		Global.handheld_bool_1 = false
-	else:
+	elif slot == 2:
 		Global.handheld_2 = ""
 		Global.handheld_bool_2 = false
+	else:
+		print("Error with INV removal")
 
 	Global.cash += rng
-	Global.health += 1
+	Global.health += 3
 	Global.orders_served += 1
-	print("Order worked! New Cash: ", Global.cash)
+	#print("Order worked! New Cash: ", Global.cash)
 
 	var index = Global.orders.find(order)
 	if index != -1:
@@ -103,7 +105,7 @@ func _on_timer_timeout() -> void:
 		var index = Global.orders.find(order)
 		if index != -1:
 			Global.orders.remove_at(index)
-		print("WEG: ", Global.health)
+		#print("WEG: ", Global.health)
 	queue_free()
 	
 func _on_timer_2_timeout() -> void:

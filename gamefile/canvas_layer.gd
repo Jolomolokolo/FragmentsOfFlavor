@@ -11,6 +11,8 @@ signal dead
 @onready var inv_2 = $Inventory/Inv2
 
 @onready var time = $Timer
+@onready var time_label = $TimeLabel
+var time_left: float = 50
 
 var emoji_bad = preload("res://icons/emojis/emoji_bad.png")
 var emoji_middle = preload("res://icons/emojis/emoji_middle.png")
@@ -30,17 +32,17 @@ var order_icons = {
 }
 
 var inv_icons = {
-	"avocado_toast": preload("res://food/food_output/avocado_toast_output.png"),
-	"cheescake": preload("res://food/food_output/cheescake_output.png"),
-	"coffe": preload("res://food/food_output/coffe_output.png"),
-	"cola": preload("res://food/food_output/cola_output.png"),
-	"cookie": preload("res://food/food_output/cookie_output.png"),
-	"crumb_cake": preload("res://food/food_output/crumb_cake_output.png"),
-	"energy": preload("res://food/food_output/energy_output.png"),
-	"hot_chocolat": preload("res://food/food_output/hot_chocolate_output.png"),
-	"soup": preload("res://food/food_output/soup_output.png"),
-	"water": preload("res://food/food_output/water_output.png"),
-	"": preload("res://icons/hook.png")
+	"avocado_toast": preload("res://food/food_inv/avocado_toast_inv.png"),
+	"cheescake": preload("res://food/food_inv/cheescake_inv.png"),
+	"coffe": preload("res://food/food_inv/coffe_inv.png"),
+	"cola": preload("res://food/food_inv/cola_inv.png"),
+	"cookie": preload("res://food/food_inv/cookie_inv.png"),
+	"crumb_cake": preload("res://food/food_inv/crumb_cake_inv.png"),
+	"energy": preload("res://food/food_inv/energy_inv.png"),
+	"hot_chocolat": preload("res://food/food_inv/hot_chocolate_inv.png"),
+	"soup": preload("res://food/food_inv/soup_inv.png"),
+	"water": preload("res://food/food_inv/water_inv.png"),
+	"": preload("res://food/food_inv/inv.png")
 }
 
 func _ready():
@@ -60,6 +62,11 @@ func _process(_delta):
 		Global.select_handheld(1)
 	elif Input.is_action_just_pressed("2"):
 		Global.select_handheld(2)
+	
+	if Input.is_action_just_pressed("scroll_up"):
+		Global.select_next_handheld()
+	elif Input.is_action_just_pressed("scroll_down"):
+		Global.select_previous_handheld()
 	
 	update_inventory()
 
@@ -113,5 +120,9 @@ func update_inventory():
 	inv_2.modulate = Color(1, 1, 1, 1) if not Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://score.tscn")
-	print("Time up!")
+	if time_left > 0:
+		time_left -= 1
+		time_label.text = str(time_left)
+	elif time_left == 0:
+		get_tree().change_scene_to_file("res://score.tscn")
+		print("Time up!")
