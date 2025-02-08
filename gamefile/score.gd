@@ -69,4 +69,4 @@ func load_and_display_scores():
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://start_screen.tscn")
-	print("Start Page")
+	#print("Start Page")

@@ -14,10 +14,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rdrwm")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 160.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dead" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.006
+anchor_bottom = 1.0
+offset_right = -7.68005
+grow_horizontal = 2
+grow_vertical = 2
 text = "DEAD"
 label_settings = SubResource("LabelSettings_340kl")
 horizontal_alignment = 1
@@ -29,15 +45,24 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 544.0
-offset_bottom = -8.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 160.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -88.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

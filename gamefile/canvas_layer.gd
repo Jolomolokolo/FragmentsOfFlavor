@@ -12,7 +12,7 @@ signal dead
 
 @onready var time = $Timer
 @onready var time_label = $TimeLabel
-var time_left: float = 50
+var time_left: float = 600
 
 var emoji_bad = preload("res://icons/emojis/emoji_bad.png")
 var emoji_middle = preload("res://icons/emojis/emoji_middle.png")

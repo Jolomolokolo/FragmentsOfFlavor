@@ -15,7 +15,7 @@ func _process(_delta):
 		if not Global.is_slot_full() and Global.cash > 0:
 			Global.cash -= 5
 			Global.set_item("avocado_toast")
-			print("Item aufgenommen in Slot: ", "1" if Global.handheld_selected_main else "2")
-			print("Cash: ", Global.cash)
+			#print("Item aufgenommen in Slot: ", "1" if Global.handheld_selected_main else "2")
+			#print("Cash: ", Global.cash)
 		else:
 			print("Nicht genug Geld oder Slot voll!")

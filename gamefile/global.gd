@@ -10,7 +10,6 @@ var handheld = ""
 var handheld_2 = ""
 
 var health = 100
-
 var cash = 100
 var orders_served = 0
 var orders_failed = 0
@@ -18,6 +17,23 @@ var tables_visited = 0
 var food_waste = 0
 
 var player_name = ""
+
+func reset():
+	table.clear()
+	orders.clear()
+
+	handheld_bool_1 = false
+	handheld_bool_2 = false
+	handheld_selected_main = true
+	handheld = ""
+	handheld_2 = ""
+
+	health = 100
+	cash = 100
+	orders_served = 0
+	orders_failed = 0
+	tables_visited = 0
+	food_waste = 0
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
@@ -42,14 +58,33 @@ func select_previous_handheld():
 	else:
 		select_handheld(1)
 
-
 func is_slot_full():
-	return handheld_bool_1 if handheld_selected_main else handheld_bool_2
+	if handheld_bool_1 and handheld_bool_2:
+		return true
+	return false
 
 func set_item(item):
 	if handheld_selected_main:
-		handheld = item
-		handheld_bool_1 = true
+		if handheld_bool_1:
+			if !handheld_bool_2:
+				handheld_2 = item
+				handheld_bool_2 = true
+				#print("Item added to second slot")
+			else:
+				print("Both Slots full")
+		else:
+			handheld = item
+			handheld_bool_1 = true
+			#print("Item added to main slot")
 	else:
-		handheld_2 = item
-		handheld_bool_2 = true
+		if handheld_bool_2:
+			if !handheld_bool_1:
+				handheld = item
+				handheld_bool_1 = true
+				#print("Item added to main slot")
+			else:
+				print("Both slots full")
+		else:
+			handheld_2 = item
+			handheld_bool_2 = true
+			#print("Item added to secod slot")
