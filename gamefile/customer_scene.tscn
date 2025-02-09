@@ -51,6 +51,7 @@ offset_top = -74.0
 offset_right = 72.0
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
+z_index = 5
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -63,6 +64,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_ebrj1")
 
 [node name="TextureRect" type="TextureRect" parent="Control/TextureRect2"]
+z_index = 5
 layout_mode = 0
 offset_left = 11.0
 offset_top = 9.0

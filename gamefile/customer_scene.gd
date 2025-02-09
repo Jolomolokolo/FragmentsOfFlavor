@@ -21,7 +21,7 @@ var product_images: Dictionary = {
 	"cheescake": preload("res://food/food_icon/cheescake.png"),
 	"cookie": preload("res://food/food_icon/cookie.png"),
 	"coffe": preload("res://food/food_icon/coffe.png"),
-	"avacado_toast": preload("res://food/food_icon/avocado_toast.png"),
+	"avocado_toast": preload("res://food/food_icon/avocado_toast.png"),
 	"soup": preload("res://food/food_icon/soup.png"),
 	"hot_chocolat": preload("res://food/food_icon/hot_chocolate.png"),
 	"cola": preload("res://food/food_icon/cola.png"),
@@ -39,9 +39,9 @@ func _ready():
 
 func _process(_delta: float):
 	if player_in_area and Input.is_action_just_pressed("ui_action"):
-		if Global.handheld == order and Global.handheld_selected_main == true:
+		if Global.handheld == order and Global.handheld_selected_main == true and order_sucessfull == false:
 			complete_order(1)
-		elif Global.handheld_2 == order and Global.handheld_selected_main == false:
+		elif Global.handheld_2 == order and Global.handheld_selected_main == false and order_sucessfull == false:
 			complete_order(2)
 		elif order_sucessfull == false:
 			Global.health -= 2
