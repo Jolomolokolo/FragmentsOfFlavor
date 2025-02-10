@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=76 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
 [ext_resource type="Texture2D" uid="uid://b34tkus6ncg1b" path="res://icons/tiles/border_straight.png" id="6_05c5m"]
@@ -47,7 +47,6 @@
 [ext_resource type="PackedScene" uid="uid://c57ug0y6vndi1" path="res://name.tscn" id="45_ne4ww"]
 [ext_resource type="Script" path="res://desktop.gd" id="46_60u60"]
 [ext_resource type="Texture2D" uid="uid://cu8it4e2iec3t" path="res://icons/Desktop.png" id="46_cyyn4"]
-[ext_resource type="PackedScene" uid="uid://tkhx7lnk7yjd" path="res://desktop.tscn" id="47_jby4d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
 
@@ -1715,10 +1714,6 @@ shape = SubResource("RectangleShape2D_7r5kd")
 [node name="Desktop" type="Area2D" parent="."]
 position = Vector2(880, 48)
 script = ExtResource("46_60u60")
-
-[node name="Desktop" parent="Desktop" instance=ExtResource("47_jby4d")]
-position = Vector2(-880, -48)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desktop"]
 position = Vector2(0, 16)

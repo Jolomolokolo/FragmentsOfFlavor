@@ -4,13 +4,13 @@
 
 [node name="Desktop" type="Node2D"]
 
-[node name="DektopStandard" type="Control" parent="."]
+[node name="DesktopStandard" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="DektopStandard"]
+[node name="Button" type="Button" parent="DesktopStandard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,11 +18,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="AnimatedSprite2D" parent="DektopStandard"]
+[node name="Background" type="AnimatedSprite2D" parent="DesktopStandard"]
 z_index = -1
 position = Vector2(640, 360)
 scale = Vector2(5.92593, 5.76)
 sprite_frames = ExtResource("1_wyrvd")
 animation = &"gif"
 autoplay = "gif"
-frame = 2
+frame_progress = 0.877006
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
