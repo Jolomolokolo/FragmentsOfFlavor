@@ -1,19 +1,19 @@
-[gd_scene load_steps=73 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=77 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
 [ext_resource type="Texture2D" uid="uid://b34tkus6ncg1b" path="res://icons/tiles/border_straight.png" id="6_05c5m"]
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="7_t55wd"]
 [ext_resource type="Texture2D" uid="uid://dvtgkici78401" path="res://icons/tiles/TabelEnd.png" id="8_5cdkx"]
-[ext_resource type="Texture2D" uid="uid://cvw6xugv118gi" path="res://icons/Carpet-side.png" id="8_6mjb2"]
+[ext_resource type="Texture2D" uid="uid://cvw6xugv118gi" path="res://icons/tiles/Carpet-side.png" id="8_6mjb2"]
 [ext_resource type="Texture2D" uid="uid://opsjvae6j4jr" path="res://icons/TestBlock.png" id="8_o6yor"]
 [ext_resource type="Texture2D" uid="uid://d077n0ywn7a0a" path="res://icons/Solaria Demo Tiles.png" id="9_3ri8c"]
 [ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="9_pks4d"]
 [ext_resource type="Script" path="res://tutorial_finisher.gd" id="10_2g4s6"]
-[ext_resource type="Texture2D" uid="uid://dfwfp0jpypsrk" path="res://icons/Carpet.png" id="10_4xkkd"]
+[ext_resource type="Texture2D" uid="uid://dfwfp0jpypsrk" path="res://icons/tiles/Carpet.png" id="10_4xkkd"]
 [ext_resource type="Texture2D" uid="uid://qgmfcmxoba8e" path="res://icons/tiles/TableCorner.png" id="10_6o4a4"]
 [ext_resource type="PackedScene" uid="uid://dxvkl4v18lccm" path="res://customer_scene.tscn" id="10_hosct"]
-[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://icons/CarpeCorner.png" id="11_pvrcy"]
+[ext_resource type="Texture2D" uid="uid://d2wkcm0o44pk7" path="res://icons/tiles/CarpeCorner.png" id="11_pvrcy"]
 [ext_resource type="PackedScene" uid="uid://drutrew1pwyoj" path="res://table.tscn" id="12_mqvs8"]
 [ext_resource type="Script" path="res://customer_spawner.gd" id="12_njhnw"]
 [ext_resource type="Texture2D" uid="uid://66nbqa2v4h73" path="res://icons/tiles/border_corner.png" id="13_6n8et"]
@@ -45,6 +45,9 @@
 [ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://food/food_output/cheescake_output.png" id="37_hlhgl"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="40_fdrpx"]
 [ext_resource type="PackedScene" uid="uid://c57ug0y6vndi1" path="res://name.tscn" id="45_ne4ww"]
+[ext_resource type="Script" path="res://desktop.gd" id="46_60u60"]
+[ext_resource type="Texture2D" uid="uid://cu8it4e2iec3t" path="res://icons/Desktop.png" id="46_cyyn4"]
+[ext_resource type="PackedScene" uid="uid://tkhx7lnk7yjd" path="res://desktop.tscn" id="47_jby4d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
 
@@ -90,6 +93,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyg6m"]
 radius = 18.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_svb40"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4v0rl"]
 texture = ExtResource("9_3ri8c")
@@ -569,10 +577,8 @@ size = Vector2(32, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r5kd"]
 size = Vector2(160, 16)
 
-[sub_resource type="LabelSettings" id="LabelSettings_svb40"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqhmd"]
+size = Vector2(32, 64)
 
 [node name="Cafe" type="Node2D"]
 
@@ -596,6 +602,146 @@ texture = ExtResource("7_o3hko")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(70, 31)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("40_fdrpx")
+
+[node name="CashLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1104.0
+offset_top = 670.0
+offset_right = 1251.0
+offset_bottom = 715.0
+text = "Cash: 100"
+label_settings = SubResource("LabelSettings_svb40")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CashLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.067
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 8.0
+offset_bottom = -1.01494
+color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.737
+anchor_top = 0.867
+anchor_right = 0.856
+anchor_bottom = 0.996
+offset_left = 96.64
+offset_top = 45.7599
+offset_right = -10.6801
+offset_bottom = -2.12006
+grow_horizontal = 0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = -1120.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.044
+anchor_right = 0.125
+anchor_bottom = 0.278
+offset_left = -0.320002
+offset_top = 0.319998
+offset_bottom = -0.160019
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Inventory" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Inv1" type="TextureButton" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.4
+offset_left = 590.0
+offset_top = 650.0
+offset_right = -626.0
+offset_bottom = -22.0001
+texture_normal = ExtResource("19_43abj")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Inv2" type="TextureButton" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.4
+offset_left = 666.0
+offset_top = 650.0
+offset_right = -550.0
+offset_bottom = -22.0001
+texture_normal = ExtResource("24_u5odm")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TimeLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 48.0
+grow_horizontal = 2
+color = Color(1, 0, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="ExitScreen" parent="CanvasLayer" instance=ExtResource("3_18ohp")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Name" parent="CanvasLayer" instance=ExtResource("45_ne4ww")]
+process_mode = 3
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+autostart = true
 
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(40, 45)
@@ -1566,145 +1712,23 @@ position = Vector2(896, 720)
 position = Vector2(64, 24)
 shape = SubResource("RectangleShape2D_7r5kd")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("40_fdrpx")
+[node name="Desktop" type="Area2D" parent="."]
+position = Vector2(880, 48)
+script = ExtResource("46_60u60")
 
-[node name="CashLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1104.0
-offset_top = 670.0
-offset_right = 1251.0
-offset_bottom = 715.0
-text = "Cash: 100"
-label_settings = SubResource("LabelSettings_svb40")
+[node name="Desktop" parent="Desktop" instance=ExtResource("47_jby4d")]
+position = Vector2(-880, -48)
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CashLabel"]
-z_index = -1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.067
-offset_left = -8.0
-offset_top = 2.0
-offset_right = 8.0
-offset_bottom = -1.01494
-color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Desktop"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_kqhmd")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.867
-anchor_right = 0.856
-anchor_bottom = 0.996
-offset_left = 96.64
-offset_top = 45.7599
-offset_right = -10.6801
-offset_bottom = -2.12006
-grow_horizontal = 0
-metadata/_edit_lock_ = true
+[node name="Sprite2D" type="Sprite2D" parent="Desktop"]
+texture = ExtResource("46_cyyn4")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 32.0
-offset_right = -1120.0
-offset_bottom = -520.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
-metadata/_edit_lock_ = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.019
-anchor_top = 0.044
-anchor_right = 0.125
-anchor_bottom = 0.278
-offset_left = -0.320002
-offset_top = 0.319998
-offset_bottom = -0.160019
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-metadata/_edit_lock_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="Inventory" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_lock_ = true
-
-[node name="Inv1" type="TextureButton" parent="CanvasLayer/Inventory"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 32.0
-anchor_bottom = 18.4
-offset_left = 590.0
-offset_top = 650.0
-offset_right = -626.0
-offset_bottom = -22.0001
-texture_normal = ExtResource("19_43abj")
-stretch_mode = 0
-metadata/_edit_lock_ = true
-
-[node name="Inv2" type="TextureButton" parent="CanvasLayer/Inventory"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 32.0
-anchor_bottom = 18.4
-offset_left = 666.0
-offset_top = 650.0
-offset_right = -550.0
-offset_bottom = -22.0001
-texture_normal = ExtResource("24_u5odm")
-stretch_mode = 0
-metadata/_edit_lock_ = true
-
-[node name="TimeLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -80.0
-offset_top = 16.0
-offset_right = 80.0
-offset_bottom = 64.0
-grow_horizontal = 2
-text = "600"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TimeLabel"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -80.0
-offset_right = 80.0
-offset_bottom = 48.0
-grow_horizontal = 2
-color = Color(1, 0, 1, 1)
-metadata/_edit_lock_ = true
-
-[node name="ExitScreen" parent="CanvasLayer" instance=ExtResource("3_18ohp")]
-visible = false
-metadata/_edit_lock_ = true
-
-[node name="Name" parent="CanvasLayer" instance=ExtResource("45_ne4ww")]
-process_mode = 3
-metadata/_edit_lock_ = true
-
-[node name="Timer" type="Timer" parent="CanvasLayer"]
-autostart = true
-
+[connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
+[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
 [connection signal="timeout" from="CustomerSpawner/Timer" to="CustomerSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="TutorialFinisher" to="CustomerSpawner" method="_on_tutorial_finisher_body_entered"]
@@ -1731,5 +1755,4 @@ autostart = true
 [connection signal="body_exited" from="Cheescake" to="Cheescake" method="_on_body_exited"]
 [connection signal="body_entered" from="TrashCan" to="TrashCan" method="_on_body_entered"]
 [connection signal="body_exited" from="TrashCan" to="TrashCan" method="_on_body_exited"]
-[connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
-[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Desktop" to="Desktop" method="_on_body_entered"]

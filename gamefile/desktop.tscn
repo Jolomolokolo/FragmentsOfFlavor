@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://tkhx7lnk7yjd"]
+
+[ext_resource type="SpriteFrames" uid="uid://cqlctqsef3dd6" path="res://background.gif" id="1_wyrvd"]
+
+[node name="Desktop" type="Node2D"]
+
+[node name="DektopStandard" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="DektopStandard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="AnimatedSprite2D" parent="DektopStandard"]
+z_index = -1
+position = Vector2(640, 360)
+scale = Vector2(5.92593, 5.76)
+sprite_frames = ExtResource("1_wyrvd")
+animation = &"gif"
+autoplay = "gif"
+frame = 2
