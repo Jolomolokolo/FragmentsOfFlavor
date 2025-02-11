@@ -600,7 +600,6 @@ shape = SubResource("CircleShape2D_gyg6m")
 texture = ExtResource("7_o3hko")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(70, 31)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("40_fdrpx")
@@ -1712,6 +1711,7 @@ position = Vector2(64, 24)
 shape = SubResource("RectangleShape2D_7r5kd")
 
 [node name="Desktop" type="Area2D" parent="."]
+process_mode = 3
 position = Vector2(880, 48)
 script = ExtResource("46_60u60")
 

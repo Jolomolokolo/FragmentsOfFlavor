@@ -10,7 +10,6 @@ func _process(_delta: float) -> void:
 			get_tree().paused = true
 			self.visible = true
 
-
 func _on_texture_button_pressed() -> void:
 	if get_tree().paused:
 		get_tree().paused = false

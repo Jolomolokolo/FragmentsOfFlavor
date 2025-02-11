@@ -35,6 +35,7 @@ func reset():
 	tables_visited = 0
 	food_waste = 0
 
+
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
 	#print("Slot switched: ", "Main" if handheld_selected_main else "Beside")
