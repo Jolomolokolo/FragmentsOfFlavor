@@ -1,22 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://tkhx7lnk7yjd"]
+[gd_scene load_steps=7 format=3 uid="uid://tkhx7lnk7yjd"]
 
+[ext_resource type="Script" path="res://desktop_view.gd" id="1_o71jh"]
+[ext_resource type="Texture2D" uid="uid://b2vfqh6pdf3ha" path="res://icons/desktop/close.png" id="1_w3sbl"]
 [ext_resource type="SpriteFrames" uid="uid://cqlctqsef3dd6" path="res://background.gif" id="1_wyrvd"]
+[ext_resource type="Texture2D" uid="uid://4n01k1u7b0t4" path="res://icons/desktop/trash.png" id="4_uge7a"]
+[ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="5_0j5us"]
+[ext_resource type="Texture2D" uid="uid://o2j084edkuw1" path="res://icons/desktop/fire_deactivated.png" id="6_7ka0j"]
 
 [node name="Desktop" type="Node2D"]
+script = ExtResource("1_o71jh")
 
 [node name="DesktopStandard" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="DesktopStandard"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+metadata/_edit_lock_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="DesktopStandard"]
 z_index = -1
@@ -26,6 +25,73 @@ sprite_frames = ExtResource("1_wyrvd")
 animation = &"gif"
 autoplay = "gif"
 frame_progress = 0.877006
+metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+[node name="CloseButton" type="Button" parent="DesktopStandard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.006
+anchor_right = 0.053
+anchor_bottom = 0.094
+offset_left = 4.16
+offset_top = 3.68
+offset_right = 4.16
+offset_bottom = 4.32
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_w3sbl")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_lock_ = true
+
+[node name="TrashButton" type="Button" parent="DesktopStandard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.111
+anchor_right = 0.056
+anchor_bottom = 0.2
+offset_left = 0.32
+offset_top = 0.0799942
+offset_right = 0.32
+icon = ExtResource("4_uge7a")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_lock_ = true
+
+[node name="FireGameButton" type="Button" parent="DesktopStandard"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.011
+anchor_right = 0.119
+anchor_bottom = 0.1
+offset_left = -8.32001
+offset_top = 0.0799994
+offset_right = -8.32001
+icon = ExtResource("5_0j5us")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_lock_ = true
+
+[node name="FireGameButtonDeactivated" type="Button" parent="DesktopStandard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.011
+anchor_right = 0.119
+anchor_bottom = 0.1
+offset_left = -8.32001
+offset_top = 0.0799994
+offset_right = -8.32001
+icon = ExtResource("6_7ka0j")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="DesktopStandard/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="DesktopStandard/TrashButton" to="." method="_on_trash_button_pressed"]
+[connection signal="pressed" from="DesktopStandard/FireGameButton" to="." method="_on_fire_game_button_pressed"]
+[connection signal="pressed" from="DesktopStandard/FireGameButtonDeactivated" to="." method="_on_fire_game_button_deactivated_pressed"]

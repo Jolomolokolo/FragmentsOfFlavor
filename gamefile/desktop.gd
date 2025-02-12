@@ -9,6 +9,7 @@ var can_trigger_again: bool = true
 func _ready() -> void:
 	desktop_scene.visible = false
 	add_child(desktop_scene)
+	desktop_scene.closeDesktop.connect(_on_close_desktop)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and can_trigger_again:
@@ -39,3 +40,6 @@ func _hide_desktop():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_hide_desktop()
+
+func _on_close_desktop():
+	_hide_desktop()
