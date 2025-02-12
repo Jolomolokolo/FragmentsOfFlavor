@@ -18,6 +18,8 @@ var food_waste = 0
 
 var player_name = ""
 
+var desktop_visible = false
+
 func reset():
 	table.clear()
 	orders.clear()
@@ -35,6 +37,7 @@ func reset():
 	tables_visited = 0
 	food_waste = 0
 
+	desktop_visible = false
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
