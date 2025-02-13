@@ -2,7 +2,9 @@ extends Area2D
 
 @onready var player = $"../CharacterBody2D"
 @onready var canvas_layer = $"../CanvasLayer"
+@onready var tile_map = $"../TileMap"
 @onready var desktop_scene: Node2D = load("res://desktop.tscn").instantiate()
+
 var last_coords_player: Vector2
 var can_trigger_again: bool = true
 
@@ -24,7 +26,11 @@ func _show_desktop():
 	get_tree().paused = true
 	can_trigger_again = false
 	Global.desktop_visible = true
-	canvas_layer.visible = false
+	for node in get_tree().get_nodes_in_group("cafe"):
+		node.visible = false
+		
+	#canvas_layer.visible = false
+	#tile_map.visible = false
 
 func _hide_desktop():
 	if Global.desktop_visible == true:
@@ -34,7 +40,11 @@ func _hide_desktop():
 		player.global_position = last_coords_player
 		await get_tree().create_timer(0.2).timeout
 		Global.desktop_visible = false
-		canvas_layer.visible = true
+		for node in get_tree().get_nodes_in_group("cafe"):
+			node.visible = true
+		#canvas_layer.visible = true
+		#tile_map.visible = true
+		
 	can_trigger_again = true
 
 func _input(event):
