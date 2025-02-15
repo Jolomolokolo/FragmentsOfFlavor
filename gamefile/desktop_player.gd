@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var cam = $CameraFireMinigame
+
 @export var speed: float = 200.0
 @export var jump_force: float = 300.0
 @export var gravity: float = 1200.0
@@ -18,8 +20,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_force
 	
 	move_and_slide()
-
-
-func _on_area_2d_body_entered(body) -> void:
-	if body.is_in_group("player"):
-		body.position = Vector2(32, 670)
+	
+	#print(self.position)
+	if self.position.y > 800:
+		self.position = Vector2(32,672)
+	
+	if self.position.x > 1800:
+		print("FINISH")

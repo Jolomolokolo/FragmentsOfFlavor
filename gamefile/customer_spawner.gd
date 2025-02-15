@@ -25,7 +25,7 @@ func _ready() -> void:
 				"drc_w": child.direction_w
 			})
 	tables.shuffle()
-	print(tables)
+	#print(tables)
 
 func _on_tutorial_finisher_body_entered(_body: CharacterBody2D) -> void:
 	$Timer.start(3)

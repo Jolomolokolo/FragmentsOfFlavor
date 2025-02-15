@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://csht8xsvdqhl6"]
+[gd_scene load_steps=12 format=4 uid="uid://csht8xsvdqhl6"]
 
 [ext_resource type="Script" path="res://desktop_player.gd" id="1_sdcxw"]
 [ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="2_srsff"]
 [ext_resource type="Texture2D" uid="uid://biu1eer8aeob" path="res://icons/desktop/fire_completed.png" id="3_rvqw8"]
 [ext_resource type="Texture2D" uid="uid://cg5ehoul6cvbv" path="res://icons/desktop/tilemaps/tilesheet_complete.png" id="4_v10e3"]
+[ext_resource type="Script" path="res://moving_platform.gd" id="5_t44ip"]
+[ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="6_3edeh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r658e"]
 animations = [{
@@ -32,6 +34,7 @@ size = Vector2(24, 40)
 texture = ExtResource("4_v10e3")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 32, -32, 32, -32, -20, -28, -28, -20, -32, 32, -32)
 2:0/0 = 0
@@ -39,10 +42,15 @@ texture_region_size = Vector2i(64, 64)
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 20, -32, 28, -28, 32, -20, 32, 32, -32, 32)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, -18, -20, -32, 20, -32, 32, -20, 32, 32)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 14, -32, -18, -28, -26, -22, -32, 32, -32, 32, 14, 24, 14, 14, 18, 0, 20, -14, 18, -22, 16)
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 14, -32, -32, 32, -32, 32, 14, 20, 16, 0, 22, -18, 16)
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 20, -32, 28, -28, 32, -18, 32, 14, 0, 22, -20, 16, -32, 14)
 8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 14, -32, -18, -28, -26, -20, -32, 20, -32, 26, -28, 32, -18, 32, 14, 0, 22)
 9:0/0 = 0
 10:0/0 = 0
 11:0/0 = 0
@@ -95,6 +103,7 @@ texture_region_size = Vector2i(64, 64)
 8:2/0 = 0
 8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 12, 0, 32, -4, 32, -20, 28, -28, 20, -32, -32, -32)
 9:2/0 = 0
+9:2/0/z_index = -1
 10:2/0 = 0
 11:2/0 = 0
 12:2/0 = 0
@@ -310,8 +319,8 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_x4t5d")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cmei"]
-size = Vector2(1948, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wybj1"]
+size = Vector2(144, 20)
 
 [node name="DesktopFireMinigame" type="Node2D"]
 
@@ -328,20 +337,27 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopPlayer"]
 shape = SubResource("RectangleShape2D_uns2v")
 
+[node name="CameraFireMinigame" type="Camera2D" parent="DesktopPlayer"]
+limit_left = 0
+limit_bottom = 720
+limit_smoothed = true
+
 [node name="TileMapLayer1" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAAAAFgAAAABAAAAAAAEAFgAAAACAAAAAAAIAFgAAAADAAAAAAASAFUAAAAHAAEAAAAWAFUAAAAIAAEAAAAdAFIAAAAHAAEAAAAhAFIAAAAIAAEAAAApAFIAAAAHAAEAAAAtAFIAAAABAAIAAAAtAE4AAAABAAEAAAAxAE4AAAACAAEAAAAxAFIAAAACAAIAAAAqAE4AAAAJAAIAAAA1AFIAAAACAAAAAAA5AFIAAAABAAIAAAA5AE4AAAABAAEAAAA9AEoAAAABAAEAAAA9AE4AAAABAAIAAAA9AFIAAAAAAAAAAABBAEoAAAACAAEAAABBAE4AAAACAAIAAABFAE4AAAADAAAAAABBAFIAAAAAAAAAAABFAFIAAAAAAAAAAABRAEsAAAAHAAIAAABVAEsAAAAIAAIAAABdAEkAAAAHAAIAAABhAEkAAAAIAAIAAABqAE8AAAAFAAAAAABuAE8AAAAGAAAAAAByAE8AAAAGAAAAAAB2AE8AAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAFgAAAABAAAAAAAEAFgAAAACAAAAAAAIAFgAAAADAAAAAAD9/1gAAAAAAAAAAAD9/1QAAAAAAAAAAAD9/1AAAAAAAAAAAAD9/0wAAAAAAAAAAAD9/0gAAAAAAAAAAAD9/0QAAAAAAAAAAAD9/0AAAAAAAAAAAAD9/zwAAAAAAAAAAAD9/zgAAAAAAAAAAAD9/zQAAAAAAAAAAAD9/zAAAAAAAAAAAAD9/ywAAAAAAAAAAAD9/ygAAAAAAAAAAAD9/yQAAAAAAAAAAAD9/yAAAAAAAAAAAAD9/xwAAAAAAAAAAAD9/xgAAAAAAAAAAAD9/xQAAAAAAAAAAAD9/xAAAAAAAAAAAAD9/wwAAAAAAAAAAAD9/wgAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wAAAAAAAAAAAAD9//3/AAAAAAAAAAABAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAANAP3/AAAAAAAAAAARAP3/AAAAAAAAAAAVAP3/AAAAAAAAAAAZAP3/AAAAAAAAAAAdAP3/AAAAAAAAAAAhAP3/AAAAAAAAAAAlAP3/AAAAAAAAAAApAP3/AAAAAAAAAAAtAP3/AAAAAAAAAAAxAP3/AAAAAAAAAAA1AP3/AAAAAAAAAAA5AP3/AAAAAAAAAAA9AP3/AAAAAAAAAABBAP3/AAAAAAAAAABFAP3/AAAAAAAAAABJAP3/AAAAAAAAAABNAP3/AAAAAAAAAABRAP3/AAAAAAAAAABVAP3/AAAAAAAAAABZAP3/AAAAAAAAAABdAP3/AAAAAAAAAABhAP3/AAAAAAAAAABlAP3/AAAAAAAAAABpAP3/AAAAAAAAAABtAP3/AAAAAAAAAABxAP3/AAAAAAAAAAB1AP3/AAAAAAAAAAB5AP3/AAAAAAAAAAB9AP3/AAAAAAAAAACBAP3/AAAAAAAAAACFAP3/AAAAAAAAAACJAP3/AAAAAAAAAACNAP3/AAAAAAAAAACRAP3/AAAAAAAAAACVAP3/AAAAAAAAAACZAP3/AAAAAAAAAACdAP3/AAAAAAAAAAChAP3/AAAAAAAAAAClAP3/AAAAAAAAAACpAP3/AAAAAAAAAACtAP3/AAAAAAAAAACxAP3/AAAAAAAAAAC1AP3/AAAAAAAAAAC5AP3/AAAAAAAAAAC9AP3/AAAAAAAAAADBAP3/AAAAAAAAAADFAP3/AAAAAAAAAADJAP3/AAAAAAAAAADNAP3/AAAAAAAAAADRAP3/AAAAAAAAAADVAP3/AAAAAAAAAADZAP3/AAAAAAAAAADdAP3/AAAAAAAAAAAUAFQAAAAHAAEAAAAYAFQAAAAIAAEAAAAjAFIAAAAHAAEAAAAnAFIAAAAIAAEAAAAzAEoAAAABAAEAAAAzAE4AAAABAAIAAAA3AEoAAAACAAEAAAA3AE4AAAACAAIAAAA7AE4AAAACAAAAAAA/AEoAAAABAAEAAAA/AE4AAAABAAIAAABDAEYAAAABAAEAAABDAEoAAAABAAIAAABDAE4AAAAAAAAAAABHAEYAAAACAAEAAABHAEoAAAACAAIAAABHAE4AAAAAAAAAAABLAEoAAAADAAAAAABLAE4AAAAAAAAAAAAvAE4AAAAHAAEAAAAvAEoAAAAJAAIAAABbAFIAAAAHAAIAAABfAFIAAAAIAAIAAABoAE4AAAAHAAIAAABsAE4AAAAIAAIAAAB4AFMAAAAFAAAAAAB8AFMAAAAGAAAAAACAAFMAAAAGAAAAAACEAFMAAAAHAAAAAADHAE8AAAAIAAAAAADRAE4AAAAIAAAAAADaAEwAAAAIAAAAAADmAEoAAAAFAAAAAADqAEoAAAAGAAAAAADuAEoAAAAHAAAAAAD6AEYAAAAHAAIAAAD+AEYAAAAIAAIAAAA=")
 tile_set = SubResource("TileSet_gsn8a")
 navigation_enabled = false
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, 720)
-disable_mode = 1
+[node name="MovingPlatform" type="CharacterBody2D" parent="."]
+position = Vector2(1328, 640)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("5_t44ip")
+move_distance = 125.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(966, 16)
-shape = SubResource("RectangleShape2D_5cmei")
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+scale = Vector2(4.5, 1)
+texture = ExtResource("6_3edeh")
 
-[connection signal="body_entered" from="Area2D" to="DesktopPlayer" method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_wybj1")

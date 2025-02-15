@@ -91,6 +91,10 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
 
+[node name="CameraDesktop" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+enabled = false
+
 [connection signal="pressed" from="DesktopStandard/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/TrashButton" to="." method="_on_trash_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/FireGameButton" to="." method="_on_fire_game_button_pressed"]
