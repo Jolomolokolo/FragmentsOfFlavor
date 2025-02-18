@@ -1,17 +1,18 @@
-extends CharacterBody2D
+extends AnimatableBody2D
 
+@export var target_position: Vector2 = Vector2(200, 0)
 @export var speed: float = 100.0
-@export var move_distance: float = 200.0
 
-var direction: int = 1
 var start_position: Vector2
+var direction: int = 1
 
 func _ready():
 	start_position = global_position
 
-func _physics_process(delta: float):
-	var movement = Vector2.RIGHT * direction * speed * delta
-	global_position += movement
+func _process(delta):
+	var move_vector = target_position * direction
+	var step = speed * delta
+	global_position = global_position.move_toward(start_position + move_vector, step)
 	
-	if abs(global_position.x - start_position.x) >= move_distance:
+	if global_position.is_equal_approx(start_position + move_vector):
 		direction *= -1

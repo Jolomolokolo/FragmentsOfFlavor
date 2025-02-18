@@ -7,6 +7,7 @@ signal closeDesktop
 @onready var trash_button = $DesktopStandard/TrashButton
 @onready var cam_desktop = $CameraDesktop
 @onready var cam_fire_minigame = $DesktopFireMinigame/DesktopPlayer/CameraFireMinigame
+@onready var label_downfall = $DesktopFireMinigame/CanvasLayer
 
 func _ready() -> void:
 	fire_game_button.visible = false
@@ -23,6 +24,8 @@ func _on_trash_button_pressed() -> void:
 func _on_fire_game_button_pressed() -> void:
 	cam_desktop.enabled = false
 	cam_fire_minigame.enabled = true
+	label_downfall.visible = true
+	Global.desktop_fire_visible = true
 
 func _on_fire_game_button_deactivated_pressed() -> void:
 	# Error Sound

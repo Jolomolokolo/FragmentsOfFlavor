@@ -6,6 +6,7 @@ extends Area2D
 @onready var cam_fire_minigame = $Desktop/DesktopFireMinigame/DesktopPlayer/CameraFireMinigame
 @onready var cam = $"../CharacterBody2D/Camera2D"
 @onready var cafe_nodes = get_tree().get_nodes_in_group("cafe")
+@onready var desktop_nodes = get_tree().get_nodes_in_group("desktop")
 
 var can_trigger_again: bool = true
 
@@ -17,10 +18,13 @@ func _show_desktop():
 	get_tree().paused = true
 	can_trigger_again = false
 	Global.desktop_visible = true
+	#desktop_scene.set_process(true)
+	#desktop_scene.set_physics_process(true)
 	
 	# Kameraumschaltung
 	cam_desktop.enabled = true  # Desktop-Kamera aktivieren
 	cam.enabled = false  # Charakter-Kamera deaktivieren
+	
 	
 	for node in cafe_nodes:
 		node.visible = false
@@ -31,6 +35,7 @@ func _hide_desktop():
 		get_tree().paused = false
 		await get_tree().create_timer(0.2).timeout
 		Global.desktop_visible = false
+		Global.desktop_fire_visible = false
 		
 		# Kameraumschaltung zurück
 		cam_desktop.enabled = false  # Desktop-Kamera deaktivieren

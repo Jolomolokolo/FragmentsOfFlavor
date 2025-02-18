@@ -7,17 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="5_0j5us"]
 [ext_resource type="Texture2D" uid="uid://o2j084edkuw1" path="res://icons/desktop/fire_deactivated.png" id="6_7ka0j"]
 
-[node name="Desktop" type="Node2D"]
+[node name="Desktop" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_o71jh")
 
-[node name="DesktopStandard" type="Control" parent="."]
+[node name="DesktopStandard" type="Control" parent="." groups=["desktop"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 metadata/_edit_lock_ = true
 
-[node name="Background" type="AnimatedSprite2D" parent="DesktopStandard"]
+[node name="Background" type="AnimatedSprite2D" parent="DesktopStandard" groups=["desktop"]]
 z_index = -1
 position = Vector2(640, 360)
 scale = Vector2(5.92593, 5.76)
@@ -27,7 +27,7 @@ autoplay = "gif"
 frame_progress = 0.877006
 metadata/_edit_lock_ = true
 
-[node name="CloseButton" type="Button" parent="DesktopStandard"]
+[node name="CloseButton" type="Button" parent="DesktopStandard" groups=["desktop"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.003
@@ -40,12 +40,13 @@ offset_right = 4.16
 offset_bottom = 4.32
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 icon = ExtResource("1_w3sbl")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
 
-[node name="TrashButton" type="Button" parent="DesktopStandard"]
+[node name="TrashButton" type="Button" parent="DesktopStandard" groups=["desktop"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.006
@@ -55,12 +56,13 @@ anchor_bottom = 0.2
 offset_left = 0.32
 offset_top = 0.0799942
 offset_right = 0.32
+focus_mode = 0
 icon = ExtResource("4_uge7a")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
 
-[node name="FireGameButton" type="Button" parent="DesktopStandard"]
+[node name="FireGameButton" type="Button" parent="DesktopStandard" groups=["desktop"]]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -71,12 +73,13 @@ anchor_bottom = 0.1
 offset_left = -8.32001
 offset_top = 0.0799994
 offset_right = -8.32001
+focus_mode = 0
 icon = ExtResource("5_0j5us")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
 
-[node name="FireGameButtonDeactivated" type="Button" parent="DesktopStandard"]
+[node name="FireGameButtonDeactivated" type="Button" parent="DesktopStandard" groups=["desktop"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.069
@@ -86,12 +89,13 @@ anchor_bottom = 0.1
 offset_left = -8.32001
 offset_top = 0.0799994
 offset_right = -8.32001
+focus_mode = 0
 icon = ExtResource("6_7ka0j")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
 
-[node name="CameraDesktop" type="Camera2D" parent="."]
+[node name="CameraDesktop" type="Camera2D" parent="." groups=["desktop"]]
 position = Vector2(640, 360)
 enabled = false
 
