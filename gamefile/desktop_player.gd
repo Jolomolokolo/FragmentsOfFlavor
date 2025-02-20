@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
+#signal fire_minigame_finished
+
 @onready var cam = $CameraFireMinigame
+@onready var finish_canvas = $"../Finish"
 
 @export var speed: float = 200.0
 @export var jump_force: float = 300.0
@@ -8,7 +11,7 @@ extends CharacterBody2D
 @export var test = false
 
 func _physics_process(delta: float) -> void:
-	if Global.desktop_fire_visible == true or test == true:
+	if Global.desktop_fire_visible == true and Global.fire_minigame_finished == false or test == true:
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		
@@ -28,5 +31,8 @@ func _physics_process(delta: float) -> void:
 			self.position = Vector2(32,672)
 			Global.downfalls += 1
 	
-		if self.position.x > 1800:
-			print("FINISH")
+		if self.position.x > 1000 and Global.fire_minigame_finished == false:
+			finish_canvas.visible = true
+			Global.fire_minigame_finished = true
+			#fire_minigame_finished.emit()
+		

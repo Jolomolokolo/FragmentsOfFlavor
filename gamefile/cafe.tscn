@@ -1761,3 +1761,4 @@ position = Vector2(3326, 0)
 [connection signal="body_exited" from="TrashCan" to="TrashCan" method="_on_body_exited"]
 [connection signal="body_entered" from="Desktop" to="Desktop" method="_on_body_entered"]
 [connection signal="closeDesktop" from="Desktop/Desktop" to="Desktop" method="_on_desktop_close_desktop"]
+[connection signal="desktop_return" from="Desktop/Desktop/DesktopFireMinigame" to="Desktop/Desktop" method="_on_desktop_fire_minigame_desktop_return"]

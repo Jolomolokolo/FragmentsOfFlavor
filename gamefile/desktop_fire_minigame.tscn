@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://csht8xsvdqhl6"]
+[gd_scene load_steps=15 format=4 uid="uid://csht8xsvdqhl6"]
 
+[ext_resource type="Script" path="res://desktop_fire_minigame.gd" id="1_p15jl"]
 [ext_resource type="Script" path="res://desktop_player.gd" id="1_sdcxw"]
 [ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="2_srsff"]
 [ext_resource type="Texture2D" uid="uid://biu1eer8aeob" path="res://icons/desktop/fire_completed.png" id="3_rvqw8"]
 [ext_resource type="Texture2D" uid="uid://cg5ehoul6cvbv" path="res://icons/desktop/tilemaps/tilesheet_complete.png" id="4_v10e3"]
+[ext_resource type="Script" path="res://moving_platform.gd" id="5_t44ip"]
 [ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="6_3edeh"]
 [ext_resource type="Script" path="res://canvas_layer_fire.gd" id="7_bw0gq"]
+[ext_resource type="PackedScene" uid="uid://k8kl2t77kknd" path="res://finish.tscn" id="8_1cq5y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r658e"]
 animations = [{
@@ -322,6 +325,7 @@ sources/0 = SubResource("TileSetAtlasSource_x4t5d")
 size = Vector2(144, 20)
 
 [node name="DesktopFireMinigame" type="Node2D" groups=["desktop"]]
+script = ExtResource("1_p15jl")
 
 [node name="DesktopPlayer" type="CharacterBody2D" parent="." groups=["desktop", "player"]]
 position = Vector2(32, 672)
@@ -347,10 +351,10 @@ tile_set = SubResource("TileSet_gsn8a")
 navigation_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["desktop"]]
-visible = false
 script = ExtResource("7_bw0gq")
 
 [node name="Label" type="Label" parent="CanvasLayer" groups=["desktop"]]
+visible = false
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 118.0
@@ -360,6 +364,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MovingPlatform" type="CharacterBody2D" parent="."]
 position = Vector2(1328, 648)
+script = ExtResource("5_t44ip")
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform" groups=["desktop"]]
 scale = Vector2(4.5, 1)
@@ -368,3 +373,10 @@ texture = ExtResource("6_3edeh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" groups=["desktop"]]
 physics_interpolation_mode = 1
 shape = SubResource("RectangleShape2D_wybj1")
+
+[node name="Finish" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Finish" parent="Finish" instance=ExtResource("8_1cq5y")]
+
+[connection signal="desktop_return" from="Finish/Finish" to="." method="_on_finish_desktop_return"]

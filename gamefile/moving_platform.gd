@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends CharacterBody2D
 
 @export var target_position: Vector2 = Vector2(200, 0)
 @export var speed: float = 100.0
