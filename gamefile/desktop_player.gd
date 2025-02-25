@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			self.position = Vector2(32,672)
 			Global.downfalls += 1
 	
-		if self.position.x > 1000 and Global.fire_minigame_finished == false:
+		if self.position.x > 3250 and Global.fire_minigame_finished == false:
 			finish_canvas.visible = true
 			Global.fire_minigame_finished = true
 			#fire_minigame_finished.emit()
