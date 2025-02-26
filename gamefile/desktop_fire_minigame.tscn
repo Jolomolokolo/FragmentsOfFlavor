@@ -398,6 +398,7 @@ texture = ExtResource("6_3edeh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" groups=["desktop"]]
 physics_interpolation_mode = 1
 shape = SubResource("RectangleShape2D_wybj1")
+debug_color = Color(0.617144, 0.0767666, 4.81308e-08, 0.42)
 
 [node name="Area2D" type="Area2D" parent="MovingPlatform"]
 

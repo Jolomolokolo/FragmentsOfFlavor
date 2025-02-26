@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tkhx7lnk7yjd"]
+[gd_scene load_steps=9 format=3 uid="uid://tkhx7lnk7yjd"]
 
 [ext_resource type="Script" path="res://desktop_view.gd" id="1_o71jh"]
 [ext_resource type="Texture2D" uid="uid://b2vfqh6pdf3ha" path="res://icons/desktop/close.png" id="1_w3sbl"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://4n01k1u7b0t4" path="res://icons/desktop/trash.png" id="4_uge7a"]
 [ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="5_0j5us"]
 [ext_resource type="Texture2D" uid="uid://o2j084edkuw1" path="res://icons/desktop/fire_deactivated.png" id="6_7ka0j"]
+[ext_resource type="Texture2D" uid="uid://da8u6uyo64kfe" path="res://icons/desktop/juice.png" id="7_c12cg"]
+[ext_resource type="Texture2D" uid="uid://buedsmqvl115c" path="res://icons/desktop/juice_deactivated.png" id="8_6hy2s"]
 
 [node name="Desktop" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_o71jh")
@@ -78,6 +80,7 @@ icon = ExtResource("5_0j5us")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="FireGameButtonDeactivated" type="Button" parent="DesktopStandard" groups=["desktop"]]
 layout_mode = 1
@@ -94,6 +97,42 @@ icon = ExtResource("6_7ka0j")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="JuiceGameButton" type="Button" parent="DesktopStandard" groups=["desktop"]]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.011
+anchor_right = 0.119
+anchor_bottom = 0.1
+offset_left = -96.64
+offset_top = -7.84
+offset_right = -96.64
+offset_bottom = -7.92
+focus_mode = 0
+icon = ExtResource("7_c12cg")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_group_ = true
+
+[node name="JuiceGameButtonDeactivated" type="Button" parent="DesktopStandard" groups=["desktop"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.011
+anchor_right = 0.119
+anchor_bottom = 0.1
+offset_left = 879.68
+offset_top = 448.08
+offset_right = 879.68
+offset_bottom = 448.0
+focus_mode = 0
+icon = ExtResource("8_6hy2s")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_group_ = true
 
 [node name="CameraDesktop" type="Camera2D" parent="." groups=["desktop"]]
 position = Vector2(640, 360)
@@ -103,3 +142,5 @@ enabled = false
 [connection signal="pressed" from="DesktopStandard/TrashButton" to="." method="_on_trash_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/FireGameButton" to="." method="_on_fire_game_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/FireGameButtonDeactivated" to="." method="_on_fire_game_button_deactivated_pressed"]
+[connection signal="pressed" from="DesktopStandard/JuiceGameButton" to="." method="_on_juice_game_button_pressed"]
+[connection signal="pressed" from="DesktopStandard/JuiceGameButtonDeactivated" to="." method="_on_juice_game_button_deactivated_pressed"]

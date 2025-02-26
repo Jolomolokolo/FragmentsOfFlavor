@@ -41,3 +41,11 @@ func _on_desktop_fire_minigame_desktop_return() -> void:
 	Global.desktop_fire_visible = false
 	finish_canvas.visible = false
 	#print("Yeah, finished")
+
+
+func _on_juice_game_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_juice_game_button_deactivated_pressed() -> void:
+	# Error Sound
+	print("Deactivated JuiceGame Button pressed")

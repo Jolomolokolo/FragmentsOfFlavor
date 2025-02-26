@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqide1na8d1gb"]
+
+[ext_resource type="Texture2D" uid="uid://da8u6uyo64kfe" path="res://icons/desktop/juice.png" id="1_4wj76"]
+[ext_resource type="Script" path="res://player_platform.gd" id="2_22r74"]
+[ext_resource type="Texture2D" uid="uid://b5pmnsaxhihd7" path="res://icons/desktop/minigames/player_juice_minigame.png" id="2_mycqp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_881sp"]
+size = Vector2(46.5, 50.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mpy2"]
+size = Vector2(1122, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spiv3"]
+size = Vector2(32, 6)
+
+[node name="JuiceMinigame" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0, -544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(600, 680)
+shape = SubResource("RectangleShape2D_881sp")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(600, 680)
+texture = ExtResource("1_4wj76")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(648, 704)
+shape = SubResource("RectangleShape2D_7mpy2")
+
+[node name="PlayerPlatform" type="CharacterBody2D" parent="."]
+position = Vector2(648, 616)
+scale = Vector2(2, 2)
+script = ExtResource("2_22r74")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerPlatform"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_mycqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPlatform"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_spiv3")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(0, -544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(600, 680)
+shape = SubResource("RectangleShape2D_881sp")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+position = Vector2(600, 680)
+texture = ExtResource("1_4wj76")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(0, -544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(600, 680)
+shape = SubResource("RectangleShape2D_881sp")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+position = Vector2(600, 680)
+texture = ExtResource("1_4wj76")
