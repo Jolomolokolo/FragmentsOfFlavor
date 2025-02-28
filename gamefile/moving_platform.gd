@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var target_offset: Vector2 = Vector2(100, 0)
 @export var speed: float = 50.0
-@export var enabled: bool = true
+@export var enabled: bool = false
 
 var start_position: Vector2
 var direction: int = 1

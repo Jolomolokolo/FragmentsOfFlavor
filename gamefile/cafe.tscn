@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=79 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
 [ext_resource type="Texture2D" uid="uid://b34tkus6ncg1b" path="res://icons/tiles/border_straight.png" id="6_05c5m"]
@@ -49,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://cu8it4e2iec3t" path="res://icons/Desktop.png" id="46_cyyn4"]
 [ext_resource type="PackedScene" uid="uid://tkhx7lnk7yjd" path="res://desktop.tscn" id="48_wmrr6"]
 [ext_resource type="PackedScene" uid="uid://csht8xsvdqhl6" path="res://desktop_fire_minigame.tscn" id="49_dc5ws"]
+[ext_resource type="PackedScene" uid="uid://clk8h0wlxewmf" path="res://desktop_juice_minigame.tscn" id="50_mi76v"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
 
@@ -1730,6 +1731,9 @@ position = Vector2(1888, -48)
 
 [node name="DesktopFireMinigame" parent="Desktop/Desktop" instance=ExtResource("49_dc5ws")]
 position = Vector2(3326, 0)
+
+[node name="DesktopJuiceMinigame" parent="Desktop/Desktop" instance=ExtResource("50_mi76v")]
+position = Vector2(10065, 0)
 
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]

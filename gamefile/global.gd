@@ -22,6 +22,8 @@ var desktop_visible = false
 var desktop_fire_visible = false
 var downfalls = 0
 var fire_minigame_finished = false
+var desktop_juice_visible = false
+var juice_minigame_finished = false
 
 func reset():
 	table.clear()
@@ -44,6 +46,8 @@ func reset():
 	desktop_fire_visible = false
 	downfalls = 0
 	fire_minigame_finished = false
+	desktop_juice_visible = false
+	juice_minigame_finished = false
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
