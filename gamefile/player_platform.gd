@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var rotation_speed: float = 3.0
 
 func _physics_process(delta):
+	print(global_position)
 	var direction := Vector2.ZERO
 
 	if Input.is_action_pressed("ui_right"):
@@ -15,8 +16,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 
-	var motion = direction.normalized() * speed * delta
-	move_and_collide(motion)
+	velocity = direction.normalized() * speed
+	move_and_collide(velocity * delta)
 
 	if Input.is_action_pressed("rotate_left"):
 		rotation -= rotation_speed * delta

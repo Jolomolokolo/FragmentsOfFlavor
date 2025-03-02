@@ -18,6 +18,7 @@ var food_waste = 0
 
 var player_name = ""
 
+var cafe_area = false
 var desktop_visible = false
 var desktop_fire_visible = false
 var downfalls = 0
@@ -42,6 +43,7 @@ func reset():
 	tables_visited = 0
 	food_waste = 0
 
+	cafe_area = false
 	desktop_visible = false
 	desktop_fire_visible = false
 	downfalls = 0

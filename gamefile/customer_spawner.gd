@@ -36,25 +36,26 @@ func _on_timer_timeout() -> void:
 	customer_spawn.emit()
 
 func _on_customer_spawn():
-	tables.shuffle()
-	for table in tables:
-		if not table["node"].occupied:
-			var seats = get_seat_positions(table)
-			table["node"].occupied = true
-			group_size = table["capacity"]
-			#print("Table: ", table)
-			#print("Seats: ", seats)
-			
-			for i in range(group_size):
-				var customer = customer_scene.instantiate() as Customer
-				customer.position = seats[i]
-				add_child(customer)
-			
-			_on_restart()
-			return
-				#customer.make_path(seats[i])
-	print("All tables occupied")
-	_on_restart()
+	if Global.cafe_area == true:
+		tables.shuffle()
+		for table in tables:
+			if not table["node"].occupied:
+				var seats = get_seat_positions(table)
+				table["node"].occupied = true
+				group_size = table["capacity"]
+				#print("Table: ", table)
+				#print("Seats: ", seats)
+				
+				for i in range(group_size):
+					var customer = customer_scene.instantiate() as Customer
+					customer.position = seats[i]
+					add_child(customer)
+				
+				_on_restart()
+				return
+					#customer.make_path(seats[i])
+		print("All tables occupied")
+		_on_restart()
 
 func _on_restart() -> void:
 	if $Timer.is_stopped():

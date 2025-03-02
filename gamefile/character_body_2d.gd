@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 250.0
 
 func _physics_process(delta):
-	if Global.desktop_visible == false:
+	if Global.cafe_area == true:
 		var direction = Vector2.ZERO
 	
 		if Input.is_action_pressed("ui_left"):

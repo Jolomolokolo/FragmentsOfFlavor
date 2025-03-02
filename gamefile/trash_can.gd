@@ -11,7 +11,7 @@ func _on_body_exited(body):
 		player_in_area = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_action") and player_in_area:
+	if Input.is_action_just_pressed("ui_action") and player_in_area and Global.cafe_area == true:
 		if Global.handheld_selected_main:
 			Global.handheld = ""
 			Global.handheld_bool_1 = false

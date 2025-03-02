@@ -11,11 +11,12 @@ extends Area2D
 var can_trigger_again: bool = true
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and can_trigger_again:
+	if body.is_in_group("player") and can_trigger_again and Global.cafe_area == true:
 		_show_desktop()
 
 func _show_desktop():
-	get_tree().paused = true
+	#get_tree().paused = true
+	Global.cafe_area = false
 	can_trigger_again = false
 	Global.desktop_visible = true
 	#desktop_scene.set_process(true)
@@ -32,7 +33,8 @@ func _show_desktop():
 func _hide_desktop():
 	if Global.desktop_visible == true:
 		
-		get_tree().paused = false
+		#get_tree().paused = false
+		Global.cafe_area = true
 		await get_tree().create_timer(0.2).timeout
 		Global.desktop_visible = false
 		Global.desktop_fire_visible = false

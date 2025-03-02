@@ -52,23 +52,24 @@ func _ready():
 	update_inventory()
 
 func _process(_delta):
-	update_cash_display()
-	update_heath_display()
-	update_orders()
+	if Global.cafe_area == true:
+		update_cash_display()
+		update_heath_display()
+		update_orders()
 	
-	if Input.is_action_just_pressed("ui_swap"):
-		Global.switch_handheld()
-	elif Input.is_action_just_pressed("1"):
-		Global.select_handheld(1)
-	elif Input.is_action_just_pressed("2"):
-		Global.select_handheld(2)
-	
-	if Input.is_action_just_pressed("scroll_up"):
-		Global.select_next_handheld()
-	elif Input.is_action_just_pressed("scroll_down"):
-		Global.select_previous_handheld()
-	
-	update_inventory()
+		if Input.is_action_just_pressed("ui_swap"):
+			Global.switch_handheld()
+		elif Input.is_action_just_pressed("1"):
+			Global.select_handheld(1)
+		elif Input.is_action_just_pressed("2"):
+			Global.select_handheld(2)
+		
+		if Input.is_action_just_pressed("scroll_up"):
+			Global.select_next_handheld()
+		elif Input.is_action_just_pressed("scroll_down"):
+			Global.select_previous_handheld()
+		
+		update_inventory()
 
 func update_cash_display():
 	cash_label.text = "Cash: " + str(Global.cash)
@@ -120,9 +121,10 @@ func update_inventory():
 	inv_2.modulate = Color(1, 1, 1, 1) if not Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
 
 func _on_timer_timeout() -> void:
-	if time_left > 0:
-		time_left -= 1
-		time_label.text = str(time_left)
-	elif time_left == 0:
-		get_tree().change_scene_to_file("res://score.tscn")
-		print("Time up!")
+	if Global.cafe_area == true:
+		if time_left > 0:
+			time_left -= 1
+			time_label.text = str(time_left)
+		elif time_left == 0:
+			get_tree().change_scene_to_file("res://score.tscn")
+			print("Time up!")

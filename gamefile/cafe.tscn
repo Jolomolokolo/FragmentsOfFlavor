@@ -1733,6 +1733,7 @@ position = Vector2(1888, -48)
 position = Vector2(3326, 0)
 
 [node name="DesktopJuiceMinigame" parent="Desktop/Desktop" instance=ExtResource("50_mi76v")]
+process_mode = 3
 position = Vector2(10065, 0)
 
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]

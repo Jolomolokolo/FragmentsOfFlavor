@@ -11,7 +11,7 @@ func _on_body_exited(body):
 		player_in_area = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_action") and player_in_area:
+	if Input.is_action_just_pressed("ui_action") and player_in_area and Global.cafe_area == true:
 		if not Global.is_slot_full() and Global.cash > 0:
 			Global.cash -= 5
 			Global.set_item("crumb_cake")

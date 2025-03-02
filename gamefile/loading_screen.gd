@@ -15,3 +15,4 @@ func _process(_delta):
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
 		var next_scene = ResourceLoader.load_threaded_get(next_scene_path)
 		get_tree().change_scene_to_packed(next_scene)
+		Global.cafe_area = true
