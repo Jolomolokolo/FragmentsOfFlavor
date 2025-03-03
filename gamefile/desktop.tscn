@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tkhx7lnk7yjd"]
+[gd_scene load_steps=11 format=3 uid="uid://tkhx7lnk7yjd"]
 
 [ext_resource type="Script" path="res://desktop_view.gd" id="1_o71jh"]
 [ext_resource type="Texture2D" uid="uid://b2vfqh6pdf3ha" path="res://icons/desktop/close.png" id="1_w3sbl"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://o2j084edkuw1" path="res://icons/desktop/fire_deactivated.png" id="6_7ka0j"]
 [ext_resource type="Texture2D" uid="uid://da8u6uyo64kfe" path="res://icons/desktop/juice.png" id="7_c12cg"]
 [ext_resource type="Texture2D" uid="uid://buedsmqvl115c" path="res://icons/desktop/juice_deactivated.png" id="8_6hy2s"]
+[ext_resource type="Script" path="res://fire.gd" id="9_m5geu"]
+[ext_resource type="Script" path="res://juice.gd" id="10_kemup"]
 
 [node name="Desktop" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_o71jh")
@@ -107,10 +109,10 @@ anchor_left = 0.069
 anchor_top = 0.011
 anchor_right = 0.119
 anchor_bottom = 0.1
-offset_left = -96.64
-offset_top = -7.84
-offset_right = -96.64
-offset_bottom = -7.92
+offset_left = 879.68
+offset_top = 448.08
+offset_right = 879.68
+offset_bottom = 448.0
 focus_mode = 0
 icon = ExtResource("7_c12cg")
 icon_alignment = 1
@@ -138,9 +140,26 @@ metadata/_edit_group_ = true
 position = Vector2(640, 360)
 enabled = false
 
+[node name="Fire" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 456.0
+offset_right = 187.0
+offset_bottom = 564.0
+text = "Fire"
+script = ExtResource("9_m5geu")
+
+[node name="Juice" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 564.0
+offset_right = 207.0
+offset_bottom = 674.0
+text = "Juice"
+script = ExtResource("10_kemup")
+
 [connection signal="pressed" from="DesktopStandard/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/TrashButton" to="." method="_on_trash_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/FireGameButton" to="." method="_on_fire_game_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/FireGameButtonDeactivated" to="." method="_on_fire_game_button_deactivated_pressed"]
 [connection signal="pressed" from="DesktopStandard/JuiceGameButton" to="." method="_on_juice_game_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/JuiceGameButtonDeactivated" to="." method="_on_juice_game_button_deactivated_pressed"]
+[connection signal="pressed" from="Fire" to="Fire" method="_on_pressed"]

@@ -3,14 +3,12 @@ extends Node2D
 signal customer_spawn
 
 @export var customer_scene: PackedScene
-
 @export var timer_range_start: int = 5
 @export var timer_range_end: int = 10
 
 var rng = RandomNumberGenerator.new()
 var tables = []
 var group_size
-
 
 func _ready() -> void:
 	for child in get_children():
@@ -30,9 +28,9 @@ func _ready() -> void:
 func _on_tutorial_finisher_body_entered(_body: CharacterBody2D) -> void:
 	$Timer.start(3)
 	print("Tutorial Finish")
-	
+
 func _on_timer_timeout() -> void:
-	print("Timeout -> Start")
+	#print("Timeout -> Start")
 	customer_spawn.emit()
 
 func _on_customer_spawn():
@@ -53,15 +51,16 @@ func _on_customer_spawn():
 				
 				_on_restart()
 				return
-					#customer.make_path(seats[i])
+				#customer.make_path(seats[i])
+			
 		print("All tables occupied")
-		_on_restart()
+	
+	_on_restart()
 
 func _on_restart() -> void:
-	if $Timer.is_stopped():
-		var random_time = round(rng.randf_range(timer_range_start, timer_range_end))
-		$Timer.start(random_time)
-		print("Restart: ", random_time)
+	var random_time = round(rng.randf_range(timer_range_start, timer_range_end))
+	$Timer.start(random_time)
+	#print("Restart: ", random_time)
 
 func get_seat_positions(table) -> Array:
 	var seat_positions = []
@@ -75,5 +74,5 @@ func get_seat_positions(table) -> Array:
 		seat_positions.append(table["position"] + Vector2(0, seat_distance))
 	if table.get("drc_w", false):
 		seat_positions.append(table["position"] + Vector2(-seat_distance, 0))
-
+	
 	return seat_positions

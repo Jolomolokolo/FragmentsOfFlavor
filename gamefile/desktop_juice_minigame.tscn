@@ -14,8 +14,9 @@ size = Vector2(528, 80)
 [node name="DesktopJuiceMinigame" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_67c6o")
 object_scene = ExtResource("3_0poar")
+spawn_x_min = -250.0
+spawn_x_max = 250.0
 spawn_y_min = -800.0
-spawn_y_max = 0.0
 
 [node name="PlayerPlatform" type="CharacterBody2D" parent="."]
 position = Vector2(648, 616)

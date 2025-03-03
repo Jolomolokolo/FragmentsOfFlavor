@@ -1,5 +1,6 @@
-[gd_scene load_steps=79 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=80 format=4 uid="uid://dsd2i2hy1l4ff"]
 
+[ext_resource type="Script" path="res://cafe.gd" id="1_bxopw"]
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
 [ext_resource type="Texture2D" uid="uid://b34tkus6ncg1b" path="res://icons/tiles/border_straight.png" id="6_05c5m"]
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
@@ -583,6 +584,7 @@ size = Vector2(160, 16)
 size = Vector2(32, 64)
 
 [node name="Cafe" type="Node2D"]
+script = ExtResource("1_bxopw")
 metadata/_edit_horizontal_guides_ = [1098.0]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["cafe", "player"]]
@@ -1735,6 +1737,7 @@ position = Vector2(3326, 0)
 [node name="DesktopJuiceMinigame" parent="Desktop/Desktop" instance=ExtResource("50_mi76v")]
 process_mode = 3
 position = Vector2(10065, 0)
+spawn_y_max = -650.0
 
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
