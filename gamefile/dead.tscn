@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cluudrcs651u7"]
 
-[ext_resource type="Script" path="res://dead.gd" id="1_rdrwm"]
+[ext_resource type="Script" uid="uid://dl2k1clmpdpcv" path="res://dead.gd" id="1_rdrwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_340kl"]
 font_size = 400

@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=4 uid="uid://csht8xsvdqhl6"]
 
-[ext_resource type="Script" path="res://desktop_fire_minigame.gd" id="1_p15jl"]
-[ext_resource type="Script" path="res://desktop_player.gd" id="1_sdcxw"]
+[ext_resource type="Script" uid="uid://dte61ouuqwcv5" path="res://desktop_fire_minigame.gd" id="1_p15jl"]
+[ext_resource type="Script" uid="uid://duowkbv7qfvxy" path="res://desktop_player.gd" id="1_sdcxw"]
 [ext_resource type="Texture2D" uid="uid://mfms4xr302dj" path="res://icons/desktop/fire.png" id="2_srsff"]
 [ext_resource type="Texture2D" uid="uid://biu1eer8aeob" path="res://icons/desktop/fire_completed.png" id="3_rvqw8"]
 [ext_resource type="Texture2D" uid="uid://cg5ehoul6cvbv" path="res://icons/desktop/tilemaps/tilesheet_complete.png" id="4_v10e3"]
-[ext_resource type="Script" path="res://moving_platform.gd" id="5_t44ip"]
+[ext_resource type="Script" uid="uid://byuto5a3vxm0o" path="res://moving_platform.gd" id="5_t44ip"]
 [ext_resource type="Texture2D" uid="uid://cab7c0ikgejwc" path="res://icons/tiles/Table.png" id="6_3edeh"]
-[ext_resource type="Script" path="res://canvas_layer_fire.gd" id="7_bw0gq"]
+[ext_resource type="Script" uid="uid://bqv5b442uqb3" path="res://canvas_layer_fire.gd" id="7_bw0gq"]
 [ext_resource type="PackedScene" uid="uid://k8kl2t77kknd" path="res://finish.tscn" id="8_1cq5y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r658e"]

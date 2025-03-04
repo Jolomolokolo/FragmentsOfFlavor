@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://snql310iuylc"]
 
 [ext_resource type="Texture2D" uid="uid://bgdaqcks8o108" path="res://icons/StartButton.png" id="1_0l386"]
-[ext_resource type="Script" path="res://start_button.gd" id="2_0titd"]
-[ext_resource type="Script" path="res://label.gd" id="3_1rer5"]
+[ext_resource type="Script" uid="uid://caqq57jhnlw5c" path="res://start_button.gd" id="2_0titd"]
+[ext_resource type="Script" uid="uid://cbhgqer4sv5mc" path="res://label.gd" id="3_1rer5"]
 [ext_resource type="Texture2D" uid="uid://b6dxeyblxt1sq" path="res://CreditsBGButton.png" id="4_8b1sr"]
-[ext_resource type="Script" path="res://texture_button.gd" id="4_s0cc3"]
+[ext_resource type="Script" uid="uid://m57qxfqi2b5f" path="res://texture_button.gd" id="4_s0cc3"]
 [ext_resource type="Texture2D" uid="uid://cgkdcv7vcwhr2" path="res://CreditsButton.png" id="5_fymtv"]
-[ext_resource type="Script" path="res://credits_button.gd" id="6_bugbt"]
+[ext_resource type="Script" uid="uid://pfapus5m0ppf" path="res://credits_button.gd" id="6_bugbt"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
