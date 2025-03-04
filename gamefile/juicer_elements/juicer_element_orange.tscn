@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckawgh85tlaee"]
+[gd_scene load_steps=6 format=3 uid="uid://c27m4pw6b36sb"]
 
-[ext_resource type="Script" uid="uid://cfglhqcamsmb0" path="res://rigid_body_2d.gd" id="1_dosb4"]
-[ext_resource type="Texture2D" uid="uid://da8u6uyo64kfe" path="res://icons/desktop/juice.png" id="2_qw48u"]
+[ext_resource type="Script" uid="uid://cfglhqcamsmb0" path="res://rigid_body_2d.gd" id="1_phro0"]
+[ext_resource type="Texture2D" uid="uid://bbnnd3i8csl5l" path="res://icons/desktop/minigames/fruits/orange.png" id="2_5ppll"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s07tm"]
 friction = 0.1
@@ -13,12 +13,12 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_881sp"]
 size = Vector2(46.5, 50.5)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="JuicerElementOrange" type="RigidBody2D"]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_s07tm")
 gravity_scale = 0.5
 can_sleep = false
-script = ExtResource("1_dosb4")
+script = ExtResource("1_phro0")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -29,6 +29,6 @@ shape = SubResource("RectangleShape2D_uwbtl")
 shape = SubResource("RectangleShape2D_881sp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qw48u")
+texture = ExtResource("2_5ppll")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

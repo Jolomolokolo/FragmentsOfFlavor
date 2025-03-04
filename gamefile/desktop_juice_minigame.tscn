@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://clk8h0wlxewmf"]
+[gd_scene load_steps=13 format=3 uid="uid://clk8h0wlxewmf"]
 
 [ext_resource type="Script" uid="uid://dvm8od8j2qlrg" path="res://desktop_juice_minigame.gd" id="1_67c6o"]
 [ext_resource type="Script" uid="uid://cbchl6l7n3ewv" path="res://player_platform.gd" id="2_50j6j"]
-[ext_resource type="PackedScene" uid="uid://ckawgh85tlaee" path="res://juicer_element.tscn" id="3_0poar"]
+[ext_resource type="PackedScene" uid="uid://5k2n3e6ydg78" path="res://juicer_elements/juicer_element_apple.tscn" id="2_c6gnr"]
+[ext_resource type="PackedScene" uid="uid://b5ktupmkeui7g" path="res://juicer_elements/juicer_element_pear.tscn" id="3_bayek"]
 [ext_resource type="Texture2D" uid="uid://b5pmnsaxhihd7" path="res://icons/desktop/minigames/player_juice_minigame.png" id="3_na7w3"]
+[ext_resource type="PackedScene" uid="uid://eqblhvbc5f1g" path="res://juicer_elements/juicer_element_banana.tscn" id="4_q3mv8"]
+[ext_resource type="PackedScene" uid="uid://c27m4pw6b36sb" path="res://juicer_elements/juicer_element_orange.tscn" id="5_pr6u3"]
+[ext_resource type="PackedScene" uid="uid://f6emkhdo8w4u" path="res://juicer_elements/juicer_element_strawberry.tscn" id="6_4ac5q"]
+[ext_resource type="PackedScene" uid="uid://bawvbc65ugyyn" path="res://juicer_elements/juicer_element_bomb.tscn" id="7_fttfp"]
+[ext_resource type="PackedScene" uid="uid://b1ve8v2actg2s" path="res://juicer_elements/juicer_element_tnt.tscn" id="8_a8oec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spiv3"]
 size = Vector2(32, 6)
@@ -13,7 +19,8 @@ size = Vector2(528, 80)
 
 [node name="DesktopJuiceMinigame" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_67c6o")
-object_scene = ExtResource("3_0poar")
+object_scenes = Array[PackedScene]([ExtResource("2_c6gnr"), ExtResource("3_bayek"), ExtResource("4_q3mv8"), ExtResource("5_pr6u3"), ExtResource("6_4ac5q"), ExtResource("7_fttfp"), ExtResource("8_a8oec")])
+spawn_probabilities = Array[float]([5.0, 5.0, 5.0, 5.0, 5.0, 1.0, 1.0])
 spawn_x_min = -250.0
 spawn_x_max = 250.0
 spawn_y_min = -800.0
