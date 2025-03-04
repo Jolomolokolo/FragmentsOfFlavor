@@ -163,3 +163,4 @@ script = ExtResource("10_kemup")
 [connection signal="pressed" from="DesktopStandard/JuiceGameButton" to="." method="_on_juice_game_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/JuiceGameButtonDeactivated" to="." method="_on_juice_game_button_deactivated_pressed"]
 [connection signal="pressed" from="Fire" to="Fire" method="_on_pressed"]
+[connection signal="pressed" from="Juice" to="Juice" method="_on_pressed"]

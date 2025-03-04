@@ -1737,7 +1737,6 @@ position = Vector2(3326, 0)
 [node name="DesktopJuiceMinigame" parent="Desktop/Desktop" instance=ExtResource("50_mi76v")]
 process_mode = 3
 position = Vector2(10065, 0)
-spawn_y_max = -650.0
 
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
