@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clk8h0wlxewmf"]
+[gd_scene load_steps=14 format=3 uid="uid://clk8h0wlxewmf"]
 
 [ext_resource type="Script" uid="uid://dvm8od8j2qlrg" path="res://desktop_juice_minigame.gd" id="1_67c6o"]
 [ext_resource type="Script" uid="uid://cbchl6l7n3ewv" path="res://player_platform.gd" id="2_50j6j"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://f6emkhdo8w4u" path="res://juicer_elements/juicer_element_strawberry.tscn" id="6_4ac5q"]
 [ext_resource type="PackedScene" uid="uid://bawvbc65ugyyn" path="res://juicer_elements/juicer_element_bomb.tscn" id="7_fttfp"]
 [ext_resource type="PackedScene" uid="uid://b1ve8v2actg2s" path="res://juicer_elements/juicer_element_tnt.tscn" id="8_a8oec"]
+[ext_resource type="Texture2D" uid="uid://340c4x2b5s15" path="res://icons/desktop/minigames/fruits/bomb.png" id="9_bayek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spiv3"]
 size = Vector2(32, 6)
@@ -24,6 +25,7 @@ spawn_probabilities = Array[float]([5.0, 5.0, 5.0, 5.0, 5.0, 1.0, 1.0])
 spawn_x_min = -250.0
 spawn_x_max = 250.0
 spawn_y_min = -800.0
+explosion_texture = ExtResource("9_bayek")
 
 [node name="PlayerPlatform" type="CharacterBody2D" parent="."]
 position = Vector2(648, 616)
@@ -52,3 +54,5 @@ position = Vector2(648, 680)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0b5sy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

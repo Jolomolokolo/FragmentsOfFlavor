@@ -19,6 +19,7 @@ physics_material_override = SubResource("PhysicsMaterial_s07tm")
 gravity_scale = 0.5
 can_sleep = false
 script = ExtResource("1_tqyiu")
+metadata/juicer_element = "strawberry"
 
 [node name="Area2D" type="Area2D" parent="."]
 

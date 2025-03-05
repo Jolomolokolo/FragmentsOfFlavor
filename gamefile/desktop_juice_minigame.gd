@@ -12,9 +12,14 @@ extends Node2D
 @export var spawn_rate_min: float = 1.0
 @export var spawn_rate_max: float = 4.5
 
+@export var explosion_texture : Texture
+@export var explosion_lifetime : float = 0.5
+
 var spawn_timer: Timer
 var is_spawning: bool = false
 @export var test: bool = false
+
+var object_counts = {}
 
 func _ready():
 	spawn_timer = Timer.new()
@@ -51,7 +56,7 @@ func spawn_object():
 	var selected_scene = select_scene_by_probability()
 	if selected_scene:
 		var new_object = selected_scene.instantiate()
-		new_object.position = Vector2((spawn_x + 600), spawn_y)
+		new_object.position = Vector2(spawn_x + 600, spawn_y)
 		add_child(new_object)
 
 func select_scene_by_probability():
@@ -71,3 +76,45 @@ func select_scene_by_probability():
 func set_random_spawn_time():
 	spawn_timer.wait_time = randf_range(spawn_rate_min, spawn_rate_max)
 	spawn_timer.start()
+
+func _on_area_2d_body_entered(body):
+	if body is RigidBody2D:
+		var type = body.get_meta("juicer_element")
+		
+		if type:
+			object_counts[type] = object_counts.get(type, 0) + 1
+			print("Entered: ", type, " | Amount: ", object_counts[type])
+			
+			if type == "bomb" or type == "tnt":
+				explode(body)
+
+func explode(body):
+	# Erstelle den Partikeleffekt für die Explosion
+	var explosion = GPUParticles2D.new()
+	explosion.position = body.position
+	explosion.emitting = true
+	
+	# Explosionseinstellungen
+	var particles_material = ShaderMaterial.new()
+	var shader = Shader.new()  # Hier kannst du einen eigenen Shader hinzufügen (optional)
+	particles_material.shader = shader  # Setze den Shader auf das Material
+
+	# Setze die Textur für die Partikel
+	particles_material.set_shader_parameter("texture", explosion_texture)
+	explosion.process_material = particles_material  # Weisen Sie das Material den Partikeln zu
+
+	# Füge die Explosion zum aktuellen Node hinzu
+	add_child(explosion)
+
+	# Starte den Timer für die Lebensdauer der Explosion
+	var timer = Timer.new()
+	timer.one_shot = true  # Timer wird nur einmal ausgeführt
+	timer.wait_time = explosion_lifetime
+	add_child(timer)
+	timer.start()
+
+	# Warten auf das Timeout-Signal des Timers, bevor wir die Explosion und das Objekt entfernen
+	timer.timeout.connect(func():
+		explosion.queue_free()
+		body.queue_free()
+	)

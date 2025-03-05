@@ -19,6 +19,7 @@ physics_material_override = SubResource("PhysicsMaterial_s07tm")
 gravity_scale = 0.5
 can_sleep = false
 script = ExtResource("1_3h8q2")
+metadata/juicer_element = "bomb"
 
 [node name="Area2D" type="Area2D" parent="."]
 
