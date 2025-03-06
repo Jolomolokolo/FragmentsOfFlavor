@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://f6emkhdo8w4u" path="res://juicer_elements/juicer_element_strawberry.tscn" id="6_4ac5q"]
 [ext_resource type="PackedScene" uid="uid://bawvbc65ugyyn" path="res://juicer_elements/juicer_element_bomb.tscn" id="7_fttfp"]
 [ext_resource type="PackedScene" uid="uid://b1ve8v2actg2s" path="res://juicer_elements/juicer_element_tnt.tscn" id="8_a8oec"]
-[ext_resource type="Texture2D" uid="uid://340c4x2b5s15" path="res://icons/desktop/minigames/fruits/bomb.png" id="9_bayek"]
+[ext_resource type="Texture2D" uid="uid://dtwpxcg1k2sc5" path="res://icons/desktop/minigames/heart.png" id="11_bayek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spiv3"]
 size = Vector2(32, 6)
@@ -21,11 +21,10 @@ size = Vector2(528, 80)
 [node name="DesktopJuiceMinigame" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_67c6o")
 object_scenes = Array[PackedScene]([ExtResource("2_c6gnr"), ExtResource("3_bayek"), ExtResource("4_q3mv8"), ExtResource("5_pr6u3"), ExtResource("6_4ac5q"), ExtResource("7_fttfp"), ExtResource("8_a8oec")])
-spawn_probabilities = Array[float]([5.0, 5.0, 5.0, 5.0, 5.0, 1.0, 1.0])
+spawn_probabilities = Array[float]([5.0, 5.0, 5.0, 5.0, 5.0, 7.0, 3.0])
 spawn_x_min = -250.0
 spawn_x_max = 250.0
 spawn_y_min = -800.0
-explosion_texture = ExtResource("9_bayek")
 
 [node name="PlayerPlatform" type="CharacterBody2D" parent="."]
 position = Vector2(648, 616)
@@ -54,5 +53,52 @@ position = Vector2(648, 680)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0b5sy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 55.0
+offset_right = -24.0
+offset_bottom = 95.0
+grow_horizontal = 2
+texture = ExtResource("11_bayek")
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 55.0
+offset_right = 20.0
+offset_bottom = 95.0
+grow_horizontal = 2
+texture = ExtResource("11_bayek")
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 24.0
+offset_top = 55.0
+offset_right = 64.0
+offset_bottom = 95.0
+grow_horizontal = 2
+texture = ExtResource("11_bayek")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

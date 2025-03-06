@@ -12,14 +12,16 @@ extends Node2D
 @export var spawn_rate_min: float = 1.0
 @export var spawn_rate_max: float = 4.5
 
-@export var explosion_texture : Texture
-@export var explosion_lifetime : float = 0.5
+#@export var explosion_texture : Texture
+#@export var explosion_lifetime : float = 0.5
 
 var spawn_timer: Timer
 var is_spawning: bool = false
 @export var test: bool = false
 
 var object_counts = {}
+var score: int = 0
+@onready var score_label = $CanvasLayer/Score
 
 func _ready():
 	spawn_timer = Timer.new()
@@ -84,37 +86,27 @@ func _on_area_2d_body_entered(body):
 		if type:
 			object_counts[type] = object_counts.get(type, 0) + 1
 			print("Entered: ", type, " | Amount: ", object_counts[type])
-			
-			if type == "bomb" or type == "tnt":
-				explode(body)
+			calculate_score()
+			update_score_label()
 
-func explode(body):
-	# Erstelle den Partikeleffekt für die Explosion
-	var explosion = GPUParticles2D.new()
-	explosion.position = body.position
-	explosion.emitting = true
-	
-	# Explosionseinstellungen
-	var particles_material = ShaderMaterial.new()
-	var shader = Shader.new()  # Hier kannst du einen eigenen Shader hinzufügen (optional)
-	particles_material.shader = shader  # Setze den Shader auf das Material
+func calculate_score():
+	score = 0
 
-	# Setze die Textur für die Partikel
-	particles_material.set_shader_parameter("texture", explosion_texture)
-	explosion.process_material = particles_material  # Weisen Sie das Material den Partikeln zu
+	for type in object_counts.keys():
+		var probability = 1.0
+		for i in range(object_scenes.size()):
+			if object_scenes[i].resource_path.get_file().get_basename() == type:
+				probability = spawn_probabilities[i] if i < spawn_probabilities.size() else 1.0
+				break
+		
+		var rarity_factor = 1.0 / probability if probability > 0 else 1.0
+		
+		if type in ["bomb", "tnt"]:
+			score -= object_counts[type] * 15 * rarity_factor
+		else:
+			score += object_counts[type] * 5 * rarity_factor
+		print("Score: ", score)
 
-	# Füge die Explosion zum aktuellen Node hinzu
-	add_child(explosion)
-
-	# Starte den Timer für die Lebensdauer der Explosion
-	var timer = Timer.new()
-	timer.one_shot = true  # Timer wird nur einmal ausgeführt
-	timer.wait_time = explosion_lifetime
-	add_child(timer)
-	timer.start()
-
-	# Warten auf das Timeout-Signal des Timers, bevor wir die Explosion und das Objekt entfernen
-	timer.timeout.connect(func():
-		explosion.queue_free()
-		body.queue_free()
-	)
+func update_score_label():
+	if score_label:
+		score_label.text = "Score: " + str(score)
