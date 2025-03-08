@@ -12,6 +12,7 @@ signal closeDesktop
 @onready var cam_juice_minigame = $DesktopJuiceMinigame/Camera2D
 @onready var label_downfall = $DesktopFireMinigame/CanvasLayer
 @onready var finish_canvas = $DesktopFireMinigame/Finish
+@onready var juice_canvas = $DesktopJuiceMinigame/CanvasLayer 
 
 func _ready() -> void:
 	fire_game_button.visible = false
@@ -51,6 +52,7 @@ func _on_juice_game_button_pressed() -> void:
 		cam_desktop.enabled = false
 		cam_juice_minigame.enabled = true
 		Global.desktop_juice_visible = true
+		juice_canvas.visible = true
 		#if Global.fire_minigame_finished == true:
 		#	finish_canvas.visible = true
 	

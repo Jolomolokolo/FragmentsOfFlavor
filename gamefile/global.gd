@@ -25,6 +25,8 @@ var downfalls = 0
 var fire_minigame_finished = false
 var desktop_juice_visible = false
 var juice_minigame_finished = false
+var juice_minigame_score = 0
+
 
 func reset():
 	table.clear()
@@ -50,6 +52,7 @@ func reset():
 	fire_minigame_finished = false
 	desktop_juice_visible = false
 	juice_minigame_finished = false
+	juice_minigame_score = 0
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main

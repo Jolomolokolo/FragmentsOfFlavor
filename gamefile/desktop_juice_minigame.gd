@@ -20,8 +20,9 @@ var is_spawning: bool = false
 @export var test: bool = false
 
 var object_counts = {}
-var score: int = 0
+var score_juice: int = 0
 @onready var score_label = $CanvasLayer/Score
+var hearts: int = 3
 
 func _ready():
 	spawn_timer = Timer.new()
@@ -87,10 +88,16 @@ func _on_area_2d_body_entered(body):
 			object_counts[type] = object_counts.get(type, 0) + 1
 			print("Entered: ", type, " | Amount: ", object_counts[type])
 			calculate_score()
+			if score_juice < 0:
+				score_juice = 0
+				Global.juice_minigame_score = 0
 			update_score_label()
+		
+		if type == "bomb" or type == "tnt":
+			loose_heart()
 
 func calculate_score():
-	score = 0
+	score_juice = 0 # Was ist das? Was macht das? Brauch ich das?!?
 
 	for type in object_counts.keys():
 		var probability = 1.0
@@ -102,11 +109,28 @@ func calculate_score():
 		var rarity_factor = 1.0 / probability if probability > 0 else 1.0
 		
 		if type in ["bomb", "tnt"]:
-			score -= object_counts[type] * 15 * rarity_factor
+			score_juice -= object_counts[type] * 40 * rarity_factor
 		else:
-			score += object_counts[type] * 5 * rarity_factor
-		print("Score: ", score)
+			score_juice += object_counts[type] * 40 * rarity_factor
+			
+		Global.juice_minigame_score = score_juice
+		print("Score: ", score_juice)
 
 func update_score_label():
 	if score_label:
-		score_label.text = "Score: " + str(score)
+		score_label.text = "Score: " + str(Global.juice_minigame_score)
+
+func loose_heart():
+	if hearts == 3:
+		$CanvasLayer/Heart1.visible = false
+		$CanvasLayer/Heart1Off.visible = true
+		hearts -= 1
+	elif hearts == 2:
+		$CanvasLayer/Heart2.visible = false
+		$CanvasLayer/Heart2Off.visible = true
+		hearts -= 1
+	elif hearts == 1:
+		$CanvasLayer/Heart3.visible = false
+		$CanvasLayer/Heart3Off.visible = true
+		print("Dead")
+		# Dead
