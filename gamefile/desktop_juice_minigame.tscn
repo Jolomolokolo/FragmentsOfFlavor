@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clk8h0wlxewmf"]
+[gd_scene load_steps=16 format=3 uid="uid://clk8h0wlxewmf"]
 
 [ext_resource type="Script" uid="uid://dvm8od8j2qlrg" path="res://desktop_juice_minigame.gd" id="1_67c6o"]
 [ext_resource type="Script" uid="uid://cbchl6l7n3ewv" path="res://player_platform.gd" id="2_50j6j"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ve8v2actg2s" path="res://juicer_elements/juicer_element_tnt.tscn" id="8_a8oec"]
 [ext_resource type="Texture2D" uid="uid://dtwpxcg1k2sc5" path="res://icons/desktop/minigames/heart.png" id="11_bayek"]
 [ext_resource type="Texture2D" uid="uid://dca6jlpkb4ynn" path="res://icons/desktop/minigames/heart_broken.png" id="12_q3mv8"]
+[ext_resource type="PackedScene" uid="uid://cu5rpiacjbew7" path="res://finish_juice.tscn" id="13_pr6u3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spiv3"]
 size = Vector2(32, 6)
@@ -26,6 +27,7 @@ spawn_probabilities = Array[float]([5.0, 5.0, 5.0, 5.0, 5.0, 7.0, 3.0])
 spawn_x_min = -250.0
 spawn_x_max = 250.0
 spawn_y_min = -800.0
+time = 10
 
 [node name="PlayerPlatform" type="CharacterBody2D" parent="."]
 position = Vector2(648, 616)
@@ -140,5 +142,16 @@ grow_horizontal = 2
 texture = ExtResource("12_q3mv8")
 
 [node name="Finish" type="CanvasLayer" parent="."]
+visible = false
 
+[node name="FinishJuice" parent="Finish" instance=ExtResource("13_pr6u3")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="dead_juice" from="." to="PlayerPlatform" method="_on_desktop_juice_minigame_dead_juice"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="desktop_return_from_juice" from="Finish/FinishJuice" to="." method="_on_finish_juice_desktop_return_from_juice"]
+[connection signal="desktop_return_from_juice" from="Finish/FinishJuice" to="PlayerPlatform" method="_on_finish_juice_desktop_return_from_juice"]
+[connection signal="restart_juice" from="Finish/FinishJuice" to="." method="_on_finish_juice_restart_juice"]
+[connection signal="restart_juice" from="Finish/FinishJuice" to="PlayerPlatform" method="_on_finish_juice_restart_juice"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

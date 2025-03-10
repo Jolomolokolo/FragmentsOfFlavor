@@ -735,10 +735,6 @@ grow_horizontal = 2
 color = Color(1, 0, 1, 1)
 metadata/_edit_lock_ = true
 
-[node name="ExitScreen" parent="CanvasLayer" instance=ExtResource("3_18ohp")]
-visible = false
-metadata/_edit_lock_ = true
-
 [node name="Name" parent="CanvasLayer" instance=ExtResource("45_ne4ww")]
 process_mode = 3
 visible = false
@@ -1728,15 +1724,20 @@ shape = SubResource("RectangleShape2D_kqhmd")
 texture = ExtResource("46_cyyn4")
 
 [node name="Desktop" parent="Desktop" instance=ExtResource("48_wmrr6")]
-process_mode = 3
 position = Vector2(1888, -48)
 
 [node name="DesktopFireMinigame" parent="Desktop/Desktop" instance=ExtResource("49_dc5ws")]
 position = Vector2(3326, 0)
 
 [node name="DesktopJuiceMinigame" parent="Desktop/Desktop" instance=ExtResource("50_mi76v")]
-process_mode = 3
 position = Vector2(10065, 0)
+time = 300
+
+[node name="ExitScreen" type="CanvasLayer" parent="."]
+
+[node name="ExitScreen" parent="ExitScreen" instance=ExtResource("3_18ohp")]
+visible = false
+metadata/_edit_lock_ = true
 
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
@@ -1769,3 +1770,4 @@ position = Vector2(10065, 0)
 [connection signal="body_entered" from="Desktop" to="Desktop" method="_on_body_entered"]
 [connection signal="closeDesktop" from="Desktop/Desktop" to="Desktop" method="_on_desktop_close_desktop"]
 [connection signal="desktop_return" from="Desktop/Desktop/DesktopFireMinigame" to="Desktop/Desktop" method="_on_desktop_fire_minigame_desktop_return"]
+[connection signal="desktop_return_from_juice" from="Desktop/Desktop/DesktopJuiceMinigame" to="Desktop/Desktop" method="_on_desktop_juice_minigame_desktop_return_from_juice"]

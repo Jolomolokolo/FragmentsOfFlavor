@@ -1,5 +1,8 @@
 extends Node2D
 
+signal desktop_return_from_juice
+signal dead_juice
+
 @export var object_scenes: Array[PackedScene]
 @export var spawn_probabilities: Array[float]
 
@@ -12,9 +15,6 @@ extends Node2D
 @export var spawn_rate_min: float = 1.0
 @export var spawn_rate_max: float = 4.5
 
-#@export var explosion_texture : Texture
-#@export var explosion_lifetime : float = 0.5
-
 var spawn_timer: Timer
 var is_spawning: bool = false
 @export var test: bool = false
@@ -23,6 +23,10 @@ var object_counts = {}
 var score_juice: int = 0
 @onready var score_label = $CanvasLayer/Score
 var hearts: int = 3
+@onready var finish_juice = $Finish
+var game_over: bool = false
+@onready var timer = $Timer
+@export var time = 300
 
 func _ready():
 	spawn_timer = Timer.new()
@@ -31,9 +35,35 @@ func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.wait_time = randf_range(spawn_rate_min, spawn_rate_max)
 
+func reset_game():
+	game_over = false
+	is_spawning = false
+	spawn_timer.stop()
+
+	score_juice = 0
+	object_counts.clear()
+	hearts = 3
+	finish_juice.visible = false
+	update_score_label()
+	
+	timer.start(time)
+
+	$CanvasLayer/Heart1.visible = true
+	$CanvasLayer/Heart1Off.visible = false
+	$CanvasLayer/Heart2.visible = true
+	$CanvasLayer/Heart2Off.visible = false
+	$CanvasLayer/Heart3.visible = true
+	$CanvasLayer/Heart3Off.visible = false
+
+	for child in get_children():
+		if child is RigidBody2D:
+			child.queue_free()
+
+	start_spawning()
+
 func _process(_delta):
-	if Global.desktop_juice_visible and not is_spawning or test == true:
-		start_spawning()
+	if Global.desktop_juice_visible and not is_spawning and not game_over or test:
+		reset_game()
 	elif not Global.desktop_juice_visible and is_spawning:
 		stop_spawning()
 
@@ -83,22 +113,22 @@ func set_random_spawn_time():
 func _on_area_2d_body_entered(body):
 	if body is RigidBody2D:
 		var type = body.get_meta("juicer_element")
-		
+
 		if type:
 			object_counts[type] = object_counts.get(type, 0) + 1
-			print("Entered: ", type, " | Amount: ", object_counts[type])
+			#print("Entered: ", type, " | Amount: ", object_counts[type])
 			calculate_score()
 			if score_juice < 0:
 				score_juice = 0
 				Global.juice_minigame_score = 0
 			update_score_label()
-		
+
 		if type == "bomb" or type == "tnt":
 			loose_heart()
 
 func calculate_score():
-	score_juice = 0 # Was ist das? Was macht das? Brauch ich das?!?
-
+	score_juice = 0
+	
 	for type in object_counts.keys():
 		var probability = 1.0
 		for i in range(object_scenes.size()):
@@ -107,18 +137,18 @@ func calculate_score():
 				break
 		
 		var rarity_factor = 1.0 / probability if probability > 0 else 1.0
-		
+
 		if type in ["bomb", "tnt"]:
 			score_juice -= object_counts[type] * 40 * rarity_factor
 		else:
 			score_juice += object_counts[type] * 40 * rarity_factor
 			
 		Global.juice_minigame_score = score_juice
-		print("Score: ", score_juice)
+		#print("Score: ", score_juice)
 
 func update_score_label():
 	if score_label:
-		score_label.text = "Score: " + str(Global.juice_minigame_score)
+		score_label.text = "Score: " + str(score_juice)
 
 func loose_heart():
 	if hearts == 3:
@@ -132,5 +162,22 @@ func loose_heart():
 	elif hearts == 1:
 		$CanvasLayer/Heart3.visible = false
 		$CanvasLayer/Heart3Off.visible = true
-		print("Dead")
-		# Dead
+		dead()
+
+func dead():
+	finish_juice.visible = true
+	is_spawning = false
+	dead_juice.emit()
+	game_over = true
+
+func _on_finish_juice_restart_juice() -> void:
+	if game_over:
+		reset_game()
+
+func _on_finish_juice_desktop_return_from_juice() -> void:
+	desktop_return_from_juice.emit()
+	finish_juice.visible = false
+	game_over = false
+
+func _on_timer_timeout() -> void:
+	dead()

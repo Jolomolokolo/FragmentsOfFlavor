@@ -33,6 +33,7 @@ func _on_fire_game_button_pressed() -> void:
 	cam_fire_minigame.enabled = true
 	label_downfall.visible = true
 	Global.desktop_fire_visible = true
+	Global.desktop_visible = false
 	if Global.fire_minigame_finished == true:
 		finish_canvas.visible = true
 
@@ -44,6 +45,7 @@ func _on_desktop_fire_minigame_desktop_return() -> void:
 	cam_fire_minigame.enabled = false
 	cam_desktop.enabled = true
 	label_downfall.visible = false
+	Global.desktop_visible = true
 	Global.desktop_fire_visible = false
 	finish_canvas.visible = false
 	#print("Yeah, finished")
@@ -51,6 +53,7 @@ func _on_desktop_fire_minigame_desktop_return() -> void:
 func _on_juice_game_button_pressed() -> void:
 		cam_desktop.enabled = false
 		cam_juice_minigame.enabled = true
+		Global.desktop_visible = false
 		Global.desktop_juice_visible = true
 		juice_canvas.visible = true
 		#if Global.fire_minigame_finished == true:
@@ -63,3 +66,10 @@ func _on_juice_game_button_deactivated_pressed() -> void:
 	else:
 		# Error Sound
 		print("Deactivated JuiceGame Button pressed")
+
+func _on_desktop_juice_minigame_desktop_return_from_juice() -> void:
+	cam_desktop.enabled = true
+	cam_juice_minigame.enabled = false
+	Global.desktop_juice_visible = false
+	Global.desktop_visible = true
+	juice_canvas.visible = false

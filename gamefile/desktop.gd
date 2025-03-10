@@ -50,7 +50,7 @@ func _hide_desktop():
 	can_trigger_again = true
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and Global.desktop_fire_visible == false and Global.desktop_juice_visible == false and Global.desktop_visible == true:
 		_hide_desktop()
 
 func _on_desktop_close_desktop() -> void:
