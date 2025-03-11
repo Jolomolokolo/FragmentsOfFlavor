@@ -180,6 +180,7 @@ position = Vector2(640, 360)
 enabled = false
 
 [node name="Fire" type="Button" parent="."]
+visible = false
 offset_left = 304.0
 offset_top = 448.0
 offset_right = 483.0
@@ -188,6 +189,7 @@ text = "Fire"
 script = ExtResource("9_m5geu")
 
 [node name="Juice" type="Button" parent="."]
+visible = false
 offset_left = 304.0
 offset_top = 556.0
 offset_right = 503.0

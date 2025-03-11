@@ -16,7 +16,7 @@ size = Vector2(46.5, 50.5)
 [node name="JuicerElementBanana" type="RigidBody2D"]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_s07tm")
-gravity_scale = 0.5
+gravity_scale = 0.2
 can_sleep = false
 script = ExtResource("1_4biyx")
 metadata/juicer_element = "banana"

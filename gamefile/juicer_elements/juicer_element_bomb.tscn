@@ -16,7 +16,7 @@ size = Vector2(46.5, 50.5)
 [node name="JuicerElementBomb" type="RigidBody2D"]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_s07tm")
-gravity_scale = 0.5
+gravity_scale = 0.3
 can_sleep = false
 script = ExtResource("1_3h8q2")
 metadata/juicer_element = "bomb"
