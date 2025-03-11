@@ -28,12 +28,15 @@ var game_over: bool = false
 @onready var timer = $Timer
 @export var time = 300
 
+@onready var splash_particles = $JuicerArea/GPUParticles2D
+
 func _ready():
 	spawn_timer = Timer.new()
 	spawn_timer.one_shot = false
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.wait_time = randf_range(spawn_rate_min, spawn_rate_max)
+	splash_particles.emitting = false
 
 func reset_game():
 	game_over = false
@@ -113,18 +116,19 @@ func set_random_spawn_time():
 func _on_area_2d_body_entered(body):
 	if body is RigidBody2D:
 		var type = body.get_meta("juicer_element")
-
+		
 		if type:
 			object_counts[type] = object_counts.get(type, 0) + 1
-			#print("Entered: ", type, " | Amount: ", object_counts[type])
 			calculate_score()
-			if score_juice < 0:
-				score_juice = 0
-				Global.juice_minigame_score = 0
+			score_juice = max(score_juice, 0)
+			Global.juice_minigame_score = score_juice
 			update_score_label()
-
-		if type == "bomb" or type == "tnt":
+			splash_particles.global_position = body.global_position
+			splash_particles.emitting = true
+			
+		if type in ["bomb", "tnt"]:
 			loose_heart()
+		body.queue_free()
 
 func calculate_score():
 	score_juice = 0
@@ -132,19 +136,20 @@ func calculate_score():
 	for type in object_counts.keys():
 		var probability = 1.0
 		for i in range(object_scenes.size()):
-			if object_scenes[i].resource_path.get_file().get_basename() == type:
+			if object_scenes[i].resource_path and object_scenes[i].resource_path.get_file().get_basename() == type:
 				probability = spawn_probabilities[i] if i < spawn_probabilities.size() else 1.0
 				break
 		
 		var rarity_factor = 1.0 / probability if probability > 0 else 1.0
-
+		
 		if type in ["bomb", "tnt"]:
 			score_juice -= object_counts[type] * 40 * rarity_factor
 		else:
 			score_juice += object_counts[type] * 40 * rarity_factor
-			
-		Global.juice_minigame_score = score_juice
-		#print("Score: ", score_juice)
+	
+	score_juice = max(score_juice, 0)
+	Global.juice_minigame_score = score_juice
+
 
 func update_score_label():
 	if score_label:
