@@ -30,12 +30,23 @@ vertical_alignment = 1
 
 [node name="ReturnDesktop" type="Button" parent="."]
 layout_mode = 0
-offset_left = 463.0
+offset_left = 460.0
 offset_top = 574.0
-offset_right = 593.0
+offset_right = 600.0
 offset_bottom = 605.0
 scale = Vector2(3, 3)
-text = "Return Desktop"
+text = " Return Desktop "
+icon_alignment = 1
+
+[node name="Restart Game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 456.0
+offset_right = 600.0
+offset_bottom = 487.0
+scale = Vector2(3, 3)
+text = "Restart Desktop"
 icon_alignment = 1
 
 [connection signal="pressed" from="ReturnDesktop" to="." method="_on_return_desktop_pressed"]
+[connection signal="pressed" from="Restart Game" to="." method="_on_restart_game_pressed"]

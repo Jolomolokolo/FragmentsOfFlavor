@@ -412,3 +412,4 @@ visible = false
 [node name="Finish" parent="Finish" instance=ExtResource("8_1cq5y")]
 
 [connection signal="desktop_return" from="Finish/Finish" to="." method="_on_finish_desktop_return"]
+[connection signal="start_game" from="Finish/Finish" to="DesktopPlayer" method="_on_finish_start_game"]

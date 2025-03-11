@@ -12,7 +12,7 @@ signal dead
 
 @onready var time = $Timer
 @onready var time_label = $TimeLabel
-var time_left: float = 600
+var time_left: float = 900
 
 var emoji_bad = preload("res://icons/emojis/emoji_bad.png")
 var emoji_middle = preload("res://icons/emojis/emoji_middle.png")
@@ -124,7 +124,7 @@ func _on_timer_timeout() -> void:
 	if Global.cafe_area == true:
 		if time_left > 0:
 			time_left -= 1
-			time_label.text = str(time_left)
+			time_label.text = str(int(time_left))
 		elif time_left == 0:
 			get_tree().change_scene_to_file("res://score.tscn")
 			print("Time up!")
