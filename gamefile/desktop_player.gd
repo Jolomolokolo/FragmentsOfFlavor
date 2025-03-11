@@ -58,7 +58,7 @@ func finish_game():
 	Global.fire_minigame_finished = true
 	var end_time = Time.get_ticks_msec() / 1000.0
 	var elapsed_time = end_time - start_time
-	# Funktion for time comparison start here!
+	Global.add_score_fire(elapsed_time)
 	print("Time elapsed: ", elapsed_time, " sec")
 
 func reset_position():

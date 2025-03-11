@@ -72,7 +72,7 @@ func _process(_delta):
 		update_inventory()
 
 func update_cash_display():
-	cash_label.text = "Cash: " + str(Global.cash)
+	cash_label.text = "Cash: " + str(int(Global.cash))
 
 func update_heath_display():
 	if Global.health <= 0:

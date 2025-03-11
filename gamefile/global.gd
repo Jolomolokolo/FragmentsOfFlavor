@@ -25,7 +25,8 @@ var downfalls = 0
 var fire_minigame_finished = false
 var desktop_juice_visible = false
 var juice_minigame_finished = false
-var juice_minigame_score = 0
+var score_history_fire = []
+var score_history = []
 
 
 func reset():
@@ -52,7 +53,8 @@ func reset():
 	fire_minigame_finished = false
 	desktop_juice_visible = false
 	juice_minigame_finished = false
-	juice_minigame_score = 0
+	score_history_fire.clear()
+	score_history.clear()
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main
@@ -107,3 +109,21 @@ func set_item(item):
 			handheld_2 = item
 			handheld_bool_2 = true
 			#print("Item added to secod slot")
+
+
+
+func add_score(score: int):
+	var timestamp = Time.get_time_string_from_system()
+	score_history.append({ "score": score, "time": timestamp })
+	#print("Score saved:", score_history)
+
+func add_score_fire(time: int):
+	var timestamp = Time.get_time_string_from_system()
+	score_history_fire.append({ "score": time, "time": timestamp})
+	#print("Score saved:", score_history_fire)
+
+func get_highscore_juice():
+	if score_history.size() > 0:
+		return score_history[score_history.size() - 1]["score"]
+	else:
+		return null

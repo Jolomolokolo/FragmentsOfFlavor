@@ -30,6 +30,8 @@ var game_over: bool = false
 
 @onready var splash_particles = $JuicerArea/GPUParticles2D
 
+var score_history = []
+
 func _ready():
 	spawn_timer = Timer.new()
 	spawn_timer.one_shot = false
@@ -121,7 +123,6 @@ func _on_area_2d_body_entered(body):
 			object_counts[type] = object_counts.get(type, 0) + 1
 			calculate_score()
 			score_juice = max(score_juice, 0)
-			Global.juice_minigame_score = score_juice
 			update_score_label()
 			splash_particles.global_position = body.global_position
 			splash_particles.emitting = true
@@ -148,7 +149,6 @@ func calculate_score():
 			score_juice += object_counts[type] * 40 * rarity_factor
 	
 	score_juice = max(score_juice, 0)
-	Global.juice_minigame_score = score_juice
 
 
 func update_score_label():
@@ -174,6 +174,7 @@ func dead():
 	is_spawning = false
 	dead_juice.emit()
 	game_over = true
+	Global.add_score(score_juice)
 
 func _on_finish_juice_restart_juice() -> void:
 	if game_over:
