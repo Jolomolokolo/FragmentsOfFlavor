@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			reset_position()
 			Global.downfalls += 1
 	
-		if self.position.x > 3250 and not Global.fire_minigame_finished:
+		if self.position.x > 4300 and not Global.fire_minigame_finished:
 			finish_game()
 
 func start_game():

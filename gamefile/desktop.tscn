@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tkhx7lnk7yjd"]
+[gd_scene load_steps=21 format=3 uid="uid://tkhx7lnk7yjd"]
 
 [ext_resource type="Script" uid="uid://b5nk1jews3d4l" path="res://desktop_view.gd" id="1_o71jh"]
 [ext_resource type="Texture2D" uid="uid://b2vfqh6pdf3ha" path="res://icons/desktop/close.png" id="1_w3sbl"]
@@ -8,10 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://o2j084edkuw1" path="res://icons/desktop/fire_deactivated.png" id="6_7ka0j"]
 [ext_resource type="Texture2D" uid="uid://da8u6uyo64kfe" path="res://icons/desktop/juice.png" id="7_c12cg"]
 [ext_resource type="Texture2D" uid="uid://buedsmqvl115c" path="res://icons/desktop/juice_deactivated.png" id="8_6hy2s"]
+[ext_resource type="Texture2D" uid="uid://cprkeq0gbblqx" path="res://icons/desktop/crane.png" id="9_01a23"]
 [ext_resource type="Script" uid="uid://ddx17vllh4swv" path="res://high_score.gd" id="9_6f7av"]
 [ext_resource type="Script" uid="uid://b2rmf1f2wv88n" path="res://fire.gd" id="9_m5geu"]
 [ext_resource type="Script" uid="uid://cisqjign1egwy" path="res://juice.gd" id="10_kemup"]
+[ext_resource type="Texture2D" uid="uid://xndgfwbdm1ue" path="res://icons/desktop/crane_deactivated.png" id="10_nx3uv"]
 [ext_resource type="Script" uid="uid://lyt0tur11k0s" path="res://highs_scores_fire.gd" id="10_r8dgl"]
+[ext_resource type="Texture2D" uid="uid://d4gw8bltubpd0" path="res://icons/desktop/desktop/Juicer_BG.png" id="11_e4aos"]
+[ext_resource type="Texture2D" uid="uid://gxati0fb13ms" path="res://icons/desktop/desktop/Juicer_1-4.png" id="12_ylx5y"]
+[ext_resource type="Texture2D" uid="uid://ccsvqoo7glyqa" path="res://icons/desktop/desktop/Juicer_4-4.png" id="12_yu0yj"]
+[ext_resource type="Texture2D" uid="uid://dqp82apppnl52" path="res://icons/desktop/desktop/Juicer_2-4.png" id="13_w58xd"]
+[ext_resource type="Texture2D" uid="uid://bak7lsms1s2hi" path="res://icons/desktop/desktop/Juicer_3-4.png" id="14_01a23"]
+[ext_resource type="Texture2D" uid="uid://chbe6qgghduww" path="res://icons/desktop/desktop/Juicer_Full.png" id="16_w58xd"]
 
 [node name="Desktop" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_o71jh")
@@ -129,12 +137,49 @@ anchor_left = 0.937
 anchor_top = 0.022
 anchor_right = 0.987
 anchor_bottom = 0.111
-offset_left = 0.639893
-offset_top = 0.159999
-offset_right = 0.639893
-offset_bottom = 0.0799942
+offset_left = 0.640015
+offset_top = -7.84
+offset_right = 0.640015
+offset_bottom = -7.92001
 focus_mode = 0
 icon = ExtResource("8_6hy2s")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CraneButton" type="Button" parent="DesktopStandard" groups=["desktop"]]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.011
+anchor_right = 0.119
+anchor_bottom = 0.1
+offset_left = 1111.68
+offset_top = 72.08
+offset_right = 1111.68
+offset_bottom = 72.0
+focus_mode = 0
+icon = ExtResource("9_01a23")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CraneButtonDeactivated" type="Button" parent="DesktopStandard" groups=["desktop"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.937
+anchor_top = 0.022
+anchor_right = 0.987
+anchor_bottom = 0.111
+offset_left = 0.640015
+offset_top = 64.16
+offset_right = 0.640015
+offset_bottom = 64.08
+focus_mode = 0
+icon = ExtResource("10_nx3uv")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_group_ = true
@@ -175,12 +220,45 @@ offset_bottom = 488.0
 texture = ExtResource("5_0j5us")
 stretch_mode = 3
 
+[node name="JuicerBg" type="Sprite2D" parent="DesktopStandard"]
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_e4aos")
+
+[node name="Juicer4-4" type="Sprite2D" parent="DesktopStandard"]
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_yu0yj")
+
+[node name="Juicer3-4" type="Sprite2D" parent="DesktopStandard"]
+visible = false
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_01a23")
+
+[node name="Juicer2-4" type="Sprite2D" parent="DesktopStandard"]
+visible = false
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_w58xd")
+
+[node name="Juicer1-4" type="Sprite2D" parent="DesktopStandard"]
+visible = false
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_ylx5y")
+
+[node name="Juicer0-4" type="Sprite2D" parent="DesktopStandard"]
+visible = false
+position = Vector2(640, 350)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_w58xd")
+
 [node name="CameraDesktop" type="Camera2D" parent="." groups=["desktop"]]
 position = Vector2(640, 360)
 enabled = false
 
 [node name="Fire" type="Button" parent="."]
-visible = false
 offset_left = 304.0
 offset_top = 448.0
 offset_right = 483.0
@@ -189,7 +267,6 @@ text = "Fire"
 script = ExtResource("9_m5geu")
 
 [node name="Juice" type="Button" parent="."]
-visible = false
 offset_left = 304.0
 offset_top = 556.0
 offset_right = 503.0
@@ -203,5 +280,7 @@ script = ExtResource("10_kemup")
 [connection signal="pressed" from="DesktopStandard/FireGameButtonDeactivated" to="." method="_on_fire_game_button_deactivated_pressed"]
 [connection signal="pressed" from="DesktopStandard/JuiceGameButton" to="." method="_on_juice_game_button_pressed"]
 [connection signal="pressed" from="DesktopStandard/JuiceGameButtonDeactivated" to="." method="_on_juice_game_button_deactivated_pressed"]
+[connection signal="pressed" from="DesktopStandard/CraneButton" to="." method="_on_cran_button_pressed"]
+[connection signal="pressed" from="DesktopStandard/CraneButtonDeactivated" to="." method="_on_crane_button_deactivated_pressed"]
 [connection signal="pressed" from="Fire" to="Fire" method="_on_pressed"]
 [connection signal="pressed" from="Juice" to="Juice" method="_on_pressed"]

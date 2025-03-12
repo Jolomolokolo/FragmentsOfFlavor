@@ -21,10 +21,12 @@ var player_name = ""
 var cafe_area = false
 var desktop_visible = false
 var desktop_fire_visible = false
+var desktop_crane_visible = false
 var downfalls = 0
 var fire_minigame_finished = false
 var desktop_juice_visible = false
 var juice_minigame_finished = false
+var crane_minigame_finished = false
 var score_history_fire = []
 var score_history = []
 
@@ -49,10 +51,12 @@ func reset():
 	cafe_area = false
 	desktop_visible = false
 	desktop_fire_visible = false
+	desktop_crane_visible = false
 	downfalls = 0
 	fire_minigame_finished = false
 	desktop_juice_visible = false
 	juice_minigame_finished = false
+	crane_minigame_finished = false
 	score_history_fire.clear()
 	score_history.clear()
 

@@ -6,14 +6,13 @@ signal dead_juice
 @export var object_scenes: Array[PackedScene]
 @export var spawn_probabilities: Array[float]
 
-@export var spawn_x_min: float = -300
-@export var spawn_x_max: float = 300
-
+@export var spawn_x_min: float = -400
+@export var spawn_x_max: float = 400
 @export var spawn_y_min: float = -900
 @export var spawn_y_max: float = -650
 
-@export var spawn_rate_min: float = 1.0
-@export var spawn_rate_max: float = 4.5
+@export var spawn_rate_min: float = 1.2
+@export var spawn_rate_max: float = 4.0
 
 var spawn_timer: Timer
 var is_spawning: bool = false
@@ -31,6 +30,7 @@ var game_over: bool = false
 @onready var splash_particles = $JuicerArea/GPUParticles2D
 
 var score_history = []
+var difficulty_factor: float = 1.0
 
 func _ready():
 	spawn_timer = Timer.new()
@@ -50,6 +50,7 @@ func reset_game():
 	hearts = 3
 	finish_juice.visible = false
 	update_score_label()
+	difficulty_factor = 1.0
 	
 	timer.start(time)
 
@@ -83,19 +84,34 @@ func stop_spawning():
 func _on_spawn_timer_timeout():
 	if is_spawning:
 		spawn_object()
+		increase_difficulty()
 		set_random_spawn_time()
 
 func spawn_object():
 	if object_scenes.is_empty() or spawn_probabilities.size() != object_scenes.size():
 		return
 
-	var spawn_x = randf_range(spawn_x_min, spawn_x_max)
-	var spawn_y = randf_range(spawn_y_min, spawn_y_max)
 	var selected_scene = select_scene_by_probability()
-	if selected_scene:
-		var new_object = selected_scene.instantiate()
-		new_object.position = Vector2(spawn_x + 600, spawn_y)
-		add_child(new_object)
+	if not selected_scene:
+		return
+
+	var spawn_x
+	var spawn_y = randf_range(spawn_y_min, spawn_y_max)
+
+	var offset_x = 600
+
+	var scene_path = selected_scene.resource_path if selected_scene.resource_path else ""
+	if "bomb" in scene_path or "tnt" in scene_path:
+		spawn_x = randf_range(spawn_x_min * 0.3, spawn_x_max * 0.3) + offset_x
+	else:
+		spawn_x = randf_range(spawn_x_min, spawn_x_max) + offset_x
+		if randf() < 0.3:
+			spawn_x = (spawn_x_min if randf() < 0.5 else spawn_x_max) + offset_x
+
+	var new_object = selected_scene.instantiate()
+	new_object.position = Vector2(spawn_x, spawn_y)
+	add_child(new_object)
+
 
 func select_scene_by_probability():
 	var total_probability = spawn_probabilities.reduce(func(a, b): return a + b, 0.0)
@@ -112,8 +128,21 @@ func select_scene_by_probability():
 	return null
 
 func set_random_spawn_time():
-	spawn_timer.wait_time = randf_range(spawn_rate_min, spawn_rate_max)
+	var new_min = max(spawn_rate_min * (1.0 / (1.0 + difficulty_factor * 0.5)), 0.6)
+	var new_max = max(spawn_rate_max * (1.0 / (1.0 + difficulty_factor * 0.5)), 1.8)
+	spawn_timer.wait_time = randf_range(new_min, new_max)
 	spawn_timer.start()
+
+func increase_difficulty():
+	difficulty_factor += 0.01
+
+	var bomb_index = object_scenes.find("res://juicer_elements/juicer_element_bomb.tscn")
+	var tnt_index = object_scenes.find("res://juicer_elements/juicer_element_tnt.tscn")
+	
+	if bomb_index >= 0:
+		spawn_probabilities[bomb_index] = min(spawn_probabilities[bomb_index] + 0.02 * difficulty_factor, 0.3)
+	if tnt_index >= 0:
+		spawn_probabilities[tnt_index] = min(spawn_probabilities[tnt_index] + 0.02 * difficulty_factor, 0.3)
 
 func _on_area_2d_body_entered(body):
 	if body is RigidBody2D:
@@ -150,7 +179,6 @@ func calculate_score():
 	
 	score_juice = max(score_juice, 0)
 
-
 func update_score_label():
 	if score_label:
 		score_label.text = "Score: " + str(score_juice)
@@ -174,6 +202,7 @@ func dead():
 	is_spawning = false
 	dead_juice.emit()
 	game_over = true
+	Global.juice_minigame_finished = true
 	Global.add_score(score_juice)
 
 func _on_finish_juice_restart_juice() -> void:
@@ -186,4 +215,7 @@ func _on_finish_juice_desktop_return_from_juice() -> void:
 	game_over = false
 
 func _on_timer_timeout() -> void:
-	dead()
+	if Global.desktop_juice_visible == true:
+		dead()
+	else:
+		return
