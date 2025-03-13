@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://xlbdgsatg0h2"]
+
+[ext_resource type="Texture2D" uid="uid://bga34fl0o2l56" path="res://icons/desktop/minigames/crane/box_48.png" id="1_7anoh"]
+[ext_resource type="Script" uid="uid://2y6sr0n2uo8v" path="res://blocks/blocks.gd" id="1_hpohh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7anoh"]
+size = Vector2(48, 32)
+
+[node name="Block48" type="RigidBody2D"]
+script = ExtResource("1_hpohh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7anoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7anoh")
