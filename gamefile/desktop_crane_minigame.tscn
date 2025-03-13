@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfstmvko12t0m"]
+[gd_scene load_steps=7 format=3 uid="uid://cfstmvko12t0m"]
 
 [ext_resource type="Texture2D" uid="uid://bhkjqggouax70" path="res://icons/desktop/minigames/crane/box_underground.png" id="1_asodx"]
 [ext_resource type="Script" uid="uid://c1q4moew2i5cd" path="res://crane.gd" id="1_xi34t"]
 [ext_resource type="Texture2D" uid="uid://cprkeq0gbblqx" path="res://icons/desktop/crane.png" id="2_51n2s"]
+[ext_resource type="Script" uid="uid://d8xfhupm7vwv" path="res://deletion_area.gd" id="4_51n2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1j7q7"]
 size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ndx7"]
+size = Vector2(640, 24)
 
 [node name="DesktopCraneMinigame" type="Node2D"]
 
@@ -32,3 +36,10 @@ shape = SubResource("RectangleShape2D_1j7q7")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
 zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_51n2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(320, 372)
+shape = SubResource("RectangleShape2D_4ndx7")
