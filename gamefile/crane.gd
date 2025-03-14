@@ -20,16 +20,21 @@ var block_scenes = [
 	preload("res://blocks/block_48.tscn"),
 	preload("res://blocks/block_64.tscn"),
 	preload("res://blocks/block_96.tscn")]
-	
+
+var crane_offset: float = 160
+
+var crane = self
+
 func _ready():
 	start_x = position.x
 	highest_block_y = drop_point.global_position.y
-	target_camera_position = camera.position
+	target_camera_position = camera.global_position
 	print("Initiale Höhe des Turms:", highest_block_y)
-	
+
 func _process(delta):
 	if Global.desktop_crane_visible or test:
 		position.x += direction * speed * delta
+		
 		if position.x >= start_x + move_range and not has_spawned_block:
 			has_spawned_block = true
 			spawn_block()
@@ -41,9 +46,13 @@ func _process(delta):
 			has_spawned_block = false
 		if current_block and is_block_attached:
 			current_block.global_position = drop_point.global_position
-		if current_block and is_block_attached:
-			check_tower_height(current_block.global_position.y)
-		camera.position = camera.position.lerp(target_camera_position, 0.01)
+		update_camera_height()
+
+		camera.global_position = Vector2(int(target_camera_position.x), int(target_camera_position.y))
+
+		crane.global_position.y = camera.global_position.y - crane_offset
+
+		crane.global_position.x = position.x
 
 func spawn_block():
 	if current_block != null:
@@ -52,32 +61,45 @@ func spawn_block():
 	current_block = random_block.instantiate()
 	get_tree().current_scene.call_deferred("add_child", current_block)
 	current_block.global_position = drop_point.global_position  
-	current_block.freeze = true  
-	current_block.gravity_scale = 0  
+	current_block.gravity_scale = 0
+	current_block.add_to_group("blocks")
 	is_block_attached = true  
-	print("Block instanziiert mit Y-Position: ", current_block.global_position.y)
-	
+	print("Block instanziiert mit globaler Y-Position: ", current_block.global_position.y)
+
 func drop_block():
 	if current_block and is_block_attached:
 		is_block_attached = false
-		current_block.freeze = false
 		current_block.gravity_scale = 1
 		await get_tree().create_timer(0.5).timeout
-		check_tower_height(current_block.global_position.y)
+		update_camera_height()
 		current_block = null  
 
-func check_tower_height(new_block_y):
-	print("Überprüfe Höhe: neuer Block Y = ", new_block_y, " aktuelle höchste Y = ", highest_block_y)
-	if new_block_y <= highest_block_y:
-		print("Kein Wachstum! Block ist nicht höher.")
+func update_camera_height():
+	var all_blocks = []
+	var block_to_ignore = current_block
+
+	for body in get_tree().get_nodes_in_group("blocks"):
+		if body is RigidBody2D and body != block_to_ignore:
+			all_blocks.append(int(body.global_position.y))
+
+	print("Gefundene Blöcke mit globalen Höhen: ", all_blocks)
+
+	if all_blocks.size() < 2:
+		print("Nicht genug existierende Blöcke. Alle Blockhöhen:", all_blocks)
 		return
 	
-	highest_block_y = new_block_y
-	print("Aktualisierte höchste Y-Position des Turms: ", highest_block_y)
+	all_blocks.sort()
+	var highest_blocks = all_blocks.slice(0, 2)
 
-	var move_up = Vector2(0, -camera_follow_offset)
-	print("🔼 Turm wächst! Kamera nach oben:", move_up)
-	target_camera_position = camera.position + move_up
+	print("Höchste Blockhöhen: ", highest_blocks)
+
+	var camera_y = highest_blocks[1] - camera_follow_offset
+
+	camera_y = int(camera_y)
+
+	target_camera_position = Vector2(camera.global_position.x, camera_y)
+
+	camera.global_position = camera.global_position.lerp(target_camera_position, 0.1)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
