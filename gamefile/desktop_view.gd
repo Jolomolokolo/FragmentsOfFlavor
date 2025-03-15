@@ -12,7 +12,7 @@ signal closeDesktop
 @onready var cam_desktop = $CameraDesktop
 @onready var cam_fire_minigame = $DesktopFireMinigame/DesktopPlayer/CameraFireMinigame
 @onready var cam_juice_minigame = $DesktopJuiceMinigame/Camera2D
-@onready var cam_crane_minigame = $DesktopCraneMinigame/Camera2d # Needs to be fixed
+@onready var cam_crane_minigame = $DesktopCraneMinigame/Camera2D
 @onready var label_downfall = $DesktopFireMinigame/CanvasLayer
 @onready var finish_canvas = $DesktopFireMinigame/Finish
 @onready var juice_canvas = $DesktopJuiceMinigame/CanvasLayer
@@ -29,6 +29,7 @@ func _ready() -> void:
 	cam_desktop.enabled = false
 	cam_fire_minigame.enabled = false
 	cam_juice_minigame.enabled = false
+	cam_crane_minigame.enabled = false
 
 func _process(_delta: float) -> void:
 	check_juicer()
