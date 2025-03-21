@@ -4,13 +4,14 @@ signal customer_spawn
 
 @export var customer_scene: PackedScene
 @export var timer_range_start: int = 5
-@export var timer_range_end: int = 10
+@export var timer_range_end: int = 7
 
 var rng = RandomNumberGenerator.new()
 var tables = []
 var group_size
 
 func _ready() -> void:
+	$Timer.start(3)
 	for child in get_children():
 		if child is StaticBody2D:
 			tables.append({

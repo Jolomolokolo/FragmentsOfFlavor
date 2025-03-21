@@ -8,13 +8,19 @@ extends CharacterBody2D
 var order: String
 var order_sucessfull = false
 var player_was = false
-var player_final_pos = false
 var player_in_area = false
-var rng = round(randf_range(5,10))
+var rng = round(randf_range(5, 10))
 
 @onready var bubble = $Control
 @onready var image_display = $Control/TextureRect2/TextureRect
 @onready var image_display_bg = $Control/TextureRect2
+@onready var satisfaction_bar = $SatisfactionBar
+@onready var timer = $Timer
+@onready var timer_leave = $TimerLeave
+@onready var particle = $GPUParticles2D
+
+@export var max_satisfaction_time: float = 300.0
+var satisfaction_time_left: float
 
 var product_images: Dictionary = {
 	"crumb_cake": preload("res://food/food_icon/crumb_cake.png"),
@@ -31,19 +37,33 @@ var product_images: Dictionary = {
 var hook = preload("res://icons/hook.png")
 
 func _ready():
+	particle.emitting = true
 	order = orders[randi() % orders.size()]
 	bubble.visible = false
 	image_display.visible = false
 	image_display_bg.visible = false
+	satisfaction_time_left = max_satisfaction_time
 
+	if satisfaction_bar:
+		satisfaction_bar.max_value = max_satisfaction_time
+		satisfaction_bar.value = satisfaction_time_left
+		satisfaction_bar.visible = true
+		satisfaction_bar.modulate = Color(0, 1, 0)
+	
+	timer.start(1.0)
 
 func _process(_delta: float):
+	if satisfaction_bar:
+		var progress = satisfaction_time_left / max_satisfaction_time
+		var color = Color(1.0 - progress, progress, 0)
+		satisfaction_bar.modulate = color
+
 	if player_in_area and Input.is_action_just_pressed("ui_action"):
-		if Global.handheld == order and Global.handheld_selected_main == true and order_sucessfull == false:
+		if Global.handheld == order and Global.handheld_selected_main and not order_sucessfull:
 			complete_order(1)
-		elif Global.handheld_2 == order and Global.handheld_selected_main == false and order_sucessfull == false:
+		elif Global.handheld_2 == order and not Global.handheld_selected_main and not order_sucessfull:
 			complete_order(2)
-		elif order_sucessfull == false:
+		elif not order_sucessfull:
 			Global.health -= 2
 
 func complete_order(slot: int):
@@ -56,29 +76,32 @@ func complete_order(slot: int):
 	elif slot == 2:
 		Global.handheld_2 = ""
 		Global.handheld_bool_2 = false
-	else:
-		print("Error with INV removal")
-
+	
 	Global.cash += rng
 	Global.health += 3
 	Global.orders_served += 1
-	#print("Order worked! New Cash: ", Global.cash)
-
+	
 	var index = Global.orders.find(order)
 	if index != -1:
 		Global.orders.remove_at(index)
 	
-	$Timer2.start()
+	timer_leave.start()
+
+func customer_leave():
+	Global.health -= 10
+	Global.orders_failed += 1
+	var index = Global.orders.find(order)
+	if index != -1:
+		Global.orders.remove_at(index)
+	queue_free()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_area = true
-		#print("Player da!")
 		if not player_was:
 			Global.orders.append(order)
-			print(Global.orders)
 			player_was = true
-		if product_images.has(order) and order_sucessfull == false:
+		if product_images.has(order) and not order_sucessfull:
 			image_display.texture = product_images[order]
 			image_display.visible = true
 			image_display_bg.visible = true
@@ -87,7 +110,6 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group("player"):
 		player_in_area = false
-		#print("Player weg!")
 		image_display.visible = false
 		image_display_bg.visible = false
 		hide_bubble()
@@ -99,40 +121,15 @@ func hide_bubble():
 	bubble.visible = false
 
 func _on_timer_timeout() -> void:
-	if order_sucessfull == false:
-		Global.health -= 10
-		Global.orders_failed += 1
-		var index = Global.orders.find(order)
-		if index != -1:
-			Global.orders.remove_at(index)
-		#print("WEG: ", Global.health)
+	if not order_sucessfull:
+		satisfaction_time_left -= 1
+		satisfaction_time_left = max(satisfaction_time_left, 0)
+		
+		if satisfaction_bar:
+			satisfaction_bar.value = satisfaction_time_left
+			
+		if satisfaction_time_left <= 0:
+			customer_leave()
+
+func _on_timer_leave_timeout() -> void:
 	queue_free()
-	
-func _on_timer_2_timeout() -> void:
-	queue_free()
-
-#func make_path(target: Vector2) -> void:
-	#position = target
-	#print("TPed")
-	#nav_agent.target_position = target
-
-# func _physics_process(delta: float) -> void:
-#	var next_pos = nav_agent.get_next_path_position()
-#	var drc = global_position.direction_to(next_pos)
-#	var unsafe_velocity = drc * speed * delta
-#	nav_agent.velocity = unsafe_velocity
-#
-# func _on_safe_velocity_computed(safe_velocity: Vector2) -> void:
-#	velocity = velocity.move_toward(safe_velocity, 100)
-#	if not nav_agent.is_navigation_finished():
-#		move_and_collide(velocity)
-#		
-#	if nav_agent.distance_to_target() <= 25:
-#		nav_agent.set_velocity_forced(Vector2.ZERO)
-#		position = nav_agent.target_position
-#	elif nav_agent.is_navigation_finished() == true and nav_agent.distance_to_target() >= 25:
-#		position = nav_agent.target_position
-#		print("Desti TP")
-
-
-#	print("Nav finished")

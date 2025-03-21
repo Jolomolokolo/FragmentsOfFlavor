@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxvkl4v18lccm"]
+[gd_scene load_steps=9 format=3 uid="uid://dxvkl4v18lccm"]
 
 [ext_resource type="Script" uid="uid://c7bd6102ubwvx" path="res://customer_scene.gd" id="1_qq0vg"]
 [ext_resource type="Texture2D" uid="uid://dp3xlqyb3qwnu" path="res://icons/Customer.png" id="1_w7jay"]
 [ext_resource type="Texture2D" uid="uid://ux6aq2e05i5d" path="res://icons/speech_bubble.png" id="3_ebrj1"]
+[ext_resource type="Texture2D" uid="uid://cqu3fnyk3kwsw" path="res://icons/customer_spawn.png" id="3_ned2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuo2r"]
 
@@ -16,6 +17,17 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ngr8g"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+velocity_pivot = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 36.91
+initial_velocity_max = 90.62
+gravity = Vector3(0, 98, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82cuy"]
 size = Vector2(50, 50)
@@ -34,9 +46,19 @@ path_desired_distance = 40.0
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 300.0
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = ExtResource("3_ned2i")
+lifetime = 0.3
 one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+randomness = 1.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_ngr8g")
+
+[node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -73,9 +95,23 @@ offset_bottom = 41.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ebrj1")
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="TimerLeave" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
+
+[node name="SatisfactionBar" type="ProgressBar" parent="."]
+z_index = 53
+z_as_relative = false
+offset_left = 14.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 54.0
+scale = Vector2(0.5, 0.5)
+max_value = 300.0
+step = 1.0
+value = 300.0
+fill_mode = 3
+show_percentage = false
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
@@ -83,4 +119,4 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="TimerLeave" to="." method="_on_timer_leave_timeout"]

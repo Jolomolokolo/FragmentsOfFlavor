@@ -30,6 +30,9 @@ var crane_minigame_finished = false
 var score_history_fire = []
 var score_history = []
 
+var time_add_customer_booster = 0
+var all_orders_complete_booster = 0
+var two_inv_slots_booster = 0
 
 func reset():
 	table.clear()
@@ -59,6 +62,10 @@ func reset():
 	crane_minigame_finished = false
 	score_history_fire.clear()
 	score_history.clear()
+	
+	time_add_customer_booster = 0
+	all_orders_complete_booster = 0
+	two_inv_slots_booster = 0
 
 func switch_handheld():
 	handheld_selected_main = !handheld_selected_main

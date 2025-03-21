@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cweeieqauro8x"]
+
+[ext_resource type="Script" uid="uid://luklgas8iy2g" path="res://time_add_booster.gd" id="1_8grly"]
+[ext_resource type="Texture2D" uid="uid://bl6co5d8wmcv3" path="res://icons/booster/time_add_customer_booster.png" id="2_b3ber"]
+[ext_resource type="Texture2D" uid="uid://3puy7vm3nqe5" path="res://icons/booster/time_add_customer_booster_deactivated.png" id="3_vma7q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8grly"]
+font_size = 32
+font_color = Color(1, 1, 0, 1)
+
+[node name="TimeAddBooster" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1216.0
+offset_bottom = -656.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8grly")
+
+[node name="TimeAddBooster" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_b3ber")
+
+[node name="TimeAddBoosterDeactivated" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_vma7q")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 85.0
+text = "0"
+label_settings = SubResource("LabelSettings_8grly")
+horizontal_alignment = 1
+vertical_alignment = 1

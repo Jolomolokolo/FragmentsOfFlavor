@@ -168,6 +168,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="CraneButtonDeactivated" type="Button" parent="DesktopStandard" groups=["desktop"]]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.937
@@ -186,7 +187,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="HighsScoresJuice" type="CanvasLayer" parent="DesktopStandard"]
-visible = false
 script = ExtResource("9_6f7av")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DesktopStandard/HighsScoresJuice"]
@@ -204,18 +204,18 @@ texture = ExtResource("7_c12cg")
 stretch_mode = 3
 
 [node name="HighsScoresFire" type="CanvasLayer" parent="DesktopStandard"]
-visible = false
 script = ExtResource("10_r8dgl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DesktopStandard/HighsScoresFire"]
+offset_left = 816.0
 offset_top = 488.0
-offset_right = 208.0
+offset_right = 1024.0
 offset_bottom = 720.0
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="DesktopStandard/HighsScoresFire"]
+offset_left = 816.0
 offset_top = 456.0
-offset_right = 208.0
+offset_right = 1024.0
 offset_bottom = 488.0
 texture = ExtResource("5_0j5us")
 stretch_mode = 3

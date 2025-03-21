@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=87 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Script" uid="uid://dksrjnrf4a66x" path="res://cafe.gd" id="1_bxopw"]
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cnfb3fqdp2nr3" path="res://icons/ChairCustomer.png" id="16_dvcy0"]
 [ext_resource type="PackedScene" uid="uid://dwwsj4ujxqqkv" path="res://table_invisible.tscn" id="17_d73ib"]
 [ext_resource type="Script" uid="uid://y6gvmkve5lcb" path="res://food/scripts_food/avocado_toast.gd" id="18_bg2fk"]
+[ext_resource type="Texture2D" uid="uid://uug1il46s7ix" path="res://icons/ausgabe.png" id="18_klmyy"]
 [ext_resource type="Texture2D" uid="uid://dqkfjyxl1wqek" path="res://food/food_output/avocado_toast_output.png" id="19_43abj"]
 [ext_resource type="Script" uid="uid://da4edjksuwjuq" path="res://food/scripts_food/crumb_cake.gd" id="19_sk36k"]
 [ext_resource type="Texture2D" uid="uid://dfj8aao60osrp" path="res://food/food_output/crumb_cake_output.png" id="20_57r0r"]
@@ -45,7 +46,6 @@
 [ext_resource type="Texture2D" uid="uid://b217kbs1bejpy" path="res://food/food_output/cheescake_output.png" id="37_hlhgl"]
 [ext_resource type="Script" uid="uid://dhotnr1sjs2jg" path="res://canvas_layer.gd" id="40_fdrpx"]
 [ext_resource type="PackedScene" uid="uid://c57ug0y6vndi1" path="res://name.tscn" id="45_ne4ww"]
-[ext_resource type="Texture2D" uid="uid://4n01k1u7b0t4" path="res://icons/desktop/trash.png" id="45_qhg55"]
 [ext_resource type="Script" uid="uid://30hkk3n7wivf" path="res://desktop.gd" id="46_60u60"]
 [ext_resource type="Texture2D" uid="uid://cu8it4e2iec3t" path="res://icons/Desktop.png" id="46_cyyn4"]
 [ext_resource type="PackedScene" uid="uid://tkhx7lnk7yjd" path="res://desktop.tscn" id="48_wmrr6"]
@@ -55,9 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://cr0tv1owd7oxo" path="res://icons/desktop/minigames/crane/crane_arm.png" id="52_1u6t8"]
 [ext_resource type="Texture2D" uid="uid://bhkjqggouax70" path="res://icons/desktop/minigames/crane/box_underground.png" id="53_xmejo"]
 [ext_resource type="Script" uid="uid://cgbsip1o026qa" path="res://delete_crane.gd" id="54_4dao0"]
-[ext_resource type="PackedScene" uid="uid://cweeieqauro8x" path="res://time_add_booster.tscn" id="56_1u6t8"]
-[ext_resource type="PackedScene" uid="uid://xe0vcc2eqglo" path="res://all_orders_complete_booster.tscn" id="57_xmejo"]
-[ext_resource type="PackedScene" uid="uid://b58nynhfrpbqh" path="res://two_inf_slots_booster.tscn" id="58_4dao0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbaed"]
 
@@ -622,9 +619,6 @@ shape = SubResource("CircleShape2D_gyg6m")
 texture = ExtResource("7_o3hko")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
-one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["cafe"]]
 script = ExtResource("40_fdrpx")
@@ -1568,7 +1562,6 @@ position = Vector2(0, 32)
 rotation = -4.71238
 
 [node name="TutorialFinisher" type="Area2D" parent="." groups=["cafe"]]
-visible = false
 script = ExtResource("10_2g4s6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialFinisher"]
@@ -1723,7 +1716,7 @@ shape = SubResource("RectangleShape2D_uyhok")
 [node name="Sprite2D" type="Sprite2D" parent="TrashCan"]
 position = Vector2(1.52588e-05, -3.8147e-06)
 rotation = -3.14159
-texture = ExtResource("45_qhg55")
+texture = ExtResource("18_klmyy")
 
 [node name="AreaBlocker" type="StaticBody2D" parent="." groups=["cafe"]]
 position = Vector2(896, 720)
@@ -1807,28 +1800,6 @@ metadata/_edit_lock_ = true
 
 [node name="BoosterLayer" type="CanvasLayer" parent="."]
 
-[node name="TimeAddBooster" parent="BoosterLayer" instance=ExtResource("56_1u6t8")]
-offset_left = 32.0
-offset_top = 640.0
-offset_right = -1184.0
-offset_bottom = -16.0
-metadata/_edit_lock_ = true
-
-[node name="AllOrdersCompleteBooster" parent="BoosterLayer" instance=ExtResource("57_xmejo")]
-offset_left = 120.0
-offset_top = 640.0
-offset_right = -1096.0
-offset_bottom = -16.0
-metadata/_edit_lock_ = true
-
-[node name="TwoInfSlotsBooster" parent="BoosterLayer" instance=ExtResource("58_4dao0")]
-offset_left = 208.0
-offset_top = 640.0
-offset_right = -1008.0
-offset_bottom = -16.0
-metadata/_edit_lock_ = true
-
-[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
 [connection signal="customer_spawn" from="CustomerSpawner" to="CustomerSpawner" method="_on_customer_spawn"]
@@ -1862,5 +1833,3 @@ metadata/_edit_lock_ = true
 [connection signal="desktop_return" from="Desktop/Desktop/DesktopFireMinigame" to="Desktop/Desktop" method="_on_desktop_fire_minigame_desktop_return"]
 [connection signal="desktop_return_from_juice" from="Desktop/Desktop/DesktopJuiceMinigame" to="Desktop/Desktop" method="_on_desktop_juice_minigame_desktop_return_from_juice"]
 [connection signal="body_entered" from="Desktop/Desktop/DesktopCraneMinigame/Area2D" to="Desktop/Desktop/DesktopCraneMinigame/Area2D" method="_on_body_entered"]
-[connection signal="fire_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_fire_close_to_desktop"]
-[connection signal="juice_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_juice_close_to_desktop"]

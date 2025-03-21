@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1p7oo0860lsu"]
+[gd_scene load_steps=5 format=3 uid="uid://d1p7oo0860lsu"]
 
 [ext_resource type="Texture2D" uid="uid://bboaw000uk760" path="res://icons/control/pause.png" id="1_avsnj"]
 [ext_resource type="Script" uid="uid://dt3gcb2gi6a76" path="res://exit_screen.gd" id="1_ph7gi"]
 [ext_resource type="Texture2D" uid="uid://bgdaqcks8o108" path="res://icons/StartButton.png" id="3_bn12h"]
+[ext_resource type="Texture2D" uid="uid://cu8it4e2iec3t" path="res://icons/Desktop.png" id="4_tgyn2"]
 
 [node name="ExitScreen" type="Control"]
 process_mode = 3
@@ -41,4 +42,21 @@ offset_bottom = 58.6667
 texture_normal = ExtResource("3_bn12h")
 stretch_mode = 3
 
+[node name="Return" type="TextureButton" parent="Pause"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 26.6667
+offset_right = 14.0
+offset_bottom = 60.6667
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("4_tgyn2")
+stretch_mode = 3
+
 [connection signal="pressed" from="Pause/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Pause/Return" to="." method="_on_return_pressed"]

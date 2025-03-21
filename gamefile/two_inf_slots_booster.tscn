@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://b58nynhfrpbqh"]
+
+[ext_resource type="Script" uid="uid://b51ij5cjbvk1i" path="res://two_inf_slots_booster.gd" id="1_3gyo5"]
+[ext_resource type="Texture2D" uid="uid://cfjobmpgl5lal" path="res://icons/booster/two_inv_slots_booster.png" id="2_uecox"]
+[ext_resource type="Texture2D" uid="uid://7l17odp1urfp" path="res://icons/booster/two_inv_slots_booster_deactivated.png" id="3_tol2r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8grly"]
+font_size = 32
+font_color = Color(1, 1, 0, 1)
+
+[node name="TwoInfSlotsBooster" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1216.0
+offset_bottom = -656.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gyo5")
+
+[node name="TwoInfSlotsBooster" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_uecox")
+
+[node name="TwoInfSlotsBoosterDeactivated" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_tol2r")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 85.0
+text = "0"
+label_settings = SubResource("LabelSettings_8grly")
+horizontal_alignment = 1
+vertical_alignment = 1

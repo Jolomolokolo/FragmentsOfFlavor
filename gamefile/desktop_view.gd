@@ -16,6 +16,7 @@ signal closeDesktop
 @onready var label_downfall = $DesktopFireMinigame/CanvasLayer
 @onready var finish_canvas = $DesktopFireMinigame/Finish
 @onready var juice_canvas = $DesktopJuiceMinigame/CanvasLayer
+@onready var booster_canvas = $"../../BoosterLayer"
 
 @onready var juicer_4_4 = $"DesktopStandard/Juicer4-4"
 @onready var juicer_3_4 =  $"DesktopStandard/Juicer3-4"
@@ -49,6 +50,7 @@ func _on_fire_game_button_pressed() -> void:
 	Global.desktop_visible = false
 	if Global.fire_minigame_finished == true:
 		finish_canvas.visible = true
+	booster_canvas.visible = false
 
 func _on_juice_game_button_pressed() -> void:
 	cam_desktop.enabled = false
@@ -56,13 +58,16 @@ func _on_juice_game_button_pressed() -> void:
 	Global.desktop_visible = false
 	Global.desktop_juice_visible = true
 	juice_canvas.visible = true
+	booster_canvas.visible = false
 
 func _on_cran_button_pressed() -> void:
 	cam_desktop.enabled = false
 	cam_crane_minigame.enabled = true
 	Global.desktop_visible = false
 	Global.desktop_crane_visible = true
+	booster_canvas.visible = false
 	#crane_canvas.visible = true
+
 
 func _on_fire_game_button_deactivated_pressed() -> void:
 	# Error Sound
@@ -84,21 +89,34 @@ func _on_crane_button_deactivated_pressed() -> void:
 		# Error Sound
 		print("Deactivated CraneGame Button pressed")
 
-func _on_desktop_fire_minigame_desktop_return() -> void:
+func fire_minigame_return_desktop():
 	cam_fire_minigame.enabled = false
 	cam_desktop.enabled = true
 	label_downfall.visible = false
 	Global.desktop_visible = true
 	Global.desktop_fire_visible = false
 	finish_canvas.visible = false
-	#print("Yeah, finished")
+	booster_canvas.visible = true
 
-func _on_desktop_juice_minigame_desktop_return_from_juice() -> void:
+func juice_minigame_return_desktop():
 	cam_desktop.enabled = true
 	cam_juice_minigame.enabled = false
 	Global.desktop_juice_visible = false
 	Global.desktop_visible = true
 	juice_canvas.visible = false
+	booster_canvas.visible = true
+
+func _on_desktop_fire_minigame_desktop_return() -> void:
+	fire_minigame_return_desktop()
+
+func _on_desktop_juice_minigame_desktop_return_from_juice() -> void:
+	juice_minigame_return_desktop()
+
+func _on_exit_screen_fire_close_to_desktop() -> void:
+	fire_minigame_return_desktop()
+
+func _on_exit_screen_juice_close_to_desktop() -> void:
+	juice_minigame_return_desktop()
 
 func check_juicer():
 	var completed_games = 0
