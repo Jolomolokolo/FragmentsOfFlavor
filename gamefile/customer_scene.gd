@@ -18,6 +18,7 @@ var rng = round(randf_range(5, 10))
 @onready var timer = $Timer
 @onready var timer_leave = $TimerLeave
 @onready var particle = $GPUParticles2D
+@onready var booster = get_node("/root/Cafe/BoosterLayer/TimeAddBooster")
 
 @export var max_satisfaction_time: float = 300.0
 var satisfaction_time_left: float
@@ -49,6 +50,9 @@ func _ready():
 		satisfaction_bar.value = satisfaction_time_left
 		satisfaction_bar.visible = true
 		satisfaction_bar.modulate = Color(0, 1, 0)
+	
+	if booster:
+		booster.time_add.connect(_on_time_boost)
 	
 	timer.start(1.0)
 
@@ -133,3 +137,10 @@ func _on_timer_timeout() -> void:
 
 func _on_timer_leave_timeout() -> void:
 	queue_free()
+
+func _on_time_boost(extra_time: int):
+	satisfaction_time_left += extra_time
+	if satisfaction_bar:
+		satisfaction_bar.max_value += extra_time
+		satisfaction_bar.value = satisfaction_time_left
+	print("⚡ Booster aktiviert! Neue Zufriedenheitszeit:", satisfaction_time_left)
