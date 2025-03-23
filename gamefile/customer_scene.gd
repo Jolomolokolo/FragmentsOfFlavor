@@ -18,10 +18,12 @@ var rng = round(randf_range(5, 10))
 @onready var timer = $Timer
 @onready var timer_leave = $TimerLeave
 @onready var particle = $GPUParticles2D
-@onready var booster = get_node("/root/Cafe/BoosterLayer/TimeAddBooster")
+@onready var time_add_booster = get_node("/root/Cafe/BoosterLayer/TimeAddBooster")
+@onready var orders_complete_booster = get_node("/root/Cafe/BoosterLayer/AllOrdersCompleteBooster")
 
 @export var max_satisfaction_time: float = 300.0
 var satisfaction_time_left: float
+var orders_complete_with_booster = false
 
 var product_images: Dictionary = {
 	"crumb_cake": preload("res://food/food_icon/crumb_cake.png"),
@@ -51,8 +53,11 @@ func _ready():
 		satisfaction_bar.visible = true
 		satisfaction_bar.modulate = Color(0, 1, 0)
 	
-	if booster:
-		booster.time_add.connect(_on_time_boost)
+	if time_add_booster:
+		time_add_booster.time_add.connect(_on_time_boost)
+	
+	if orders_complete_booster:
+		orders_complete_booster.orders_complete.connect(_on_orders_complete)
 	
 	timer.start(1.0)
 
@@ -89,6 +94,7 @@ func complete_order(slot: int):
 	if index != -1:
 		Global.orders.remove_at(index)
 	
+	orders_complete_with_booster = true
 	timer_leave.start()
 
 func customer_leave():
@@ -143,4 +149,20 @@ func _on_time_boost(extra_time: int):
 	if satisfaction_bar:
 		satisfaction_bar.max_value += extra_time
 		satisfaction_bar.value = satisfaction_time_left
-	print("⚡ Booster aktiviert! Neue Zufriedenheitszeit:", satisfaction_time_left)
+	#print("Booster activated, new left time: ", satisfaction_time_left)
+
+func _on_orders_complete():
+	order_sucessfull = true
+	image_display.texture = hook
+	
+	if orders_complete_with_booster == false:
+		Global.cash += rng
+		Global.health += 3
+		Global.orders_served += 1
+		orders_complete_with_booster = true
+	
+		var index = Global.orders.find(order)
+		if index != -1:
+			Global.orders.remove_at(index)
+	
+		timer_leave.start()

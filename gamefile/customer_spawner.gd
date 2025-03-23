@@ -26,9 +26,9 @@ func _ready() -> void:
 	tables.shuffle()
 	#print(tables)
 
-func _on_tutorial_finisher_body_entered(_body: CharacterBody2D) -> void:
-	$Timer.start(3)
-	print("Tutorial Finish")
+#func _on_tutorial_finisher_body_entered(_body: CharacterBody2D) -> void:
+#	$Timer.start(3)
+#	print("Tutorial Finish")
 
 func _on_timer_timeout() -> void:
 	#print("Timeout -> Start")

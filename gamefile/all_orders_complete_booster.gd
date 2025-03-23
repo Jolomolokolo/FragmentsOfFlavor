@@ -1,11 +1,22 @@
 extends Control
 
+signal orders_complete
+
 @onready var label = $Label
 @onready var all_orders_complete_booster = $AllOrdersCompleteBooster
 @onready var all_orders_complete_booster_deactivated = $AllOrdersCompleteBoosterDeactivated
 
 
 func _process(_delta: float) -> void:
+	update_booster_label()
+	if Input.is_action_just_pressed("8") and not Global.all_orders_complete_booster <= 0 and Global.cafe_area:
+		orders_complete.emit()
+		Global.all_orders_complete_booster = Global.all_orders_complete_booster - 1
+	else:
+		# Error Sound
+		pass
+
+func update_booster_label():
 	if Global.all_orders_complete_booster > 0:
 		all_orders_complete_booster_deactivated.visible = false
 		all_orders_complete_booster.visible = true

@@ -10,7 +10,7 @@ signal time_add
 
 func _process(_delta: float) -> void:
 	update_booster_label()
-	if Input.is_action_just_pressed("7") and not Global.time_add_customer_booster <= 0:
+	if Input.is_action_just_pressed("7") and not Global.time_add_customer_booster <= 0 and Global.cafe_area:
 		time_add.emit(time_extra)
 		Global.time_add_customer_booster = Global.time_add_customer_booster - 1
 	else:

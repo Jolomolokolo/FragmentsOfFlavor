@@ -1,7 +1,8 @@
-[gd_scene load_steps=90 format=4 uid="uid://dsd2i2hy1l4ff"]
+[gd_scene load_steps=91 format=4 uid="uid://dsd2i2hy1l4ff"]
 
 [ext_resource type="Script" uid="uid://dksrjnrf4a66x" path="res://cafe.gd" id="1_bxopw"]
 [ext_resource type="PackedScene" uid="uid://d1p7oo0860lsu" path="res://exit_screen.tscn" id="3_18ohp"]
+[ext_resource type="Texture2D" uid="uid://dxivujyrugu8" path="res://food/food_inv/inv.png" id="5_qqswf"]
 [ext_resource type="Texture2D" uid="uid://b34tkus6ncg1b" path="res://icons/tiles/border_straight.png" id="6_05c5m"]
 [ext_resource type="Texture2D" uid="uid://c32gbc2xpo7f3" path="res://icons/Player.png" id="7_o3hko"]
 [ext_resource type="Script" uid="uid://bro2yb21jha37" path="res://character_body_2d.gd" id="7_t55wd"]
@@ -710,7 +711,7 @@ offset_left = 590.0
 offset_top = 650.0
 offset_right = -626.0
 offset_bottom = -22.0001
-texture_normal = ExtResource("19_43abj")
+texture_normal = ExtResource("5_qqswf")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
@@ -723,7 +724,49 @@ offset_left = 666.0
 offset_top = 650.0
 offset_right = -550.0
 offset_bottom = -22.0001
-texture_normal = ExtResource("24_u5odm")
+texture_normal = ExtResource("5_qqswf")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Inv3" type="TextureButton" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.4
+offset_left = 585.0
+offset_top = 598.0
+offset_right = -631.0
+offset_bottom = -74.0001
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_qqswf")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Inv4" type="TextureButton" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.4
+offset_left = 637.0
+offset_top = 598.0
+offset_right = -579.0
+offset_bottom = -74.0001
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_qqswf")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Inv5" type="TextureButton" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.4
+offset_left = 689.0
+offset_top = 598.0
+offset_right = -527.0
+offset_bottom = -74.0001
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_qqswf")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
@@ -1828,6 +1871,10 @@ offset_right = -1008.0
 offset_bottom = -16.0
 metadata/_edit_lock_ = true
 
+[node name="Timer" type="Timer" parent="BoosterLayer/TwoInfSlotsBooster"]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
@@ -1864,3 +1911,4 @@ metadata/_edit_lock_ = true
 [connection signal="body_entered" from="Desktop/Desktop/DesktopCraneMinigame/Area2D" to="Desktop/Desktop/DesktopCraneMinigame/Area2D" method="_on_body_entered"]
 [connection signal="fire_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_fire_close_to_desktop"]
 [connection signal="juice_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_juice_close_to_desktop"]
+[connection signal="timeout" from="BoosterLayer/TwoInfSlotsBooster/Timer" to="BoosterLayer/TwoInfSlotsBooster" method="_on_timer_timeout"]

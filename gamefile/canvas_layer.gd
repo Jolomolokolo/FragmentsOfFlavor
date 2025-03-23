@@ -9,6 +9,9 @@ signal dead
 
 @onready var inv_1 = $Inventory/Inv1
 @onready var inv_2 = $Inventory/Inv2
+@onready var inv_3 = $Inventory/Inv3
+@onready var inv_4 = $Inventory/Inv4
+@onready var inv_5 = $Inventory/Inv5
 
 @onready var time = $Timer
 @onready var time_label = $TimeLabel
@@ -52,34 +55,43 @@ func _ready():
 	update_inventory()
 
 func _process(_delta):
-	if Global.cafe_area == true:
+	if Global.cafe_area:
 		update_cash_display()
 		update_heath_display()
 		update_orders()
-	
+		
 		if Input.is_action_just_pressed("ui_swap"):
 			Global.switch_handheld()
 		elif Input.is_action_just_pressed("1"):
-			Global.select_handheld(1)
+			Global.select_handheld(0)
 		elif Input.is_action_just_pressed("2"):
-			Global.select_handheld(2)
+			Global.select_handheld(1)
+		
+		if Global.inv_slots_booster_activated:
+			if Input.is_action_just_pressed("3"):
+				Global.select_handheld(2)
+			if Input.is_action_just_pressed("4"):
+				Global.select_handheld(3)
+			if Input.is_action_just_pressed("5"):
+				Global.select_handheld(4)
 		
 		if Input.is_action_just_pressed("scroll_up"):
-			Global.select_next_handheld()
-		elif Input.is_action_just_pressed("scroll_down"):
 			Global.select_previous_handheld()
+		elif Input.is_action_just_pressed("scroll_down"):
+			Global.select_next_handheld()
 		
 		update_inventory()
 
+
 func update_cash_display():
-	cash_label.text = "💵: " + str(int(Global.cash))
+	cash_label.text = "\ud83d\udcb5: " + str(int(Global.cash))
 
 func update_heath_display():
 	if Global.health <= 0:
 		dead.emit()
 	elif Global.health <= 20:
 		texture_rect.texture = emoji_bad
-	elif  Global.health >= 21 and Global.health <= 69:
+	elif Global.health >= 21 and Global.health <= 69:
 		texture_rect.texture = emoji_middle
 	elif Global.health >= 70:
 		texture_rect.texture = emoji_good
@@ -89,7 +101,6 @@ func _on_dead() -> void:
 	print("DEAD")
 
 func update_orders():
-	#$ScrollContainer.get_v_scroll_bar().visible = false # Geht nicht
 	for child in order_container.get_children():
 		child.queue_free()
 	
@@ -103,7 +114,6 @@ func update_orders():
 	
 	for order_name in Global.orders:
 		var texture = order_icons.get(order_name, null)
-
 		if texture:
 			var icon = TextureRect.new()
 			icon.texture = texture
@@ -114,11 +124,20 @@ func update_orders():
 	$ScrollContainer.scroll_vertical = $ScrollContainer.get_v_scroll_bar().max_value
 
 func update_inventory():
-	inv_1.texture_normal = inv_icons.get(Global.handheld, null)
-	inv_2.texture_normal = inv_icons.get(Global.handheld_2, null)
+	var max_slots = Global.get_max_slots()
 	
-	inv_1.modulate = Color(1, 1, 1, 1) if Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
-	inv_2.modulate = Color(1, 1, 1, 1) if not Global.handheld_selected_main else Color(0.5, 0.5, 0.5, 1)
+	var inventory_slots = [inv_1, inv_2, inv_3, inv_4, inv_5]
+	
+	for i in range(5):
+		if i < max_slots:
+			inventory_slots[i].texture_normal = inv_icons.get(Global.handhelds[i], null)
+			inventory_slots[i].visible = true
+			if i == Global.selected_slot:
+				inventory_slots[i].modulate = Color(1, 1, 1, 1)
+			else:
+				inventory_slots[i].modulate = Color(0.5, 0.5, 0.5, 1)
+		else:
+			inventory_slots[i].visible = false
 
 func _on_timer_timeout() -> void:
 	if Global.cafe_area == true:
