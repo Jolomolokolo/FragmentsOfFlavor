@@ -56,6 +56,7 @@ func start_game():
 func finish_game():
 	finish_canvas.visible = true
 	Global.fire_minigame_finished = true
+	Global.tokens += 1
 	var end_time = Time.get_ticks_msec() / 1000.0
 	var elapsed_time = end_time - start_time
 	Global.add_score_fire(elapsed_time)

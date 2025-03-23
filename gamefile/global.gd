@@ -13,6 +13,7 @@ var orders_served = 0
 var orders_failed = 0
 var tables_visited = 0
 var food_waste = 0
+var tokens = 0
 
 var player_name = ""
 
@@ -47,6 +48,7 @@ func reset():
 	orders_failed = 0
 	tables_visited = 0
 	food_waste = 0
+	tokens = 0
 
 	cafe_area = false
 	desktop_visible = false

@@ -43,3 +43,16 @@ text = "0"
 label_settings = SubResource("LabelSettings_8grly")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

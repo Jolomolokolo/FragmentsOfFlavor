@@ -10,6 +10,7 @@ extends Area2D
 
 @onready var highscore_fire = $Desktop/DesktopStandard/HighsScoresFire
 @onready var highscore_juice = $Desktop/DesktopStandard/HighsScoresJuice
+@onready var token_canvas = $Desktop/DesktopStandard/TokenLayer
 
 var can_trigger_again: bool = true
 
@@ -23,6 +24,7 @@ func _show_desktop():
 	Global.desktop_visible = true
 	highscore_fire.visible = true
 	highscore_juice.visible = true
+	token_canvas.visible = true
 	
 	cam_desktop.enabled = true
 	cam.enabled = false
@@ -37,8 +39,9 @@ func _hide_desktop():
 		await get_tree().create_timer(0.2).timeout
 		Global.desktop_visible = false
 		Global.desktop_fire_visible = false
-		highscore_fire.visible = true
-		highscore_juice.visible = true
+		highscore_fire.visible = false
+		highscore_juice.visible = false
+		token_canvas.visible = false
 		
 		cam_desktop.enabled = false
 		cam.enabled = true

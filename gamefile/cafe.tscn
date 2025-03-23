@@ -1871,10 +1871,6 @@ offset_right = -1008.0
 offset_bottom = -16.0
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="BoosterLayer/TwoInfSlotsBooster"]
-wait_time = 30.0
-one_shot = true
-
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="dead" from="CanvasLayer" to="CanvasLayer" method="_on_dead"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]
@@ -1911,4 +1907,3 @@ one_shot = true
 [connection signal="body_entered" from="Desktop/Desktop/DesktopCraneMinigame/Area2D" to="Desktop/Desktop/DesktopCraneMinigame/Area2D" method="_on_body_entered"]
 [connection signal="fire_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_fire_close_to_desktop"]
 [connection signal="juice_close_to_desktop" from="ExitScreen/ExitScreen" to="Desktop/Desktop" method="_on_exit_screen_juice_close_to_desktop"]
-[connection signal="timeout" from="BoosterLayer/TwoInfSlotsBooster/Timer" to="BoosterLayer/TwoInfSlotsBooster" method="_on_timer_timeout"]

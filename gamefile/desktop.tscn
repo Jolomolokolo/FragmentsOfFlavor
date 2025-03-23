@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://tkhx7lnk7yjd"]
+[gd_scene load_steps=26 format=3 uid="uid://tkhx7lnk7yjd"]
 
 [ext_resource type="Script" uid="uid://b5nk1jews3d4l" path="res://desktop_view.gd" id="1_o71jh"]
 [ext_resource type="Texture2D" uid="uid://b2vfqh6pdf3ha" path="res://icons/desktop/close.png" id="1_w3sbl"]
@@ -20,6 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://dqp82apppnl52" path="res://icons/desktop/desktop/Juicer_2-4.png" id="13_w58xd"]
 [ext_resource type="Texture2D" uid="uid://bak7lsms1s2hi" path="res://icons/desktop/desktop/Juicer_3-4.png" id="14_01a23"]
 [ext_resource type="Texture2D" uid="uid://chbe6qgghduww" path="res://icons/desktop/desktop/Juicer_Full.png" id="16_w58xd"]
+[ext_resource type="Script" uid="uid://nfc2eu03a3xw" path="res://token_layer.gd" id="19_vuxbm"]
+[ext_resource type="PackedScene" uid="uid://b58nynhfrpbqh" path="res://two_inf_slots_booster.tscn" id="20_f3oiw"]
+[ext_resource type="PackedScene" uid="uid://cweeieqauro8x" path="res://time_add_booster.tscn" id="21_j5agd"]
+[ext_resource type="PackedScene" uid="uid://xe0vcc2eqglo" path="res://all_orders_complete_booster.tscn" id="22_26mai"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqlls"]
+font_size = 32
+font_color = Color(1, 0.756863, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Desktop" type="Node2D" groups=["desktop"]]
 script = ExtResource("1_o71jh")
@@ -120,9 +129,8 @@ anchor_top = 0.011
 anchor_right = 0.119
 anchor_bottom = 0.1
 offset_left = 1111.68
-offset_top = 8.08
+offset_top = 0.0799999
 offset_right = 1111.68
-offset_bottom = 8.0
 focus_mode = 0
 icon = ExtResource("7_c12cg")
 icon_alignment = 1
@@ -253,6 +261,61 @@ visible = false
 position = Vector2(640, 350)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("16_w58xd")
+
+[node name="TokenLayer" type="CanvasLayer" parent="DesktopStandard"]
+visible = false
+script = ExtResource("19_vuxbm")
+
+[node name="TokenLabel" type="Label" parent="DesktopStandard/TokenLayer"]
+offset_left = 580.0
+offset_top = 24.0
+offset_right = 700.0
+offset_bottom = 69.0
+text = "🪙: 0"
+label_settings = SubResource("LabelSettings_bqlls")
+horizontal_alignment = 1
+
+[node name="TwoInfSlotsBooster" parent="DesktopStandard/TokenLayer" instance=ExtResource("20_f3oiw")]
+offset_left = 700.0
+offset_top = 80.0
+offset_right = -516.0
+offset_bottom = -576.0
+
+[node name="TimeAddBooster" parent="DesktopStandard/TokenLayer" instance=ExtResource("21_j5agd")]
+offset_left = 512.0
+offset_top = 80.0
+offset_right = -704.0
+offset_bottom = -576.0
+
+[node name="AllOrdersCompleteBooster" parent="DesktopStandard/TokenLayer" instance=ExtResource("22_26mai")]
+offset_left = 608.0
+offset_top = 80.0
+offset_right = -608.0
+offset_bottom = -576.0
+
+[node name="TimeAddPrice" type="Label" parent="DesktopStandard/TokenLayer"]
+offset_left = 512.0
+offset_top = 144.0
+offset_right = 576.0
+offset_bottom = 167.0
+text = "1x🪙"
+horizontal_alignment = 1
+
+[node name="AllOrdersPrice" type="Label" parent="DesktopStandard/TokenLayer"]
+offset_left = 608.0
+offset_top = 144.0
+offset_right = 672.0
+offset_bottom = 167.0
+text = "5x🪙"
+horizontal_alignment = 1
+
+[node name="InvSlotsPrice" type="Label" parent="DesktopStandard/TokenLayer"]
+offset_left = 700.0
+offset_top = 144.0
+offset_right = 764.0
+offset_bottom = 167.0
+text = "3x🪙"
+horizontal_alignment = 1
 
 [node name="CameraDesktop" type="Camera2D" parent="." groups=["desktop"]]
 position = Vector2(640, 360)

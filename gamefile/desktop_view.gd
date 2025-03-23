@@ -17,6 +17,7 @@ signal closeDesktop
 @onready var finish_canvas = $DesktopFireMinigame/Finish
 @onready var juice_canvas = $DesktopJuiceMinigame/CanvasLayer
 @onready var booster_canvas = $"../../BoosterLayer"
+@onready var token_canvas = $DesktopStandard/TokenLayer
 
 @onready var juicer_4_4 = $"DesktopStandard/Juicer4-4"
 @onready var juicer_3_4 =  $"DesktopStandard/Juicer3-4"
@@ -31,6 +32,7 @@ func _ready() -> void:
 	cam_fire_minigame.enabled = false
 	cam_juice_minigame.enabled = false
 	cam_crane_minigame.enabled = false
+	token_canvas.visible = false
 
 func _process(_delta: float) -> void:
 	check_juicer()
@@ -51,6 +53,7 @@ func _on_fire_game_button_pressed() -> void:
 	if Global.fire_minigame_finished == true:
 		finish_canvas.visible = true
 	booster_canvas.visible = false
+	token_canvas.visible = false
 
 func _on_juice_game_button_pressed() -> void:
 	cam_desktop.enabled = false
@@ -59,6 +62,7 @@ func _on_juice_game_button_pressed() -> void:
 	Global.desktop_juice_visible = true
 	juice_canvas.visible = true
 	booster_canvas.visible = false
+	token_canvas.visible = false
 
 func _on_cran_button_pressed() -> void:
 	cam_desktop.enabled = false
@@ -66,6 +70,7 @@ func _on_cran_button_pressed() -> void:
 	Global.desktop_visible = false
 	Global.desktop_crane_visible = true
 	booster_canvas.visible = false
+	token_canvas.visible = false
 	#crane_canvas.visible = true
 
 
@@ -97,6 +102,7 @@ func fire_minigame_return_desktop():
 	Global.desktop_fire_visible = false
 	finish_canvas.visible = false
 	booster_canvas.visible = true
+	token_canvas.visible = true
 
 func juice_minigame_return_desktop():
 	cam_desktop.enabled = true
@@ -105,6 +111,7 @@ func juice_minigame_return_desktop():
 	Global.desktop_visible = true
 	juice_canvas.visible = false
 	booster_canvas.visible = true
+	token_canvas.visible = true
 
 func _on_desktop_fire_minigame_desktop_return() -> void:
 	fire_minigame_return_desktop()

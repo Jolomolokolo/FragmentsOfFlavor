@@ -213,6 +213,7 @@ func _on_finish_juice_desktop_return_from_juice() -> void:
 	desktop_return_from_juice.emit()
 	finish_juice.visible = false
 	game_over = false
+	Global.tokens += 1
 
 func _on_timer_timeout() -> void:
 	if Global.desktop_juice_visible == true:
