@@ -68,24 +68,19 @@ func _process(_delta: float):
 		satisfaction_bar.modulate = color
 
 	if player_in_area and Input.is_action_just_pressed("ui_action"):
-		if Global.handheld == order and Global.handheld_selected_main and not order_sucessfull:
-			complete_order(1)
-		elif Global.handheld_2 == order and not Global.handheld_selected_main and not order_sucessfull:
-			complete_order(2)
-		elif not order_sucessfull:
-			Global.health -= 2
+		if not order_sucessfull:
+			if Global.handhelds[Global.selected_slot] == order:
+				complete_order(Global.selected_slot)
+			else:
+				Global.health -= 2
 
 func complete_order(slot: int):
 	order_sucessfull = true
 	image_display.texture = hook
 	
-	if slot == 1:
-		Global.handheld = ""
-		Global.handheld_bool_1 = false
-	elif slot == 2:
-		Global.handheld_2 = ""
-		Global.handheld_bool_2 = false
-	
+	Global.handhelds[slot] = ""
+	Global.handheld_bool[slot] = false
+
 	Global.cash += rng
 	Global.health += 3
 	Global.orders_served += 1
